@@ -44,7 +44,7 @@
     {
       "path": "pace/__init__.py",
       "bytes": 802,
-      "sha256": "68760fdbeb6dd4b589e03feef32032e37e1190b8e99718b8f9d5ffee8fb96c27"
+      "sha256": "df4dc1429967e32d1597c04616878edd5a1cf1d50444ea105f8a709cd2e73ae1"
     },
     {
       "path": "pace/__main__.py",
@@ -244,7 +244,7 @@
     {
       "path": "pace_lab/__init__.py",
       "bytes": 634,
-      "sha256": "59eb8486027b9c75ac035e88f5f22c1f4d75aa11145d81195324748ceabcfbc3"
+      "sha256": "b81b0f0d8d86727eb8313c960f98c5d40e3de50222e1fd820717bc951099205d"
     },
     {
       "path": "pace_lab/clients.py",
@@ -274,12 +274,12 @@
     {
       "path": "pyproject.toml",
       "bytes": 650,
-      "sha256": "a7160fb732caa675b81580f028c655aff22ea7b447b355d842166d8ef9f2728a"
+      "sha256": "c1b90bdc754df13e2dd407ac85bde8125247174aaff4b5b2c7051192231716f5"
     },
     {
       "path": "README.md",
-      "bytes": 11465,
-      "sha256": "6bc7b6abf89911e31cadf2ff7ef34534a0e11400a08430b298e2b9463a7c6343"
+      "bytes": 11349,
+      "sha256": "456b00720f64e0f13bdaad86956a3c26ea7df258d6f7bb683cda12ade33be49f"
     },
     {
       "path": "REPRODUCIBILITY_COOKBOOK.md",

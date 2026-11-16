@@ -7,7 +7,7 @@
 **Correspondence:** `mahmoud.sajjadi@unr.edu`  
 **Repository:** [https://github.com/mahmoudsajjadi/pace](https://github.com/mahmoudsajjadi/pace)  
 **arXiv Preprint:** [arXiv:2611.17610](https://arxiv.org/abs/2611.17610) ([HTML version](https://arxiv.org/html/2611.17610v1))  
-**Paper PDFs:** Preprint (70 pages): [`manuscript/main.pdf`](manuscript/main.pdf) | TMLR submission (59 pages): [`manuscript/tmlr_submission.pdf`](manuscript/tmlr_submission.pdf)
+**Paper PDF:** [arXiv:2611.17610 (PDF)](https://arxiv.org/pdf/2611.17610) | [HTML version](https://arxiv.org/html/2611.17610v1)
 
 [![arXiv:2611.17610](https://img.shields.io/badge/arXiv-2611.17610-b31b1b.svg)](https://arxiv.org/abs/2611.17610)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
@@ -48,7 +48,7 @@ enforces directional resource feasibility, and measures the frontier gap relativ
 
 ```text
 ├── analysis/                  # Synthesis, REML pooling, plotting, and LaTeX build gates
-│   ├── assemble_paper.py      # Assembles & compiles main.pdf (69p) & tmlr_submission.pdf (59p)
+│   ├── assemble_paper.py      # Assembles & compiles manuscript PDFs
 │   ├── run_baseline_tiers.py  # Descriptive corpus synthesis, dual-baseline pairing & numbers.tex
 │   └── run_k9_reml.py         # Three-level REML + CR2 inference (including 72-cell Model D)
 ├── code/
@@ -123,13 +123,13 @@ Every completed comparison should report:
 
 ## Verification & Manuscript Compilation
 
-Run the full automated verification suite (`829 passed, 8 skipped`):
+Run the full automated verification suite (`864 passed, 8 skipped`):
 
 ```bash
 pytest -q tests/
 ```
 
-Assemble and verify all PDF targets (`manuscript/main.pdf`, `paper/main.pdf`, `manuscript/tmlr_submission.pdf`, `paper/tmlr_submission.pdf`) with Build Gates 1 and 2:
+Assemble and verify all PDF targets (`manuscript/main.pdf`, `paper/main.pdf`) with Build Gates 1 and 2:
 
 ```bash
 python -I analysis/assemble_paper.py
@@ -143,8 +143,9 @@ python -I analysis/assemble_paper.py
 @article{sajjadi2026more,
   title   = {PACE: More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs},
   author  = {Sajjadi Mohammadabadi, Seyed Mahmoud},
-  journal = {Transactions on Machine Learning Research},
+  journal = {arXiv preprint arXiv:2611.17610},
   year    = {2026},
-  note    = {In preparation; replication repository at https://github.com/mahmoudsajjadi/pace}
+  url     = {https://arxiv.org/html/2611.17610v1},
+  note    = {Replication repository at https://github.com/mahmoudsajjadi/pace}
 }
 ```

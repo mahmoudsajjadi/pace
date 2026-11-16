@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pace-eval"
-version = "0.1.0"
+version = "0.2.0"
 description = "Compute-accounting and audit utilities for multi-agent LLM evaluations (prototype)"
 readme = "mae_eval/README.md"
 requires-python = ">=3.9"
