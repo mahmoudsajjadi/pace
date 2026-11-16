@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pace-eval"
+version = "0.1.0"
+description = "Compute-accounting and audit utilities for multi-agent LLM evaluations (prototype)"
+readme = "mae_eval/README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Seyed Mahmoud Sajjadi Mohammadabadi", email = "mahmoud.sajjadi@unr.edu" }]
+dependencies = ["numpy"]
+
+[project.optional-dependencies]
+plot = ["matplotlib"]
+
+[project.scripts]
+pace = "pace.cli:main"
+mae-eval = "mae_eval.cli:main"
+cme = "cme.cli:main"
+
+[tool.setuptools]
+packages = ["pace", "mae_eval", "cme"]

@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use the PACE toolkit (pace, pace-eval; legacy aliases cme, mae-eval), the extracted contrast datasets, or the hidden-profile control task, please cite the manuscript below."
+type: software
+title: "More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs"
+abstract: "Software, extracted data and analysis code for comparing multi-agent language-model systems with single-agent baselines of different strength: a six-dimension resource vector, a baseline ladder (A single pass, B sampled, C resource-matched, D Pareto frontier), a self-consistency frontier with a paired bootstrap interval, a baseline-rung classifier, a seven-field PACE Evaluation Card, PACE Studio interactive workbench, controlled MMLU-Pro and Hidden Profile experiments, and a synthetic split-evidence positive control."
+authors:
+  - family-names: "Sajjadi Mohammadabadi"
+    given-names: "Seyed Mahmoud"
+    affiliation: "Department of Computer Science and Engineering, University of Nevada, Reno"
+    email: "mahmoud.sajjadi@unr.edu"
+license: "Apache-2.0"
+url: "https://github.com/mahmoudsajjadi/pace"
+identifiers:
+  - type: url
+    value: "https://arxiv.org/abs/2611.17610"
+    description: "arXiv preprint"
+  - type: url
+    value: "https://arxiv.org/html/2611.17610v1"
+    description: "arXiv HTML version"
+keywords:
+  - "multi-agent systems"
+  - "test-time compute"
+  - "test-time scaling"
+  - "self-consistency"
+  - "parity-aware compute evaluation"
+  - "reasoning tokens"
+  - "large language models"
+  - "evaluation"
+preferred-citation:
+  type: article
+  title: "More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs"
+  authors:
+    - family-names: "Sajjadi Mohammadabadi"
+      given-names: "Seyed Mahmoud"
+      affiliation: "Department of Computer Science and Engineering, University of Nevada, Reno"
+  year: 2026
+  status: in-preparation
+  url: "https://arxiv.org/html/2611.17610v1"
+  notes: "arXiv:2611.17610 (Parity-Aware Compute Evaluation, PACE)."

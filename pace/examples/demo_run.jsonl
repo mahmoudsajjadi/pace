@@ -1,0 +1,480 @@
+{"system": "debate", "item": "demo00", "prompt_tokens": 97, "completion_tokens": 108, "n_completions": 1, "start": 0.0, "end": 5.6919818993862235}
+{"system": "debate", "item": "demo00", "prompt_tokens": 97, "completion_tokens": 106, "n_completions": 1, "start": 0.0, "end": 6.290130408058629}
+{"system": "debate", "item": "demo00", "prompt_tokens": 97, "completion_tokens": 102, "n_completions": 1, "start": 0.0, "end": 3.9562634004244868}
+{"system": "debate", "item": "demo00", "prompt_tokens": 97, "completion_tokens": 101, "n_completions": 1, "start": 0.0, "end": 3.198432092295}
+{"system": "debate", "item": "demo00", "prompt_tokens": 97, "completion_tokens": 105, "n_completions": 1, "start": 0.0, "end": 7.80035458513088}
+{"system": "debate", "item": "demo00", "correct": true}
+{"system": "vote3", "item": "demo00", "prompt_tokens": 65, "completion_tokens": 79, "n_completions": 1, "start": 0.0, "end": 4.693300416901092}
+{"system": "vote3", "item": "demo00", "prompt_tokens": 65, "completion_tokens": 84, "n_completions": 1, "start": 0.0, "end": 3.5635849586143498}
+{"system": "vote3", "item": "demo00", "prompt_tokens": 65, "completion_tokens": 89, "n_completions": 1, "start": 0.0, "end": 6.987290876831667}
+{"system": "vote3", "item": "demo00", "correct": false}
+{"system": "long_call", "item": "demo00", "prompt_tokens": 65, "completion_tokens": 1128, "n_completions": 1, "start": 0.0, "end": 6.985634564230649}
+{"system": "long_call", "item": "demo00", "correct": true}
+{"system": "debate", "item": "demo01", "prompt_tokens": 103, "completion_tokens": 73, "n_completions": 1, "start": 0.0, "end": 5.697608294737172}
+{"system": "debate", "item": "demo01", "prompt_tokens": 103, "completion_tokens": 70, "n_completions": 1, "start": 0.0, "end": 4.2370479580838545}
+{"system": "debate", "item": "demo01", "prompt_tokens": 103, "completion_tokens": 72, "n_completions": 1, "start": 0.0, "end": 5.287128490691087}
+{"system": "debate", "item": "demo01", "prompt_tokens": 103, "completion_tokens": 68, "n_completions": 1, "start": 0.0, "end": 6.763660681835028}
+{"system": "debate", "item": "demo01", "prompt_tokens": 103, "completion_tokens": 76, "n_completions": 1, "start": 0.0, "end": 4.498469364452506}
+{"system": "debate", "item": "demo01", "correct": true}
+{"system": "vote3", "item": "demo01", "prompt_tokens": 69, "completion_tokens": 69, "n_completions": 1, "start": 0.0, "end": 3.6553949414566036}
+{"system": "vote3", "item": "demo01", "prompt_tokens": 69, "completion_tokens": 61, "n_completions": 1, "start": 0.0, "end": 3.6534212290363834}
+{"system": "vote3", "item": "demo01", "prompt_tokens": 69, "completion_tokens": 60, "n_completions": 1, "start": 0.0, "end": 7.531961827001285}
+{"system": "vote3", "item": "demo01", "correct": true}
+{"system": "long_call", "item": "demo01", "prompt_tokens": 69, "completion_tokens": 761, "n_completions": 1, "start": 0.0, "end": 7.163971550010338}
+{"system": "long_call", "item": "demo01", "correct": true}
+{"system": "debate", "item": "demo02", "prompt_tokens": 111, "completion_tokens": 106, "n_completions": 1, "start": 0.0, "end": 6.788453322591944}
+{"system": "debate", "item": "demo02", "prompt_tokens": 111, "completion_tokens": 105, "n_completions": 1, "start": 0.0, "end": 5.2239951221338945}
+{"system": "debate", "item": "demo02", "prompt_tokens": 111, "completion_tokens": 98, "n_completions": 1, "start": 0.0, "end": 5.098854661849707}
+{"system": "debate", "item": "demo02", "prompt_tokens": 111, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 7.221600582057465}
+{"system": "debate", "item": "demo02", "prompt_tokens": 111, "completion_tokens": 101, "n_completions": 1, "start": 0.0, "end": 4.937593195008657}
+{"system": "debate", "item": "demo02", "correct": true}
+{"system": "vote3", "item": "demo02", "prompt_tokens": 74, "completion_tokens": 92, "n_completions": 1, "start": 0.0, "end": 4.907304346991978}
+{"system": "vote3", "item": "demo02", "prompt_tokens": 74, "completion_tokens": 94, "n_completions": 1, "start": 0.0, "end": 7.597316731526935}
+{"system": "vote3", "item": "demo02", "prompt_tokens": 74, "completion_tokens": 86, "n_completions": 1, "start": 0.0, "end": 3.6890807717496554}
+{"system": "vote3", "item": "demo02", "correct": false}
+{"system": "long_call", "item": "demo02", "prompt_tokens": 74, "completion_tokens": 1168, "n_completions": 1, "start": 0.0, "end": 3.7399407438103234}
+{"system": "long_call", "item": "demo02", "correct": false}
+{"system": "debate", "item": "demo03", "prompt_tokens": 105, "completion_tokens": 98, "n_completions": 1, "start": 0.0, "end": 3.881521856840636}
+{"system": "debate", "item": "demo03", "prompt_tokens": 105, "completion_tokens": 113, "n_completions": 1, "start": 0.0, "end": 5.421213843169657}
+{"system": "debate", "item": "demo03", "prompt_tokens": 105, "completion_tokens": 99, "n_completions": 1, "start": 0.0, "end": 6.349322799086561}
+{"system": "debate", "item": "demo03", "prompt_tokens": 105, "completion_tokens": 101, "n_completions": 1, "start": 0.0, "end": 5.634686000250285}
+{"system": "debate", "item": "demo03", "prompt_tokens": 105, "completion_tokens": 101, "n_completions": 1, "start": 0.0, "end": 5.58080593755472}
+{"system": "debate", "item": "demo03", "correct": true}
+{"system": "vote3", "item": "demo03", "prompt_tokens": 70, "completion_tokens": 93, "n_completions": 1, "start": 0.0, "end": 4.978020536474503}
+{"system": "vote3", "item": "demo03", "prompt_tokens": 70, "completion_tokens": 98, "n_completions": 1, "start": 0.0, "end": 7.367187245728422}
+{"system": "vote3", "item": "demo03", "prompt_tokens": 70, "completion_tokens": 87, "n_completions": 1, "start": 0.0, "end": 3.6815436240901525}
+{"system": "vote3", "item": "demo03", "correct": false}
+{"system": "long_call", "item": "demo03", "prompt_tokens": 70, "completion_tokens": 1223, "n_completions": 1, "start": 0.0, "end": 7.707956514279589}
+{"system": "long_call", "item": "demo03", "correct": true}
+{"system": "debate", "item": "demo04", "prompt_tokens": 130, "completion_tokens": 74, "n_completions": 1, "start": 0.0, "end": 7.827138545422869}
+{"system": "debate", "item": "demo04", "prompt_tokens": 130, "completion_tokens": 82, "n_completions": 1, "start": 0.0, "end": 7.01833298900027}
+{"system": "debate", "item": "demo04", "prompt_tokens": 130, "completion_tokens": 77, "n_completions": 1, "start": 0.0, "end": 7.008983133342693}
+{"system": "debate", "item": "demo04", "prompt_tokens": 130, "completion_tokens": 84, "n_completions": 1, "start": 0.0, "end": 6.218407348963426}
+{"system": "debate", "item": "demo04", "prompt_tokens": 130, "completion_tokens": 88, "n_completions": 1, "start": 0.0, "end": 5.1674566904762145}
+{"system": "debate", "item": "demo04", "correct": true}
+{"system": "vote3", "item": "demo04", "prompt_tokens": 87, "completion_tokens": 74, "n_completions": 1, "start": 0.0, "end": 7.175276530715197}
+{"system": "vote3", "item": "demo04", "prompt_tokens": 87, "completion_tokens": 68, "n_completions": 1, "start": 0.0, "end": 6.348285273478696}
+{"system": "vote3", "item": "demo04", "prompt_tokens": 87, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 5.7584998682644155}
+{"system": "vote3", "item": "demo04", "correct": true}
+{"system": "long_call", "item": "demo04", "prompt_tokens": 87, "completion_tokens": 781, "n_completions": 1, "start": 0.0, "end": 6.639210327221358}
+{"system": "long_call", "item": "demo04", "correct": false}
+{"system": "debate", "item": "demo05", "prompt_tokens": 124, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 6.721461276485744}
+{"system": "debate", "item": "demo05", "prompt_tokens": 124, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 5.333105771597223}
+{"system": "debate", "item": "demo05", "prompt_tokens": 124, "completion_tokens": 72, "n_completions": 1, "start": 0.0, "end": 5.518278992363425}
+{"system": "debate", "item": "demo05", "prompt_tokens": 124, "completion_tokens": 66, "n_completions": 1, "start": 0.0, "end": 7.134094694347116}
+{"system": "debate", "item": "demo05", "prompt_tokens": 124, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 7.223645503372443}
+{"system": "debate", "item": "demo05", "correct": false}
+{"system": "vote3", "item": "demo05", "prompt_tokens": 83, "completion_tokens": 60, "n_completions": 1, "start": 0.0, "end": 6.564454698649139}
+{"system": "vote3", "item": "demo05", "prompt_tokens": 83, "completion_tokens": 55, "n_completions": 1, "start": 0.0, "end": 4.948992019409186}
+{"system": "vote3", "item": "demo05", "prompt_tokens": 83, "completion_tokens": 65, "n_completions": 1, "start": 0.0, "end": 5.897696787591797}
+{"system": "vote3", "item": "demo05", "correct": false}
+{"system": "long_call", "item": "demo05", "prompt_tokens": 83, "completion_tokens": 751, "n_completions": 1, "start": 0.0, "end": 6.388358159871279}
+{"system": "long_call", "item": "demo05", "correct": false}
+{"system": "debate", "item": "demo06", "prompt_tokens": 120, "completion_tokens": 82, "n_completions": 1, "start": 0.0, "end": 4.0067038357974605}
+{"system": "debate", "item": "demo06", "prompt_tokens": 120, "completion_tokens": 78, "n_completions": 1, "start": 0.0, "end": 6.532643856616892}
+{"system": "debate", "item": "demo06", "prompt_tokens": 120, "completion_tokens": 86, "n_completions": 1, "start": 0.0, "end": 3.2835406764762727}
+{"system": "debate", "item": "demo06", "prompt_tokens": 120, "completion_tokens": 85, "n_completions": 1, "start": 0.0, "end": 7.087149678491063}
+{"system": "debate", "item": "demo06", "prompt_tokens": 120, "completion_tokens": 80, "n_completions": 1, "start": 0.0, "end": 3.3122695643045157}
+{"system": "debate", "item": "demo06", "correct": true}
+{"system": "vote3", "item": "demo06", "prompt_tokens": 80, "completion_tokens": 68, "n_completions": 1, "start": 0.0, "end": 6.216786644611099}
+{"system": "vote3", "item": "demo06", "prompt_tokens": 80, "completion_tokens": 69, "n_completions": 1, "start": 0.0, "end": 6.185817601939474}
+{"system": "vote3", "item": "demo06", "prompt_tokens": 80, "completion_tokens": 68, "n_completions": 1, "start": 0.0, "end": 5.382685112873142}
+{"system": "vote3", "item": "demo06", "correct": true}
+{"system": "long_call", "item": "demo06", "prompt_tokens": 80, "completion_tokens": 882, "n_completions": 1, "start": 0.0, "end": 4.015839207876025}
+{"system": "long_call", "item": "demo06", "correct": true}
+{"system": "debate", "item": "demo07", "prompt_tokens": 111, "completion_tokens": 65, "n_completions": 1, "start": 0.0, "end": 3.9186955914058137}
+{"system": "debate", "item": "demo07", "prompt_tokens": 111, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 5.371740125768062}
+{"system": "debate", "item": "demo07", "prompt_tokens": 111, "completion_tokens": 65, "n_completions": 1, "start": 0.0, "end": 5.29086610271186}
+{"system": "debate", "item": "demo07", "prompt_tokens": 111, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 4.34820111331542}
+{"system": "debate", "item": "demo07", "prompt_tokens": 111, "completion_tokens": 76, "n_completions": 1, "start": 0.0, "end": 3.9203361073845526}
+{"system": "debate", "item": "demo07", "correct": false}
+{"system": "vote3", "item": "demo07", "prompt_tokens": 74, "completion_tokens": 62, "n_completions": 1, "start": 0.0, "end": 5.087977846179849}
+{"system": "vote3", "item": "demo07", "prompt_tokens": 74, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 3.8045747709359357}
+{"system": "vote3", "item": "demo07", "prompt_tokens": 74, "completion_tokens": 68, "n_completions": 1, "start": 0.0, "end": 7.467454286306051}
+{"system": "vote3", "item": "demo07", "correct": true}
+{"system": "long_call", "item": "demo07", "prompt_tokens": 74, "completion_tokens": 691, "n_completions": 1, "start": 0.0, "end": 6.316542642454957}
+{"system": "long_call", "item": "demo07", "correct": true}
+{"system": "debate", "item": "demo08", "prompt_tokens": 133, "completion_tokens": 108, "n_completions": 1, "start": 0.0, "end": 6.4023109005328465}
+{"system": "debate", "item": "demo08", "prompt_tokens": 133, "completion_tokens": 107, "n_completions": 1, "start": 0.0, "end": 5.016266973440121}
+{"system": "debate", "item": "demo08", "prompt_tokens": 133, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 6.934836810328356}
+{"system": "debate", "item": "demo08", "prompt_tokens": 133, "completion_tokens": 95, "n_completions": 1, "start": 0.0, "end": 3.7124010288125353}
+{"system": "debate", "item": "demo08", "prompt_tokens": 133, "completion_tokens": 106, "n_completions": 1, "start": 0.0, "end": 6.431643249989122}
+{"system": "debate", "item": "demo08", "correct": false}
+{"system": "vote3", "item": "demo08", "prompt_tokens": 89, "completion_tokens": 83, "n_completions": 1, "start": 0.0, "end": 7.696099157164786}
+{"system": "vote3", "item": "demo08", "prompt_tokens": 89, "completion_tokens": 83, "n_completions": 1, "start": 0.0, "end": 6.512029390219283}
+{"system": "vote3", "item": "demo08", "prompt_tokens": 89, "completion_tokens": 81, "n_completions": 1, "start": 0.0, "end": 7.075179346039162}
+{"system": "vote3", "item": "demo08", "correct": false}
+{"system": "long_call", "item": "demo08", "prompt_tokens": 89, "completion_tokens": 1059, "n_completions": 1, "start": 0.0, "end": 3.1760881328361483}
+{"system": "long_call", "item": "demo08", "correct": true}
+{"system": "debate", "item": "demo09", "prompt_tokens": 115, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 3.315328573000678}
+{"system": "debate", "item": "demo09", "prompt_tokens": 115, "completion_tokens": 96, "n_completions": 1, "start": 0.0, "end": 4.071980655489151}
+{"system": "debate", "item": "demo09", "prompt_tokens": 115, "completion_tokens": 102, "n_completions": 1, "start": 0.0, "end": 7.612638814014614}
+{"system": "debate", "item": "demo09", "prompt_tokens": 115, "completion_tokens": 93, "n_completions": 1, "start": 0.0, "end": 5.861241453882678}
+{"system": "debate", "item": "demo09", "prompt_tokens": 115, "completion_tokens": 97, "n_completions": 1, "start": 0.0, "end": 3.3755426936851727}
+{"system": "debate", "item": "demo09", "correct": true}
+{"system": "vote3", "item": "demo09", "prompt_tokens": 77, "completion_tokens": 92, "n_completions": 1, "start": 0.0, "end": 5.370760189163975}
+{"system": "vote3", "item": "demo09", "prompt_tokens": 77, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 3.3329037238707677}
+{"system": "vote3", "item": "demo09", "prompt_tokens": 77, "completion_tokens": 87, "n_completions": 1, "start": 0.0, "end": 7.326559771374531}
+{"system": "vote3", "item": "demo09", "correct": true}
+{"system": "long_call", "item": "demo09", "prompt_tokens": 77, "completion_tokens": 926, "n_completions": 1, "start": 0.0, "end": 5.608600522494877}
+{"system": "long_call", "item": "demo09", "correct": false}
+{"system": "debate", "item": "demo10", "prompt_tokens": 127, "completion_tokens": 74, "n_completions": 1, "start": 0.0, "end": 5.724729308190028}
+{"system": "debate", "item": "demo10", "prompt_tokens": 127, "completion_tokens": 84, "n_completions": 1, "start": 0.0, "end": 5.015087980912664}
+{"system": "debate", "item": "demo10", "prompt_tokens": 127, "completion_tokens": 76, "n_completions": 1, "start": 0.0, "end": 4.8614020533505515}
+{"system": "debate", "item": "demo10", "prompt_tokens": 127, "completion_tokens": 81, "n_completions": 1, "start": 0.0, "end": 6.4333018660646335}
+{"system": "debate", "item": "demo10", "prompt_tokens": 127, "completion_tokens": 81, "n_completions": 1, "start": 0.0, "end": 3.53512517496334}
+{"system": "debate", "item": "demo10", "correct": true}
+{"system": "vote3", "item": "demo10", "prompt_tokens": 85, "completion_tokens": 76, "n_completions": 1, "start": 0.0, "end": 3.506464212209112}
+{"system": "vote3", "item": "demo10", "prompt_tokens": 85, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 3.868405941549564}
+{"system": "vote3", "item": "demo10", "prompt_tokens": 85, "completion_tokens": 75, "n_completions": 1, "start": 0.0, "end": 7.55139361808919}
+{"system": "vote3", "item": "demo10", "correct": true}
+{"system": "long_call", "item": "demo10", "prompt_tokens": 85, "completion_tokens": 819, "n_completions": 1, "start": 0.0, "end": 3.9624730652421616}
+{"system": "long_call", "item": "demo10", "correct": true}
+{"system": "debate", "item": "demo11", "prompt_tokens": 111, "completion_tokens": 84, "n_completions": 1, "start": 0.0, "end": 4.655550807783411}
+{"system": "debate", "item": "demo11", "prompt_tokens": 111, "completion_tokens": 97, "n_completions": 1, "start": 0.0, "end": 4.279190800586062}
+{"system": "debate", "item": "demo11", "prompt_tokens": 111, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 6.774871902339491}
+{"system": "debate", "item": "demo11", "prompt_tokens": 111, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 7.435620659747267}
+{"system": "debate", "item": "demo11", "prompt_tokens": 111, "completion_tokens": 100, "n_completions": 1, "start": 0.0, "end": 4.552648190862778}
+{"system": "debate", "item": "demo11", "correct": false}
+{"system": "vote3", "item": "demo11", "prompt_tokens": 74, "completion_tokens": 77, "n_completions": 1, "start": 0.0, "end": 3.6976168526414703}
+{"system": "vote3", "item": "demo11", "prompt_tokens": 74, "completion_tokens": 80, "n_completions": 1, "start": 0.0, "end": 6.012362145004081}
+{"system": "vote3", "item": "demo11", "prompt_tokens": 74, "completion_tokens": 88, "n_completions": 1, "start": 0.0, "end": 3.7295075951630485}
+{"system": "vote3", "item": "demo11", "correct": false}
+{"system": "long_call", "item": "demo11", "prompt_tokens": 74, "completion_tokens": 975, "n_completions": 1, "start": 0.0, "end": 3.658546488093842}
+{"system": "long_call", "item": "demo11", "correct": false}
+{"system": "debate", "item": "demo12", "prompt_tokens": 105, "completion_tokens": 126, "n_completions": 1, "start": 0.0, "end": 5.356059149705098}
+{"system": "debate", "item": "demo12", "prompt_tokens": 105, "completion_tokens": 118, "n_completions": 1, "start": 0.0, "end": 4.930594968391624}
+{"system": "debate", "item": "demo12", "prompt_tokens": 105, "completion_tokens": 118, "n_completions": 1, "start": 0.0, "end": 3.6990882320523073}
+{"system": "debate", "item": "demo12", "prompt_tokens": 105, "completion_tokens": 109, "n_completions": 1, "start": 0.0, "end": 6.769965723427239}
+{"system": "debate", "item": "demo12", "prompt_tokens": 105, "completion_tokens": 121, "n_completions": 1, "start": 0.0, "end": 6.359453239790993}
+{"system": "debate", "item": "demo12", "correct": false}
+{"system": "vote3", "item": "demo12", "prompt_tokens": 70, "completion_tokens": 99, "n_completions": 1, "start": 0.0, "end": 4.168864641225198}
+{"system": "vote3", "item": "demo12", "prompt_tokens": 70, "completion_tokens": 100, "n_completions": 1, "start": 0.0, "end": 4.519624955758078}
+{"system": "vote3", "item": "demo12", "prompt_tokens": 70, "completion_tokens": 110, "n_completions": 1, "start": 0.0, "end": 4.870907931225638}
+{"system": "vote3", "item": "demo12", "correct": false}
+{"system": "long_call", "item": "demo12", "prompt_tokens": 70, "completion_tokens": 1298, "n_completions": 1, "start": 0.0, "end": 3.9328525068504954}
+{"system": "long_call", "item": "demo12", "correct": false}
+{"system": "debate", "item": "demo13", "prompt_tokens": 100, "completion_tokens": 66, "n_completions": 1, "start": 0.0, "end": 5.750285842595014}
+{"system": "debate", "item": "demo13", "prompt_tokens": 100, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 4.01240605784749}
+{"system": "debate", "item": "demo13", "prompt_tokens": 100, "completion_tokens": 71, "n_completions": 1, "start": 0.0, "end": 3.352356292480853}
+{"system": "debate", "item": "demo13", "prompt_tokens": 100, "completion_tokens": 66, "n_completions": 1, "start": 0.0, "end": 7.634602247065941}
+{"system": "debate", "item": "demo13", "prompt_tokens": 100, "completion_tokens": 72, "n_completions": 1, "start": 0.0, "end": 4.0244223032010185}
+{"system": "debate", "item": "demo13", "correct": true}
+{"system": "vote3", "item": "demo13", "prompt_tokens": 67, "completion_tokens": 58, "n_completions": 1, "start": 0.0, "end": 4.225086238229148}
+{"system": "vote3", "item": "demo13", "prompt_tokens": 67, "completion_tokens": 70, "n_completions": 1, "start": 0.0, "end": 7.488450864624848}
+{"system": "vote3", "item": "demo13", "prompt_tokens": 67, "completion_tokens": 66, "n_completions": 1, "start": 0.0, "end": 3.466013856844945}
+{"system": "vote3", "item": "demo13", "correct": false}
+{"system": "long_call", "item": "demo13", "prompt_tokens": 67, "completion_tokens": 702, "n_completions": 1, "start": 0.0, "end": 4.095955022422474}
+{"system": "long_call", "item": "demo13", "correct": true}
+{"system": "debate", "item": "demo14", "prompt_tokens": 133, "completion_tokens": 76, "n_completions": 1, "start": 0.0, "end": 4.220677523919607}
+{"system": "debate", "item": "demo14", "prompt_tokens": 133, "completion_tokens": 74, "n_completions": 1, "start": 0.0, "end": 5.01265458481269}
+{"system": "debate", "item": "demo14", "prompt_tokens": 133, "completion_tokens": 66, "n_completions": 1, "start": 0.0, "end": 5.525771685591764}
+{"system": "debate", "item": "demo14", "prompt_tokens": 133, "completion_tokens": 62, "n_completions": 1, "start": 0.0, "end": 5.213572346044427}
+{"system": "debate", "item": "demo14", "prompt_tokens": 133, "completion_tokens": 65, "n_completions": 1, "start": 0.0, "end": 6.562285967900884}
+{"system": "debate", "item": "demo14", "correct": false}
+{"system": "vote3", "item": "demo14", "prompt_tokens": 89, "completion_tokens": 65, "n_completions": 1, "start": 0.0, "end": 7.4832409544372425}
+{"system": "vote3", "item": "demo14", "prompt_tokens": 89, "completion_tokens": 58, "n_completions": 1, "start": 0.0, "end": 4.4019190284853975}
+{"system": "vote3", "item": "demo14", "prompt_tokens": 89, "completion_tokens": 66, "n_completions": 1, "start": 0.0, "end": 5.519987796479141}
+{"system": "vote3", "item": "demo14", "correct": false}
+{"system": "long_call", "item": "demo14", "prompt_tokens": 89, "completion_tokens": 665, "n_completions": 1, "start": 0.0, "end": 7.952127620810353}
+{"system": "long_call", "item": "demo14", "correct": true}
+{"system": "debate", "item": "demo15", "prompt_tokens": 109, "completion_tokens": 101, "n_completions": 1, "start": 0.0, "end": 6.28403506876951}
+{"system": "debate", "item": "demo15", "prompt_tokens": 109, "completion_tokens": 98, "n_completions": 1, "start": 0.0, "end": 7.533260119512458}
+{"system": "debate", "item": "demo15", "prompt_tokens": 109, "completion_tokens": 115, "n_completions": 1, "start": 0.0, "end": 5.464968286183794}
+{"system": "debate", "item": "demo15", "prompt_tokens": 109, "completion_tokens": 104, "n_completions": 1, "start": 0.0, "end": 7.298083529175814}
+{"system": "debate", "item": "demo15", "prompt_tokens": 109, "completion_tokens": 101, "n_completions": 1, "start": 0.0, "end": 7.015528402034636}
+{"system": "debate", "item": "demo15", "correct": false}
+{"system": "vote3", "item": "demo15", "prompt_tokens": 73, "completion_tokens": 96, "n_completions": 1, "start": 0.0, "end": 4.67005670912916}
+{"system": "vote3", "item": "demo15", "prompt_tokens": 73, "completion_tokens": 94, "n_completions": 1, "start": 0.0, "end": 7.629341231442282}
+{"system": "vote3", "item": "demo15", "prompt_tokens": 73, "completion_tokens": 84, "n_completions": 1, "start": 0.0, "end": 7.036273138213785}
+{"system": "vote3", "item": "demo15", "correct": false}
+{"system": "long_call", "item": "demo15", "prompt_tokens": 73, "completion_tokens": 1085, "n_completions": 1, "start": 0.0, "end": 4.751377285623786}
+{"system": "long_call", "item": "demo15", "correct": false}
+{"system": "debate", "item": "demo16", "prompt_tokens": 126, "completion_tokens": 70, "n_completions": 1, "start": 0.0, "end": 4.028063278287137}
+{"system": "debate", "item": "demo16", "prompt_tokens": 126, "completion_tokens": 74, "n_completions": 1, "start": 0.0, "end": 4.447551094889288}
+{"system": "debate", "item": "demo16", "prompt_tokens": 126, "completion_tokens": 70, "n_completions": 1, "start": 0.0, "end": 5.317070201903421}
+{"system": "debate", "item": "demo16", "prompt_tokens": 126, "completion_tokens": 77, "n_completions": 1, "start": 0.0, "end": 4.231778502639276}
+{"system": "debate", "item": "demo16", "prompt_tokens": 126, "completion_tokens": 74, "n_completions": 1, "start": 0.0, "end": 4.546843618166813}
+{"system": "debate", "item": "demo16", "correct": true}
+{"system": "vote3", "item": "demo16", "prompt_tokens": 84, "completion_tokens": 61, "n_completions": 1, "start": 0.0, "end": 5.525808685181976}
+{"system": "vote3", "item": "demo16", "prompt_tokens": 84, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 6.363804493110348}
+{"system": "vote3", "item": "demo16", "prompt_tokens": 84, "completion_tokens": 57, "n_completions": 1, "start": 0.0, "end": 3.684179289791598}
+{"system": "vote3", "item": "demo16", "correct": false}
+{"system": "long_call", "item": "demo16", "prompt_tokens": 84, "completion_tokens": 684, "n_completions": 1, "start": 0.0, "end": 4.504359616318517}
+{"system": "long_call", "item": "demo16", "correct": false}
+{"system": "debate", "item": "demo17", "prompt_tokens": 126, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 7.365992038959975}
+{"system": "debate", "item": "demo17", "prompt_tokens": 126, "completion_tokens": 89, "n_completions": 1, "start": 0.0, "end": 5.324463742764}
+{"system": "debate", "item": "demo17", "prompt_tokens": 126, "completion_tokens": 86, "n_completions": 1, "start": 0.0, "end": 7.596858165412225}
+{"system": "debate", "item": "demo17", "prompt_tokens": 126, "completion_tokens": 87, "n_completions": 1, "start": 0.0, "end": 6.476356363150423}
+{"system": "debate", "item": "demo17", "prompt_tokens": 126, "completion_tokens": 88, "n_completions": 1, "start": 0.0, "end": 7.677120658590886}
+{"system": "debate", "item": "demo17", "correct": false}
+{"system": "vote3", "item": "demo17", "prompt_tokens": 84, "completion_tokens": 71, "n_completions": 1, "start": 0.0, "end": 7.9726680306421835}
+{"system": "vote3", "item": "demo17", "prompt_tokens": 84, "completion_tokens": 80, "n_completions": 1, "start": 0.0, "end": 3.369267368708634}
+{"system": "vote3", "item": "demo17", "prompt_tokens": 84, "completion_tokens": 79, "n_completions": 1, "start": 0.0, "end": 3.247359698760317}
+{"system": "vote3", "item": "demo17", "correct": false}
+{"system": "long_call", "item": "demo17", "prompt_tokens": 84, "completion_tokens": 892, "n_completions": 1, "start": 0.0, "end": 4.839701693424011}
+{"system": "long_call", "item": "demo17", "correct": false}
+{"system": "debate", "item": "demo18", "prompt_tokens": 118, "completion_tokens": 88, "n_completions": 1, "start": 0.0, "end": 3.4863033103460843}
+{"system": "debate", "item": "demo18", "prompt_tokens": 118, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 5.910264168472607}
+{"system": "debate", "item": "demo18", "prompt_tokens": 118, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 6.935589557216692}
+{"system": "debate", "item": "demo18", "prompt_tokens": 118, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 3.2864794054225603}
+{"system": "debate", "item": "demo18", "prompt_tokens": 118, "completion_tokens": 87, "n_completions": 1, "start": 0.0, "end": 3.9849045401076495}
+{"system": "debate", "item": "demo18", "correct": true}
+{"system": "vote3", "item": "demo18", "prompt_tokens": 79, "completion_tokens": 71, "n_completions": 1, "start": 0.0, "end": 5.956573257281381}
+{"system": "vote3", "item": "demo18", "prompt_tokens": 79, "completion_tokens": 75, "n_completions": 1, "start": 0.0, "end": 7.6572127288744865}
+{"system": "vote3", "item": "demo18", "prompt_tokens": 79, "completion_tokens": 66, "n_completions": 1, "start": 0.0, "end": 3.9671924001102488}
+{"system": "vote3", "item": "demo18", "correct": true}
+{"system": "long_call", "item": "demo18", "prompt_tokens": 79, "completion_tokens": 944, "n_completions": 1, "start": 0.0, "end": 5.749543697907919}
+{"system": "long_call", "item": "demo18", "correct": true}
+{"system": "debate", "item": "demo19", "prompt_tokens": 118, "completion_tokens": 94, "n_completions": 1, "start": 0.0, "end": 3.3296219107021194}
+{"system": "debate", "item": "demo19", "prompt_tokens": 118, "completion_tokens": 97, "n_completions": 1, "start": 0.0, "end": 7.384872970159929}
+{"system": "debate", "item": "demo19", "prompt_tokens": 118, "completion_tokens": 85, "n_completions": 1, "start": 0.0, "end": 3.639330834563108}
+{"system": "debate", "item": "demo19", "prompt_tokens": 118, "completion_tokens": 95, "n_completions": 1, "start": 0.0, "end": 5.399252830859717}
+{"system": "debate", "item": "demo19", "prompt_tokens": 118, "completion_tokens": 82, "n_completions": 1, "start": 0.0, "end": 5.492610917531693}
+{"system": "debate", "item": "demo19", "correct": true}
+{"system": "vote3", "item": "demo19", "prompt_tokens": 79, "completion_tokens": 76, "n_completions": 1, "start": 0.0, "end": 6.201205248547756}
+{"system": "vote3", "item": "demo19", "prompt_tokens": 79, "completion_tokens": 84, "n_completions": 1, "start": 0.0, "end": 7.004649155019186}
+{"system": "vote3", "item": "demo19", "prompt_tokens": 79, "completion_tokens": 72, "n_completions": 1, "start": 0.0, "end": 5.386678645437602}
+{"system": "vote3", "item": "demo19", "correct": true}
+{"system": "long_call", "item": "demo19", "prompt_tokens": 79, "completion_tokens": 1027, "n_completions": 1, "start": 0.0, "end": 3.4344892105650637}
+{"system": "long_call", "item": "demo19", "correct": true}
+{"system": "debate", "item": "demo20", "prompt_tokens": 133, "completion_tokens": 93, "n_completions": 1, "start": 0.0, "end": 7.9786797873623945}
+{"system": "debate", "item": "demo20", "prompt_tokens": 133, "completion_tokens": 96, "n_completions": 1, "start": 0.0, "end": 5.608700182786981}
+{"system": "debate", "item": "demo20", "prompt_tokens": 133, "completion_tokens": 103, "n_completions": 1, "start": 0.0, "end": 4.420200445912843}
+{"system": "debate", "item": "demo20", "prompt_tokens": 133, "completion_tokens": 104, "n_completions": 1, "start": 0.0, "end": 7.559899044445381}
+{"system": "debate", "item": "demo20", "prompt_tokens": 133, "completion_tokens": 92, "n_completions": 1, "start": 0.0, "end": 4.636199073196389}
+{"system": "debate", "item": "demo20", "correct": true}
+{"system": "vote3", "item": "demo20", "prompt_tokens": 89, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 3.9290496170323563}
+{"system": "vote3", "item": "demo20", "prompt_tokens": 89, "completion_tokens": 75, "n_completions": 1, "start": 0.0, "end": 7.4503829264551165}
+{"system": "vote3", "item": "demo20", "prompt_tokens": 89, "completion_tokens": 85, "n_completions": 1, "start": 0.0, "end": 6.359243266010514}
+{"system": "vote3", "item": "demo20", "correct": true}
+{"system": "long_call", "item": "demo20", "prompt_tokens": 89, "completion_tokens": 912, "n_completions": 1, "start": 0.0, "end": 3.459274990653163}
+{"system": "long_call", "item": "demo20", "correct": true}
+{"system": "debate", "item": "demo21", "prompt_tokens": 121, "completion_tokens": 99, "n_completions": 1, "start": 0.0, "end": 5.333656437091321}
+{"system": "debate", "item": "demo21", "prompt_tokens": 121, "completion_tokens": 93, "n_completions": 1, "start": 0.0, "end": 4.828266082747801}
+{"system": "debate", "item": "demo21", "prompt_tokens": 121, "completion_tokens": 94, "n_completions": 1, "start": 0.0, "end": 4.405910794742237}
+{"system": "debate", "item": "demo21", "prompt_tokens": 121, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 3.7423332786757433}
+{"system": "debate", "item": "demo21", "prompt_tokens": 121, "completion_tokens": 93, "n_completions": 1, "start": 0.0, "end": 4.466306561562311}
+{"system": "debate", "item": "demo21", "correct": false}
+{"system": "vote3", "item": "demo21", "prompt_tokens": 81, "completion_tokens": 89, "n_completions": 1, "start": 0.0, "end": 4.71938335769946}
+{"system": "vote3", "item": "demo21", "prompt_tokens": 81, "completion_tokens": 85, "n_completions": 1, "start": 0.0, "end": 7.511454159127543}
+{"system": "vote3", "item": "demo21", "prompt_tokens": 81, "completion_tokens": 80, "n_completions": 1, "start": 0.0, "end": 5.773578646810834}
+{"system": "vote3", "item": "demo21", "correct": false}
+{"system": "long_call", "item": "demo21", "prompt_tokens": 81, "completion_tokens": 1030, "n_completions": 1, "start": 0.0, "end": 7.79885436685933}
+{"system": "long_call", "item": "demo21", "correct": false}
+{"system": "debate", "item": "demo22", "prompt_tokens": 123, "completion_tokens": 81, "n_completions": 1, "start": 0.0, "end": 3.2857457671835126}
+{"system": "debate", "item": "demo22", "prompt_tokens": 123, "completion_tokens": 79, "n_completions": 1, "start": 0.0, "end": 4.306814001135842}
+{"system": "debate", "item": "demo22", "prompt_tokens": 123, "completion_tokens": 78, "n_completions": 1, "start": 0.0, "end": 4.897409841706748}
+{"system": "debate", "item": "demo22", "prompt_tokens": 123, "completion_tokens": 72, "n_completions": 1, "start": 0.0, "end": 5.441418644017407}
+{"system": "debate", "item": "demo22", "prompt_tokens": 123, "completion_tokens": 76, "n_completions": 1, "start": 0.0, "end": 6.472416218891106}
+{"system": "debate", "item": "demo22", "correct": false}
+{"system": "vote3", "item": "demo22", "prompt_tokens": 82, "completion_tokens": 68, "n_completions": 1, "start": 0.0, "end": 4.920384127834118}
+{"system": "vote3", "item": "demo22", "prompt_tokens": 82, "completion_tokens": 68, "n_completions": 1, "start": 0.0, "end": 4.726936628495984}
+{"system": "vote3", "item": "demo22", "prompt_tokens": 82, "completion_tokens": 67, "n_completions": 1, "start": 0.0, "end": 5.297664835381026}
+{"system": "vote3", "item": "demo22", "correct": false}
+{"system": "long_call", "item": "demo22", "prompt_tokens": 82, "completion_tokens": 719, "n_completions": 1, "start": 0.0, "end": 5.493932112191911}
+{"system": "long_call", "item": "demo22", "correct": false}
+{"system": "debate", "item": "demo23", "prompt_tokens": 109, "completion_tokens": 115, "n_completions": 1, "start": 0.0, "end": 7.358493897888563}
+{"system": "debate", "item": "demo23", "prompt_tokens": 109, "completion_tokens": 123, "n_completions": 1, "start": 0.0, "end": 6.702727318496533}
+{"system": "debate", "item": "demo23", "prompt_tokens": 109, "completion_tokens": 116, "n_completions": 1, "start": 0.0, "end": 4.106195444255435}
+{"system": "debate", "item": "demo23", "prompt_tokens": 109, "completion_tokens": 109, "n_completions": 1, "start": 0.0, "end": 6.117773312560782}
+{"system": "debate", "item": "demo23", "prompt_tokens": 109, "completion_tokens": 122, "n_completions": 1, "start": 0.0, "end": 4.50923566540345}
+{"system": "debate", "item": "demo23", "correct": false}
+{"system": "vote3", "item": "demo23", "prompt_tokens": 73, "completion_tokens": 89, "n_completions": 1, "start": 0.0, "end": 6.483634891662913}
+{"system": "vote3", "item": "demo23", "prompt_tokens": 73, "completion_tokens": 97, "n_completions": 1, "start": 0.0, "end": 6.988659348033114}
+{"system": "vote3", "item": "demo23", "prompt_tokens": 73, "completion_tokens": 93, "n_completions": 1, "start": 0.0, "end": 6.298230653467016}
+{"system": "vote3", "item": "demo23", "correct": true}
+{"system": "long_call", "item": "demo23", "prompt_tokens": 73, "completion_tokens": 1179, "n_completions": 1, "start": 0.0, "end": 3.9430287456668456}
+{"system": "long_call", "item": "demo23", "correct": false}
+{"system": "debate", "item": "demo24", "prompt_tokens": 99, "completion_tokens": 87, "n_completions": 1, "start": 0.0, "end": 7.751757825765715}
+{"system": "debate", "item": "demo24", "prompt_tokens": 99, "completion_tokens": 82, "n_completions": 1, "start": 0.0, "end": 6.78861389213539}
+{"system": "debate", "item": "demo24", "prompt_tokens": 99, "completion_tokens": 96, "n_completions": 1, "start": 0.0, "end": 5.544730922331574}
+{"system": "debate", "item": "demo24", "prompt_tokens": 99, "completion_tokens": 95, "n_completions": 1, "start": 0.0, "end": 5.205228220652236}
+{"system": "debate", "item": "demo24", "prompt_tokens": 99, "completion_tokens": 87, "n_completions": 1, "start": 0.0, "end": 5.528654117375591}
+{"system": "debate", "item": "demo24", "correct": true}
+{"system": "vote3", "item": "demo24", "prompt_tokens": 66, "completion_tokens": 75, "n_completions": 1, "start": 0.0, "end": 4.526881003699694}
+{"system": "vote3", "item": "demo24", "prompt_tokens": 66, "completion_tokens": 86, "n_completions": 1, "start": 0.0, "end": 4.675815474460287}
+{"system": "vote3", "item": "demo24", "prompt_tokens": 66, "completion_tokens": 74, "n_completions": 1, "start": 0.0, "end": 7.698835589123217}
+{"system": "vote3", "item": "demo24", "correct": false}
+{"system": "long_call", "item": "demo24", "prompt_tokens": 66, "completion_tokens": 1031, "n_completions": 1, "start": 0.0, "end": 7.266556899332407}
+{"system": "long_call", "item": "demo24", "correct": true}
+{"system": "debate", "item": "demo25", "prompt_tokens": 115, "completion_tokens": 108, "n_completions": 1, "start": 0.0, "end": 3.3455092902997974}
+{"system": "debate", "item": "demo25", "prompt_tokens": 115, "completion_tokens": 102, "n_completions": 1, "start": 0.0, "end": 4.171438119396142}
+{"system": "debate", "item": "demo25", "prompt_tokens": 115, "completion_tokens": 94, "n_completions": 1, "start": 0.0, "end": 3.975877696761889}
+{"system": "debate", "item": "demo25", "prompt_tokens": 115, "completion_tokens": 97, "n_completions": 1, "start": 0.0, "end": 7.798639861907803}
+{"system": "debate", "item": "demo25", "prompt_tokens": 115, "completion_tokens": 107, "n_completions": 1, "start": 0.0, "end": 7.2648461794966925}
+{"system": "debate", "item": "demo25", "correct": false}
+{"system": "vote3", "item": "demo25", "prompt_tokens": 77, "completion_tokens": 86, "n_completions": 1, "start": 0.0, "end": 4.955527468707556}
+{"system": "vote3", "item": "demo25", "prompt_tokens": 77, "completion_tokens": 88, "n_completions": 1, "start": 0.0, "end": 4.467037067174972}
+{"system": "vote3", "item": "demo25", "prompt_tokens": 77, "completion_tokens": 88, "n_completions": 1, "start": 0.0, "end": 6.855934035967189}
+{"system": "vote3", "item": "demo25", "correct": true}
+{"system": "long_call", "item": "demo25", "prompt_tokens": 77, "completion_tokens": 1031, "n_completions": 1, "start": 0.0, "end": 5.395130118062127}
+{"system": "long_call", "item": "demo25", "correct": true}
+{"system": "debate", "item": "demo26", "prompt_tokens": 114, "completion_tokens": 94, "n_completions": 1, "start": 0.0, "end": 6.188163058622213}
+{"system": "debate", "item": "demo26", "prompt_tokens": 114, "completion_tokens": 100, "n_completions": 1, "start": 0.0, "end": 5.258456128778386}
+{"system": "debate", "item": "demo26", "prompt_tokens": 114, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 7.829636436030929}
+{"system": "debate", "item": "demo26", "prompt_tokens": 114, "completion_tokens": 95, "n_completions": 1, "start": 0.0, "end": 6.586717364587294}
+{"system": "debate", "item": "demo26", "prompt_tokens": 114, "completion_tokens": 97, "n_completions": 1, "start": 0.0, "end": 3.403465797738632}
+{"system": "debate", "item": "demo26", "correct": true}
+{"system": "vote3", "item": "demo26", "prompt_tokens": 76, "completion_tokens": 77, "n_completions": 1, "start": 0.0, "end": 3.953888155849425}
+{"system": "vote3", "item": "demo26", "prompt_tokens": 76, "completion_tokens": 79, "n_completions": 1, "start": 0.0, "end": 5.074302258546775}
+{"system": "vote3", "item": "demo26", "prompt_tokens": 76, "completion_tokens": 81, "n_completions": 1, "start": 0.0, "end": 4.812765854804162}
+{"system": "vote3", "item": "demo26", "correct": true}
+{"system": "long_call", "item": "demo26", "prompt_tokens": 76, "completion_tokens": 918, "n_completions": 1, "start": 0.0, "end": 3.516977302258223}
+{"system": "long_call", "item": "demo26", "correct": false}
+{"system": "debate", "item": "demo27", "prompt_tokens": 117, "completion_tokens": 106, "n_completions": 1, "start": 0.0, "end": 6.386135782401553}
+{"system": "debate", "item": "demo27", "prompt_tokens": 117, "completion_tokens": 97, "n_completions": 1, "start": 0.0, "end": 4.86327306688435}
+{"system": "debate", "item": "demo27", "prompt_tokens": 117, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 7.16477616111215}
+{"system": "debate", "item": "demo27", "prompt_tokens": 117, "completion_tokens": 97, "n_completions": 1, "start": 0.0, "end": 3.3964054365929295}
+{"system": "debate", "item": "demo27", "prompt_tokens": 117, "completion_tokens": 98, "n_completions": 1, "start": 0.0, "end": 4.615849932945665}
+{"system": "debate", "item": "demo27", "correct": false}
+{"system": "vote3", "item": "demo27", "prompt_tokens": 78, "completion_tokens": 80, "n_completions": 1, "start": 0.0, "end": 4.1500675187874165}
+{"system": "vote3", "item": "demo27", "prompt_tokens": 78, "completion_tokens": 96, "n_completions": 1, "start": 0.0, "end": 7.274380597155796}
+{"system": "vote3", "item": "demo27", "prompt_tokens": 78, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 5.794749469475401}
+{"system": "vote3", "item": "demo27", "correct": false}
+{"system": "long_call", "item": "demo27", "prompt_tokens": 78, "completion_tokens": 1152, "n_completions": 1, "start": 0.0, "end": 6.803607416024}
+{"system": "long_call", "item": "demo27", "correct": true}
+{"system": "debate", "item": "demo28", "prompt_tokens": 109, "completion_tokens": 104, "n_completions": 1, "start": 0.0, "end": 6.740513368389706}
+{"system": "debate", "item": "demo28", "prompt_tokens": 109, "completion_tokens": 106, "n_completions": 1, "start": 0.0, "end": 3.6443099413699285}
+{"system": "debate", "item": "demo28", "prompt_tokens": 109, "completion_tokens": 103, "n_completions": 1, "start": 0.0, "end": 7.191466184712546}
+{"system": "debate", "item": "demo28", "prompt_tokens": 109, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 3.966843629478848}
+{"system": "debate", "item": "demo28", "prompt_tokens": 109, "completion_tokens": 96, "n_completions": 1, "start": 0.0, "end": 5.309922892076555}
+{"system": "debate", "item": "demo28", "correct": true}
+{"system": "vote3", "item": "demo28", "prompt_tokens": 73, "completion_tokens": 89, "n_completions": 1, "start": 0.0, "end": 4.7197587142969075}
+{"system": "vote3", "item": "demo28", "prompt_tokens": 73, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 5.656622778157443}
+{"system": "vote3", "item": "demo28", "prompt_tokens": 73, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 4.231705246955716}
+{"system": "vote3", "item": "demo28", "correct": true}
+{"system": "long_call", "item": "demo28", "prompt_tokens": 73, "completion_tokens": 1113, "n_completions": 1, "start": 0.0, "end": 6.609837565322959}
+{"system": "long_call", "item": "demo28", "correct": false}
+{"system": "debate", "item": "demo29", "prompt_tokens": 96, "completion_tokens": 95, "n_completions": 1, "start": 0.0, "end": 3.0874520455498566}
+{"system": "debate", "item": "demo29", "prompt_tokens": 96, "completion_tokens": 87, "n_completions": 1, "start": 0.0, "end": 5.573005663076169}
+{"system": "debate", "item": "demo29", "prompt_tokens": 96, "completion_tokens": 96, "n_completions": 1, "start": 0.0, "end": 4.932118134923093}
+{"system": "debate", "item": "demo29", "prompt_tokens": 96, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 7.203595715293998}
+{"system": "debate", "item": "demo29", "prompt_tokens": 96, "completion_tokens": 83, "n_completions": 1, "start": 0.0, "end": 4.342944664520038}
+{"system": "debate", "item": "demo29", "correct": false}
+{"system": "vote3", "item": "demo29", "prompt_tokens": 64, "completion_tokens": 88, "n_completions": 1, "start": 0.0, "end": 4.137680549781295}
+{"system": "vote3", "item": "demo29", "prompt_tokens": 64, "completion_tokens": 73, "n_completions": 1, "start": 0.0, "end": 5.082321031795516}
+{"system": "vote3", "item": "demo29", "prompt_tokens": 64, "completion_tokens": 83, "n_completions": 1, "start": 0.0, "end": 3.7670867619951642}
+{"system": "vote3", "item": "demo29", "correct": true}
+{"system": "long_call", "item": "demo29", "prompt_tokens": 64, "completion_tokens": 912, "n_completions": 1, "start": 0.0, "end": 6.521396338213921}
+{"system": "long_call", "item": "demo29", "correct": false}
+{"system": "debate", "item": "demo30", "prompt_tokens": 109, "completion_tokens": 109, "n_completions": 1, "start": 0.0, "end": 4.194668495437393}
+{"system": "debate", "item": "demo30", "prompt_tokens": 109, "completion_tokens": 121, "n_completions": 1, "start": 0.0, "end": 3.3432986807939926}
+{"system": "debate", "item": "demo30", "prompt_tokens": 109, "completion_tokens": 104, "n_completions": 1, "start": 0.0, "end": 6.309905654396816}
+{"system": "debate", "item": "demo30", "prompt_tokens": 109, "completion_tokens": 113, "n_completions": 1, "start": 0.0, "end": 4.393236376019629}
+{"system": "debate", "item": "demo30", "prompt_tokens": 109, "completion_tokens": 121, "n_completions": 1, "start": 0.0, "end": 5.047274694615088}
+{"system": "debate", "item": "demo30", "correct": false}
+{"system": "vote3", "item": "demo30", "prompt_tokens": 73, "completion_tokens": 89, "n_completions": 1, "start": 0.0, "end": 7.454444224147142}
+{"system": "vote3", "item": "demo30", "prompt_tokens": 73, "completion_tokens": 89, "n_completions": 1, "start": 0.0, "end": 4.970233735113365}
+{"system": "vote3", "item": "demo30", "prompt_tokens": 73, "completion_tokens": 105, "n_completions": 1, "start": 0.0, "end": 7.72497004961535}
+{"system": "vote3", "item": "demo30", "correct": false}
+{"system": "long_call", "item": "demo30", "prompt_tokens": 73, "completion_tokens": 1248, "n_completions": 1, "start": 0.0, "end": 4.166503902003287}
+{"system": "long_call", "item": "demo30", "correct": false}
+{"system": "debate", "item": "demo31", "prompt_tokens": 97, "completion_tokens": 63, "n_completions": 1, "start": 0.0, "end": 4.712585438763153}
+{"system": "debate", "item": "demo31", "prompt_tokens": 97, "completion_tokens": 76, "n_completions": 1, "start": 0.0, "end": 4.091698736635122}
+{"system": "debate", "item": "demo31", "prompt_tokens": 97, "completion_tokens": 69, "n_completions": 1, "start": 0.0, "end": 7.860533101598067}
+{"system": "debate", "item": "demo31", "prompt_tokens": 97, "completion_tokens": 63, "n_completions": 1, "start": 0.0, "end": 4.475315794675023}
+{"system": "debate", "item": "demo31", "prompt_tokens": 97, "completion_tokens": 74, "n_completions": 1, "start": 0.0, "end": 3.4786584440439254}
+{"system": "debate", "item": "demo31", "correct": true}
+{"system": "vote3", "item": "demo31", "prompt_tokens": 65, "completion_tokens": 65, "n_completions": 1, "start": 0.0, "end": 3.7152582916619954}
+{"system": "vote3", "item": "demo31", "prompt_tokens": 65, "completion_tokens": 62, "n_completions": 1, "start": 0.0, "end": 5.777491255473365}
+{"system": "vote3", "item": "demo31", "prompt_tokens": 65, "completion_tokens": 63, "n_completions": 1, "start": 0.0, "end": 4.534201736045047}
+{"system": "vote3", "item": "demo31", "correct": false}
+{"system": "long_call", "item": "demo31", "prompt_tokens": 65, "completion_tokens": 697, "n_completions": 1, "start": 0.0, "end": 4.459497474109911}
+{"system": "long_call", "item": "demo31", "correct": true}
+{"system": "debate", "item": "demo32", "prompt_tokens": 118, "completion_tokens": 97, "n_completions": 1, "start": 0.0, "end": 4.236167293266117}
+{"system": "debate", "item": "demo32", "prompt_tokens": 118, "completion_tokens": 85, "n_completions": 1, "start": 0.0, "end": 7.162059929466325}
+{"system": "debate", "item": "demo32", "prompt_tokens": 118, "completion_tokens": 96, "n_completions": 1, "start": 0.0, "end": 6.682184331953276}
+{"system": "debate", "item": "demo32", "prompt_tokens": 118, "completion_tokens": 86, "n_completions": 1, "start": 0.0, "end": 5.314212423668454}
+{"system": "debate", "item": "demo32", "prompt_tokens": 118, "completion_tokens": 95, "n_completions": 1, "start": 0.0, "end": 4.78654271494961}
+{"system": "debate", "item": "demo32", "correct": true}
+{"system": "vote3", "item": "demo32", "prompt_tokens": 79, "completion_tokens": 82, "n_completions": 1, "start": 0.0, "end": 5.343357255695243}
+{"system": "vote3", "item": "demo32", "prompt_tokens": 79, "completion_tokens": 84, "n_completions": 1, "start": 0.0, "end": 4.9225987699393965}
+{"system": "vote3", "item": "demo32", "prompt_tokens": 79, "completion_tokens": 82, "n_completions": 1, "start": 0.0, "end": 6.1987441177242335}
+{"system": "vote3", "item": "demo32", "correct": true}
+{"system": "long_call", "item": "demo32", "prompt_tokens": 79, "completion_tokens": 945, "n_completions": 1, "start": 0.0, "end": 6.03019938527334}
+{"system": "long_call", "item": "demo32", "correct": true}
+{"system": "debate", "item": "demo33", "prompt_tokens": 117, "completion_tokens": 92, "n_completions": 1, "start": 0.0, "end": 4.80174153145127}
+{"system": "debate", "item": "demo33", "prompt_tokens": 117, "completion_tokens": 101, "n_completions": 1, "start": 0.0, "end": 5.349089846919812}
+{"system": "debate", "item": "demo33", "prompt_tokens": 117, "completion_tokens": 98, "n_completions": 1, "start": 0.0, "end": 5.113402575207122}
+{"system": "debate", "item": "demo33", "prompt_tokens": 117, "completion_tokens": 98, "n_completions": 1, "start": 0.0, "end": 7.486791417549841}
+{"system": "debate", "item": "demo33", "prompt_tokens": 117, "completion_tokens": 92, "n_completions": 1, "start": 0.0, "end": 5.5953098202967615}
+{"system": "debate", "item": "demo33", "correct": true}
+{"system": "vote3", "item": "demo33", "prompt_tokens": 78, "completion_tokens": 77, "n_completions": 1, "start": 0.0, "end": 7.8100379322060505}
+{"system": "vote3", "item": "demo33", "prompt_tokens": 78, "completion_tokens": 84, "n_completions": 1, "start": 0.0, "end": 4.226686101499978}
+{"system": "vote3", "item": "demo33", "prompt_tokens": 78, "completion_tokens": 89, "n_completions": 1, "start": 0.0, "end": 7.077904520585273}
+{"system": "vote3", "item": "demo33", "correct": true}
+{"system": "long_call", "item": "demo33", "prompt_tokens": 78, "completion_tokens": 1104, "n_completions": 1, "start": 0.0, "end": 3.444553467025223}
+{"system": "long_call", "item": "demo33", "correct": true}
+{"system": "debate", "item": "demo34", "prompt_tokens": 102, "completion_tokens": 115, "n_completions": 1, "start": 0.0, "end": 4.930717664541685}
+{"system": "debate", "item": "demo34", "prompt_tokens": 102, "completion_tokens": 119, "n_completions": 1, "start": 0.0, "end": 7.487596861148816}
+{"system": "debate", "item": "demo34", "prompt_tokens": 102, "completion_tokens": 112, "n_completions": 1, "start": 0.0, "end": 7.58052672481794}
+{"system": "debate", "item": "demo34", "prompt_tokens": 102, "completion_tokens": 104, "n_completions": 1, "start": 0.0, "end": 3.8309534386307407}
+{"system": "debate", "item": "demo34", "prompt_tokens": 102, "completion_tokens": 118, "n_completions": 1, "start": 0.0, "end": 4.527758430319264}
+{"system": "debate", "item": "demo34", "correct": false}
+{"system": "vote3", "item": "demo34", "prompt_tokens": 68, "completion_tokens": 98, "n_completions": 1, "start": 0.0, "end": 3.728927197652804}
+{"system": "vote3", "item": "demo34", "prompt_tokens": 68, "completion_tokens": 104, "n_completions": 1, "start": 0.0, "end": 6.707162704399274}
+{"system": "vote3", "item": "demo34", "prompt_tokens": 68, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 4.298858208261754}
+{"system": "vote3", "item": "demo34", "correct": false}
+{"system": "long_call", "item": "demo34", "prompt_tokens": 68, "completion_tokens": 1285, "n_completions": 1, "start": 0.0, "end": 7.350450613820386}
+{"system": "long_call", "item": "demo34", "correct": false}
+{"system": "debate", "item": "demo35", "prompt_tokens": 129, "completion_tokens": 97, "n_completions": 1, "start": 0.0, "end": 4.493725410682721}
+{"system": "debate", "item": "demo35", "prompt_tokens": 129, "completion_tokens": 109, "n_completions": 1, "start": 0.0, "end": 6.515447320969671}
+{"system": "debate", "item": "demo35", "prompt_tokens": 129, "completion_tokens": 113, "n_completions": 1, "start": 0.0, "end": 4.9164315788543025}
+{"system": "debate", "item": "demo35", "prompt_tokens": 129, "completion_tokens": 101, "n_completions": 1, "start": 0.0, "end": 7.261762883284418}
+{"system": "debate", "item": "demo35", "prompt_tokens": 129, "completion_tokens": 99, "n_completions": 1, "start": 0.0, "end": 3.325109450787771}
+{"system": "debate", "item": "demo35", "correct": false}
+{"system": "vote3", "item": "demo35", "prompt_tokens": 86, "completion_tokens": 94, "n_completions": 1, "start": 0.0, "end": 7.710793525927656}
+{"system": "vote3", "item": "demo35", "prompt_tokens": 86, "completion_tokens": 98, "n_completions": 1, "start": 0.0, "end": 5.819861711976409}
+{"system": "vote3", "item": "demo35", "prompt_tokens": 86, "completion_tokens": 94, "n_completions": 1, "start": 0.0, "end": 6.467086984818102}
+{"system": "vote3", "item": "demo35", "correct": true}
+{"system": "long_call", "item": "demo35", "prompt_tokens": 86, "completion_tokens": 1094, "n_completions": 1, "start": 0.0, "end": 3.4636503606685776}
+{"system": "long_call", "item": "demo35", "correct": true}
+{"system": "debate", "item": "demo36", "prompt_tokens": 115, "completion_tokens": 106, "n_completions": 1, "start": 0.0, "end": 7.95133693831357}
+{"system": "debate", "item": "demo36", "prompt_tokens": 115, "completion_tokens": 101, "n_completions": 1, "start": 0.0, "end": 4.800056378628373}
+{"system": "debate", "item": "demo36", "prompt_tokens": 115, "completion_tokens": 94, "n_completions": 1, "start": 0.0, "end": 3.9147550236930013}
+{"system": "debate", "item": "demo36", "prompt_tokens": 115, "completion_tokens": 96, "n_completions": 1, "start": 0.0, "end": 7.258285868230129}
+{"system": "debate", "item": "demo36", "prompt_tokens": 115, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 6.929893002207036}
+{"system": "debate", "item": "demo36", "correct": true}
+{"system": "vote3", "item": "demo36", "prompt_tokens": 77, "completion_tokens": 79, "n_completions": 1, "start": 0.0, "end": 3.3477391683584923}
+{"system": "vote3", "item": "demo36", "prompt_tokens": 77, "completion_tokens": 91, "n_completions": 1, "start": 0.0, "end": 6.365855108864072}
+{"system": "vote3", "item": "demo36", "prompt_tokens": 77, "completion_tokens": 84, "n_completions": 1, "start": 0.0, "end": 7.30645035077676}
+{"system": "vote3", "item": "demo36", "correct": false}
+{"system": "long_call", "item": "demo36", "prompt_tokens": 77, "completion_tokens": 1036, "n_completions": 1, "start": 0.0, "end": 3.57502178192046}
+{"system": "long_call", "item": "demo36", "correct": true}
+{"system": "debate", "item": "demo37", "prompt_tokens": 118, "completion_tokens": 98, "n_completions": 1, "start": 0.0, "end": 6.114533025963473}
+{"system": "debate", "item": "demo37", "prompt_tokens": 118, "completion_tokens": 110, "n_completions": 1, "start": 0.0, "end": 3.5352374152937944}
+{"system": "debate", "item": "demo37", "prompt_tokens": 118, "completion_tokens": 102, "n_completions": 1, "start": 0.0, "end": 3.1132270311649153}
+{"system": "debate", "item": "demo37", "prompt_tokens": 118, "completion_tokens": 109, "n_completions": 1, "start": 0.0, "end": 6.892450381169004}
+{"system": "debate", "item": "demo37", "prompt_tokens": 118, "completion_tokens": 93, "n_completions": 1, "start": 0.0, "end": 6.729056501070744}
+{"system": "debate", "item": "demo37", "correct": false}
+{"system": "vote3", "item": "demo37", "prompt_tokens": 79, "completion_tokens": 83, "n_completions": 1, "start": 0.0, "end": 5.625842076294421}
+{"system": "vote3", "item": "demo37", "prompt_tokens": 79, "completion_tokens": 93, "n_completions": 1, "start": 0.0, "end": 4.677427385261067}
+{"system": "vote3", "item": "demo37", "prompt_tokens": 79, "completion_tokens": 90, "n_completions": 1, "start": 0.0, "end": 7.879661267322787}
+{"system": "vote3", "item": "demo37", "correct": false}
+{"system": "long_call", "item": "demo37", "prompt_tokens": 79, "completion_tokens": 1080, "n_completions": 1, "start": 0.0, "end": 3.3299872075264227}
+{"system": "long_call", "item": "demo37", "correct": false}
+{"system": "debate", "item": "demo38", "prompt_tokens": 106, "completion_tokens": 71, "n_completions": 1, "start": 0.0, "end": 5.879832549149537}
+{"system": "debate", "item": "demo38", "prompt_tokens": 106, "completion_tokens": 70, "n_completions": 1, "start": 0.0, "end": 6.7670581079757675}
+{"system": "debate", "item": "demo38", "prompt_tokens": 106, "completion_tokens": 72, "n_completions": 1, "start": 0.0, "end": 5.392469512645935}
+{"system": "debate", "item": "demo38", "prompt_tokens": 106, "completion_tokens": 80, "n_completions": 1, "start": 0.0, "end": 6.591909307652648}
+{"system": "debate", "item": "demo38", "prompt_tokens": 106, "completion_tokens": 78, "n_completions": 1, "start": 0.0, "end": 4.69670926915488}
+{"system": "debate", "item": "demo38", "correct": false}
+{"system": "vote3", "item": "demo38", "prompt_tokens": 71, "completion_tokens": 63, "n_completions": 1, "start": 0.0, "end": 7.941529191026494}
+{"system": "vote3", "item": "demo38", "prompt_tokens": 71, "completion_tokens": 70, "n_completions": 1, "start": 0.0, "end": 6.295623324084091}
+{"system": "vote3", "item": "demo38", "prompt_tokens": 71, "completion_tokens": 69, "n_completions": 1, "start": 0.0, "end": 5.72021722133581}
+{"system": "vote3", "item": "demo38", "correct": false}
+{"system": "long_call", "item": "demo38", "prompt_tokens": 71, "completion_tokens": 725, "n_completions": 1, "start": 0.0, "end": 7.942928131266067}
+{"system": "long_call", "item": "demo38", "correct": false}
+{"system": "debate", "item": "demo39", "prompt_tokens": 111, "completion_tokens": 86, "n_completions": 1, "start": 0.0, "end": 4.377556616177968}
+{"system": "debate", "item": "demo39", "prompt_tokens": 111, "completion_tokens": 76, "n_completions": 1, "start": 0.0, "end": 3.9860421411502136}
+{"system": "debate", "item": "demo39", "prompt_tokens": 111, "completion_tokens": 83, "n_completions": 1, "start": 0.0, "end": 4.39885092116182}
+{"system": "debate", "item": "demo39", "prompt_tokens": 111, "completion_tokens": 77, "n_completions": 1, "start": 0.0, "end": 3.492479839797479}
+{"system": "debate", "item": "demo39", "prompt_tokens": 111, "completion_tokens": 79, "n_completions": 1, "start": 0.0, "end": 6.870468745129871}
+{"system": "debate", "item": "demo39", "correct": true}
+{"system": "vote3", "item": "demo39", "prompt_tokens": 74, "completion_tokens": 71, "n_completions": 1, "start": 0.0, "end": 6.01403109293048}
+{"system": "vote3", "item": "demo39", "prompt_tokens": 74, "completion_tokens": 65, "n_completions": 1, "start": 0.0, "end": 4.469861281055727}
+{"system": "vote3", "item": "demo39", "prompt_tokens": 74, "completion_tokens": 77, "n_completions": 1, "start": 0.0, "end": 7.971684551578409}
+{"system": "vote3", "item": "demo39", "correct": true}
+{"system": "long_call", "item": "demo39", "prompt_tokens": 74, "completion_tokens": 806, "n_completions": 1, "start": 0.0, "end": 6.820783949024662}
+{"system": "long_call", "item": "demo39", "correct": false}
