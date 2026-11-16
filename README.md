@@ -32,15 +32,15 @@ $$\mathbf{R} = \langle R_{\text{reason}}, R_{\text{token}}, R_{\text{cost}}, R_{
 
 enforces directional resource feasibility, and measures the frontier gap relative to single-agent self-consistency at parity in tokens.
 
-### Verified Corpus & Empirical Synthesis
+### Extracted Corpus & Empirical Synthesis
 
 - **Canonical Denominators:** From `12` studies considered across two stages (`5` initial studies and `7` screened candidates: `4` included, `3` excluded), the included corpus comprises **`9` primary studies**, **`516` unique multi-agent configurations** (`531` raw extracted rows minus `15` baseline-only rows), and **`834` baseline-specific contrast records** (`358` Category A, `360` Category B, `114` Category C, and `2` Category D Pareto contrasts; **`474` combined Category B/C contrasts** across `8` studies; **`156` shared-ceiling contrasts**; **`318` paired Category A/B contrasts** across **`72` unique baseline cells**).
 - **Single-Pass vs. Compute-Controlled Categories:** Mean accuracy differences are **`-0.032`** against Category A (`358` contrasts; `-0.005` omitting Zhang et al., who supply `180` configurations), **`-0.051`** against Category B (`360` contrasts), and **`-0.012`** against Category C (`114` contrasts). Across combined Category B/C (`474` contrasts, `8` studies), the unweighted contrast mean is **`-0.042`**, with exploratory three-level REML log odds $\hat\beta = \mathbf{-0.195}$ (CR2 95% CI `[-0.323, -0.067]`; 95% study-mean prediction interval `[-0.515, +0.125]`).
-- **Consistency Across Studies:** Multi-agent systems fail to lead in **`74%`** (`352` of `474`) of Category B/C contrasts, feasible baselines match or beat them in **`36%`** (`171` of `474` outside paired noise; `69%` or `356` of `516` unique configurations across Categories A/B/C), and **`8 of 9`** study means are nonpositive (sole positive exception: Wunderlich et al. at **`+0.020`** at stated configurations on MMLU-Pro, compute not matched).
+- **Consistency Across Studies:** Multi-agent systems fail to lead in **`74%`** (`352` of `474`) of Category B/C contrasts, feasible baselines match or beat them in **`36%`** (`171` of `474` directionally feasible; `56` below `-1.96 SE`; `69%` or `356` of `516` unique configurations across Categories A/B/C), and **`8 of 9`** study means are nonpositive (sole positive exception: Wunderlich et al. at **`+0.020`** at stated configurations on MMLU-Pro, compute not matched).
 - **Sampling Gap ($\Delta_{\text{gap}}$):** Across `5` dual-baseline studies (`318` pairs spanning `72` unique baseline cells, `64 of 72` negative), switching from greedy to sampled baselines lowers accuracy differences by **`-0.038`** weighted equally by study (**`-0.028`** across pairs; **`-0.036`** across the `72` unique cells; cell-level REML $\hat\beta = \mathbf{-0.178}$, CR2 95% CI `[-0.347, -0.009]`).
 - **Controlled Open-Weight Experiment (`llama3.1:8b` via Ollama):**
   - **Shared-evidence MMLU-Pro (`n=250`):** Vanilla debate (`+0.014` frontier gap, `0.567` vs. `0.553` frontier) and Mixture-of-Agents (`-0.043` frontier gap) do not clear the equal-token self-consistency frontier under Holm correction.
-  - **Complementary Hidden Profile split-view control (`n=200`):** Split-view debate exceeds the split-view independent-voting frontier (`+0.076` frontier gap, `0.182` vs. `0.106`, Holm-adjusted `p = 0.004`), while trailing length-matched placebo prompts (`0.248`) and four-choice chance (`0.250`).
+  - **Complementary Hidden Profile split-view control (`n=200`):** Split-view debate exceeds the split-view independent-voting frontier (`+0.076` frontier gap, `0.182` vs. `0.106`, Holm-adjusted `p = 0.004`), while trailing content-free placebo prompts (`0.248`) and four-choice chance (`0.250`).
 
 ---
 
@@ -48,7 +48,7 @@ enforces directional resource feasibility, and measures the frontier gap relativ
 
 ```text
 ├── analysis/                  # Synthesis, REML pooling, plotting, and LaTeX build gates
-│   ├── assemble_paper.py      # Assembles & compiles manuscript PDFs
+│   ├── assemble_paper.py      # Assembles & compiles main.pdf (70p) & tmlr_submission.pdf (59p)
 │   ├── run_baseline_tiers.py  # Descriptive corpus synthesis, dual-baseline pairing & numbers.tex
 │   └── run_k9_reml.py         # Three-level REML + CR2 inference (including 72-cell Model D)
 ├── code/
@@ -67,7 +67,7 @@ enforces directional resource feasibility, and measures the frontier gap relativ
 ├── review/                    # Programmatic concordance ledgers & claim-verification tables
 ├── scripts/                   # Reproducibility runner (12 GB GPU) & double-blind zip bundler
 ├── supplement/                # Moderator synthesis, empirical trace harvest & author templates
-└── tests/                     # 829 passing automated unit, regression, and concordance tests
+└── tests/                     # 864 passing automated unit, regression, and concordance tests
 ```
 
 ---
@@ -141,11 +141,15 @@ python -I analysis/assemble_paper.py
 
 ```bibtex
 @article{sajjadi2026more,
-  title   = {PACE: More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs},
+  title   = {More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs},
   author  = {Sajjadi Mohammadabadi, Seyed Mahmoud},
   journal = {arXiv preprint arXiv:2611.17610},
   year    = {2026},
-  url     = {https://arxiv.org/html/2611.17610v1},
+  eprint  = {2611.17610},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  doi     = {10.48550/arXiv.2611.17610},
+  url     = {https://arxiv.org/abs/2611.17610},
   note    = {Replication repository at https://github.com/mahmoudsajjadi/pace}
 }
 ```
