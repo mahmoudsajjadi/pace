@@ -14,7 +14,7 @@
 [![Data: CC BY 4.0](https://img.shields.io/badge/Data-CC%20BY%204.0-lightgrey.svg)](zenodo_datasets.json)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-brightgreen.svg)](https://www.python.org/downloads/)
 [![Test Suite: 864 Passing](https://img.shields.io/badge/Tests-864%20Passing-success.svg)](tests/)
-[![Zenodo DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.pending-blue.svg)](.zenodo.json)
+[![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24286397.svg)](https://doi.org/10.5281/zenodo.24286397)
 
 **Reproducible on one consumer GPU.** The controlled experiments (`llama3.1:8b` served by Ollama, about 4.9 GB) run on a single 12 GB card (developed on an RTX 4070): `bash scripts/reproduce_12gb_gpu.sh` runs the tests, the hidden-profile file check and a 170-call smoke run, and records its own wall time (the expected runtimes in the script header are derived from a measured batch rate, not from a timed run of the script).
 
