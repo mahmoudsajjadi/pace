@@ -1,24 +1,64 @@
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "pace-eval"
-version = "0.2.0"
-description = "Compute-accounting and audit utilities for multi-agent LLM evaluations (prototype)"
-readme = "mae_eval/README.md"
-requires-python = ">=3.9"
+version = "0.2.2"
+description = "PACE: Parity-Aware Compute Evaluation for Multi-Agent LLMs (CLI, Resource Vector Auditor, Debate Dynamics & Browser Studio)"
+readme = "README.md"
 license = { text = "Apache-2.0" }
-authors = [{ name = "Seyed Mahmoud Sajjadi Mohammadabadi", email = "mahmoud.sajjadi@unr.edu" }]
-dependencies = ["numpy"]
+requires-python = ">=3.10"
+authors = [
+  { name = "Seyed Mahmoud Sajjadi Mohammadabadi", email = "mahmoud.sajjadi@unr.edu" }
+]
+keywords = [
+  "llm",
+  "multi-agent",
+  "evaluation",
+  "test-time-compute",
+  "self-consistency",
+  "benchmarking",
+  "pace"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "numpy>=1.24.0",
+]
 
 [project.optional-dependencies]
-plot = ["matplotlib"]
+plot = ["matplotlib>=3.7.0"]
+dev = ["pytest>=7.4.0", "matplotlib>=3.7.0"]
+
+[project.urls]
+Homepage = "https://github.com/mahmoudsajjadi/pace"
+Paper = "https://arxiv.org/abs/2611.17610"
+Studio = "https://huggingface.co/spaces/sajjadi/pace-studio"
+Dataset = "https://huggingface.co/datasets/sajjadi/pace-contrasts"
+Archive = "https://doi.org/10.5281/zenodo.24286397"
 
 [project.scripts]
 pace = "pace.cli:main"
+cme = "pace.cli:main"
 mae-eval = "mae_eval.cli:main"
-cme = "cme.cli:main"
 
 [tool.setuptools]
-packages = ["pace", "mae_eval", "cme"]
+package-dir = {"" = "code"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["code"]
+include = ["pace*", "cme*", "mae_eval*"]
+
+[tool.setuptools.package-data]
+pace = ["*.html", "*.css", "*.js", "examples/*.jsonl", "examples/*.json", "examples/*.csv"]
+mae_eval = ["*.json", "examples/*.jsonl"]

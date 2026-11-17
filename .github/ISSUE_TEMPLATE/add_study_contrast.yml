@@ -1,0 +1,45 @@
+name: Submit a Multi-Agent Contrast
+description: Submit Category B/C/D contrast rows from a published or preprint multi-agent evaluation for inclusion in pace-contrasts and PACE Studio.
+title: "[Contrast]: <Study / System Name>"
+labels: ["contrast-submission", "benchmark"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to the open PACE contrast ledger (arXiv:2611.17610). Submitted contrasts are reviewed for Category B/C/D baseline parity and added to `sajjadi/pace-contrasts` and PACE Studio.
+  - type: input
+    id: paper_url
+    attributes:
+      label: Paper URL / arXiv ID
+      placeholder: "https://arxiv.org/abs/..."
+    validations:
+      required: true
+  - type: input
+    id: benchmark
+    attributes:
+      label: Benchmark & Sample Size (N)
+      placeholder: "e.g., MMLU-Pro (N=1000)"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Baseline Category
+      options:
+        - "Category B (Sampled Voting / CoT-SC)"
+        - "Category C (Resource-Matched / Shared Ceiling)"
+        - "Category D (Pareto Frontier Sweep)"
+    validations:
+      required: true
+  - type: textarea
+    id: rows
+    attributes:
+      label: Contrast Rows (CSV: study,category,baseline,benchmark,model,framework,p_mas,p_base,n)
+      placeholder: "Author2026,B,CoT-SC (10),MMLU-Pro,Llama-3.1-70B,Debate,0.700,0.687,1000"
+    validations:
+      required: true
+  - type: textarea
+    id: resources
+    attributes:
+      label: Declared Resource Vector R (R_reason, R_token, R_cost, R_lat, R_sample, R_sys)
+      placeholder: "Note which dimensions were controlled, matched, or unreported."
