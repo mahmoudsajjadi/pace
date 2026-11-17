@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mahmoudsajjadi.github.io/pace/sitemap.xml

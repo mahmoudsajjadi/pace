@@ -2,12 +2,36 @@
 
 from __future__ import annotations
 
+import re
 from collections import Counter
 from collections.abc import Callable, Sequence
 from typing import Any
 
 from .clients import LLMClient, LLMRequest
 from .graders import Grade, grade_item
+
+
+_THINK_BLOCK = re.compile(r"<think>.*?</think>", re.S)
+_EVIDENCE_TABLE = re.compile(r"<EVIDENCE_TABLE>(.*?)</EVIDENCE_TABLE>", re.S | re.I)
+EVIDENCE_TABLE_SUFFIX = (
+    "\n\nBefore your answer, write a structured summary of every piece of evidence you can see, one line per item, inside "
+    "<EVIDENCE_TABLE> and </EVIDENCE_TABLE> tags. Then give your answer."
+)
+
+
+def strip_think(text: str) -> str:
+    """Remove <think>...</think> blocks (and an unclosed trailing <think> block) from a message before it is shared with peers.
+    The full text, including the thinking, stays in the logged row and the provider token counts still include it (R_token, R_reason)."""
+    out = _THINK_BLOCK.sub("", text or "")
+    if "<think>" in out:
+        out = out.split("<think>", 1)[0]
+    return out.strip()
+
+
+def extract_evidence_table(text: str):
+    """Content of the <EVIDENCE_TABLE> block of a message (after thinking is stripped), or None if the agent wrote none."""
+    m = _EVIDENCE_TABLE.search(strip_think(text))
+    return m.group(1).strip() if m else None
 
 
 def _call(
@@ -203,13 +227,16 @@ def _debate(
 ) -> list[dict]:
     if k_agents < 1 or rounds < 1:
         raise ValueError("k_agents and rounds must be positive")
+    kwargs = dict(kwargs)
+    strip = bool(kwargs.pop("strip_think", True))                 # peers never see <think> blocks unless strip_think=False
+    use_table = bool(kwargs.pop("evidence_table", False))         # optional structured evidence summary (Cell E1, Hidden Profile)
     rows = []
     for item in items:
         public = []
         for round_num in range(1, rounds + 1):
             current = []
             for agent in range(k_agents):
-                prompt = view_fn(item, agent) + (
+                prompt = view_fn(item, agent) + (EVIDENCE_TABLE_SUFFIX if use_table else "") + (
                     "\nPublic messages:\n" + "\n".join(public) if public else ""
                 )
                 result = _call(
@@ -223,7 +250,11 @@ def _debate(
                 )
                 grade = _grade(item, result)
                 text = result.text or ""
-                current.append(text)
+                shared = strip_think(text) if strip else text
+                if use_table:
+                    table = extract_evidence_table(text)
+                    shared = table if table is not None else shared
+                current.append(shared)
                 rows.append(
                     {
                         "item": item["id"],
@@ -231,9 +262,14 @@ def _debate(
                         "agent": "agent_%d" % agent,
                         "round": round_num,
                         "text": text,
+                        "shared_text": shared,
                         "answer": grade.normalized,
                         "correct": grade.correct,
                         "status": result.status,
+                        "prompt_tokens": getattr(result, "prompt_tokens", None),
+                        "completion_tokens": getattr(result, "completion_tokens", None),
+                        "reasoning_tokens": getattr(result, "reasoning_tokens", None),
+                        "reasoning_chars": getattr(result, "reasoning_chars", None),
                     }
                 )
             public = current
@@ -278,7 +314,7 @@ def run_s8(client: LLMClient, items: Sequence[dict], **kwargs: Any) -> list[dict
     """Two-layer mixture-of-agents runner: parallel first layer followed by an aggregator call."""
     rows = _run_views(client, items, "S8", 1, kwargs)
     for item in items:
-        messages = [row["text"] for row in rows if row["item"] == item["id"]]
+        messages = [strip_think(row["text"]) for row in rows if row["item"] == item["id"]]   # peer-shared: thinking stripped
         prompt = item["prompt"] + "\nCandidate answers:\n" + "\n".join(messages)
         result = _call(client, item, prompt, "S8", 2, "aggregator", **kwargs)
         grade = _grade(item, result)

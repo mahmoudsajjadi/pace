@@ -40,7 +40,10 @@ plot = ["matplotlib>=3.7.0"]
 dev = ["pytest>=7.4.0", "matplotlib>=3.7.0"]
 
 [project.urls]
-Homepage = "https://github.com/mahmoudsajjadi/pace"
+Homepage = "https://mahmoudsajjadi.github.io/pace/"
+Documentation = "https://mahmoudsajjadi.github.io/pace/"
+Repository = "https://github.com/mahmoudsajjadi/pace"
+Issues = "https://github.com/mahmoudsajjadi/pace/issues"
 Paper = "https://arxiv.org/abs/2611.17610"
 Studio = "https://huggingface.co/spaces/sajjadi/pace-studio"
 Dataset = "https://huggingface.co/datasets/sajjadi/pace-contrasts"
@@ -48,17 +51,18 @@ Archive = "https://doi.org/10.5281/zenodo.24286397"
 
 [project.scripts]
 pace = "pace.cli:main"
-cme = "pace.cli:main"
+cme = "cme.cli:main"
 mae-eval = "mae_eval.cli:main"
 
 [tool.setuptools]
-package-dir = {"" = "code"}
 include-package-data = true
 
+# The release root holds the packages directly (pace/, pace_lab/, cme/, mae_eval/), so there is no package-dir.
 [tool.setuptools.packages.find]
-where = ["code"]
-include = ["pace*", "cme*", "mae_eval*"]
+where = ["."]
+include = ["pace*", "pace_lab*", "cme*", "mae_eval*"]
 
 [tool.setuptools.package-data]
 pace = ["*.html", "*.css", "*.js", "examples/*.jsonl", "examples/*.json", "examples/*.csv"]
+cme = ["examples/*"]
 mae_eval = ["*.json", "examples/*.jsonl"]

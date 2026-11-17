@@ -1,0 +1,51 @@
+# PACE: Parity-Aware Compute Evaluation
+
+> **Paper:** More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs
+> **Author:** Seyed Mahmoud Sajjadi Mohammadabadi (Department of Computer Science and Engineering, University of Nevada, Reno)
+> **arXiv:** https://arxiv.org/abs/2611.17610 (HTML: https://arxiv.org/html/2611.17610v1 | PDF: https://arxiv.org/pdf/2611.17610)
+> **GitHub:** https://github.com/mahmoudsajjadi/pace
+> **Interactive Studio:** https://huggingface.co/spaces/sajjadi/pace-studio
+> **Datasets:** https://huggingface.co/datasets/sajjadi/pace-contrasts | https://huggingface.co/datasets/sajjadi/hidden-profile-control
+> **Zenodo DOI:** https://doi.org/10.5281/zenodo.24286397
+
+## Summary
+Multi-agent language model evaluations often compare communicating systems against a single greedy pass, confounding inter-agent communication with independent sampling and expanded test-time compute. **Parity-Aware Compute Evaluation (PACE)** introduces:
+1. **Four-Rung Baseline Ladder:** Category A (greedy single pass, k=1), Category B (noncommunicating sampled voting, k >= 2), Category C (budget-matched / shared ceiling), Category D (compute-cost Pareto frontier).
+2. **Six-Dimension Resource Vector:** R = <R_reason, R_token, R_cost, R_lat, R_sample, R_sys>, with directional resource feasibility.
+3. **Token-Equated Pool Size:** k_tok = K*T + (T - 1)*K*(K - 1)*r, where r = l / (c_p + l) under previous-round-message accounting.
+4. **Seven-Field PACE Evaluation Card** and progressive reporting levels (`PACE-Minimum`, `PACE-Recommended`, `PACE-Extended`).
+
+## Canonical Empirical Findings
+- **Corpus:** 9 primary studies, 516 unique multi-agent configurations (531 raw extracted rows minus 15 baseline-only rows), 834 baseline-specific contrast records (358 Category A, 360 Category B, 114 Category C, 2 Category D Pareto contrasts; 474 combined Category B/C contrasts across 8 studies).
+- **Mean accuracy differences:** -0.032 vs. Category A (358 contrasts; -0.005 omitting Zhang et al.), -0.051 vs. Category B (360 contrasts), -0.012 vs. Category C (114 contrasts), and -0.042 across combined Category B/C (474 contrasts, 8 studies; exploratory REML model with three levels: log odds beta_hat = -0.195, CR2 95% CI [-0.323, -0.067]).
+- **Failure to lead:** Multi-agent systems fail to lead in 74% (352 of 474) of Category B/C contrasts; 8 of 9 study means are nonpositive (sole exception: Wunderlich et al. at +0.020 on Pareto fronts, per-item compute not matched).
+- **Sampling Gap (Delta_gap):** Across 5 dual-baseline studies (318 pairs, 72 unique baseline cells, 64 of 72 negative), switching from greedy to sampled baselines lowers accuracy differences by -0.038 weighted equally by study.
+- **Controlled Open-Weight Experiments (`llama3.1:8b`):** Shared-evidence MMLU-Pro (n=250) shows vanilla debate (-0.015 frontier gap) and MoA (-0.072 frontier gap) do not clear the equal-token self-consistency frontier; complementary Hidden Profile split-view control (n=200) shows split-view debate exceeds split-view independent voting (+0.073 frontier gap, Holm-adjusted p = 0.007).
+
+## CLI Quickstart (`pace-eval`)
+```bash
+pip install pace-eval
+pace studio
+pace classify --config sas.json
+pace audit run_trace.jsonl
+pace import-logs --format inspect --input eval_log.json --output trace.jsonl && pace audit trace.jsonl
+pace report --pool pool.jsonl --logs run.jsonl --system debate --export-latex card.tex
+pace dynamics debate_log.jsonl --null null.jsonl --json
+pace pool-size --agents 5 --rounds 3 --prompt-tokens 400 --msg-tokens 120 --json
+```
+
+## BibTeX
+```bibtex
+@article{sajjadi2026more,
+  title   = {More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs},
+  author  = {Sajjadi Mohammadabadi, Seyed Mahmoud},
+  journal = {arXiv preprint arXiv:2611.17610},
+  year    = {2026},
+  eprint  = {2611.17610},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  doi     = {10.48550/arXiv.2611.17610},
+  url     = {https://arxiv.org/abs/2611.17610},
+  note    = {Replication repository at https://github.com/mahmoudsajjadi/pace}
+}
+```

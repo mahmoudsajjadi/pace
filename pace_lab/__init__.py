@@ -6,4 +6,4 @@ Submodules (import them explicitly; nothing here touches the network or reads a 
     pace_lab.data              benchmark loaders with an id + SHA-256 manifest under data/pace_lab/
     pace_lab.graders           multiple-choice, math and hidden-profile answer extraction and grading
 """
-__version__ = "0.2.0"
+__version__ = "0.1.0"

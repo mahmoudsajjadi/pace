@@ -5,21 +5,22 @@
 **Author:** Seyed Mahmoud Sajjadi Mohammadabadi  
 **Affiliation:** Department of Computer Science and Engineering, University of Nevada, Reno  
 **Correspondence:** `mahmoud.sajjadi@unr.edu`  
-**Repository:** [https://github.com/mahmoudsajjadi/pace](https://github.com/mahmoudsajjadi/pace)  
-**Interactive Demo:** [PACE Studio (Hugging Face Spaces)](https://huggingface.co/spaces/sajjadi/pace-studio)  
-**arXiv Preprint:** [arXiv:2611.17610](https://arxiv.org/abs/2611.17610) ([HTML version](https://arxiv.org/html/2611.17610v1))  
-**Paper PDF:** [arXiv:2611.17610 (PDF)](https://arxiv.org/pdf/2611.17610) | [HTML version](https://arxiv.org/html/2611.17610v1) | Visual Cheatsheet: [`docs/assets/pace_cheatsheet.pdf`](docs/assets/pace_cheatsheet.pdf)
+**Repository:** [https://github.com/mahmoudsajjadi/pace](https://github.com/mahmoudsajjadi/pace) | **Project Page:** [mahmoudsajjadi.github.io/pace](https://mahmoudsajjadi.github.io/pace/)  
+**arXiv Preprint:** [arXiv:2611.17610](https://arxiv.org/abs/2611.17610) ([HTML version](https://arxiv.org/html/2611.17610v1) | [PDF](https://arxiv.org/pdf/2611.17610) | [alphaXiv](https://www.alphaxiv.org/abs/2611.17610) | [HF Paper](https://huggingface.co/papers/2611.17610))  
+**Interactive Studio & Datasets:** [PACE Studio (HF Space)](https://huggingface.co/spaces/sajjadi/pace-studio) | [Contrast Dataset (`sajjadi/pace-contrasts`)](https://huggingface.co/datasets/sajjadi/pace-contrasts) | [Hidden Profile Dataset (`sajjadi/hidden-profile-control`)](https://huggingface.co/datasets/sajjadi/hidden-profile-control) | [Visual Cheatsheet](docs/assets/pace_cheatsheet.pdf)
 
 [![arXiv:2611.17610](https://img.shields.io/badge/arXiv-2611.17610-b31b1b.svg)](https://arxiv.org/abs/2611.17610)
+[![Project Page](https://img.shields.io/badge/Project%20Page-GitHub%20Pages-176b68.svg)](https://mahmoudsajjadi.github.io/pace/)
+[![HF Space](https://img.shields.io/badge/🤗%20Space-PACE%20Studio-blue.svg)](https://huggingface.co/spaces/sajjadi/pace-studio)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/Data-CC%20BY%204.0-lightgrey.svg)](zenodo_datasets.json)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-brightgreen.svg)](https://www.python.org/downloads/)
-[![Offline Release Check](https://img.shields.io/badge/Release-Offline%20Verified-success.svg)](scripts/verify_release_offline.py)
+[![Test Suite: 865 Passing](https://img.shields.io/badge/Tests-865%20Passing-success.svg)](tests/)
 [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24286397.svg)](https://doi.org/10.5281/zenodo.24286397)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mahmoudsajjadi/pace/blob/main/notebooks/audit_your_log.ipynb)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-PACE%20Studio-ffd21e)](https://huggingface.co/spaces/sajjadi/pace-studio)
 
-**Reproducible on one consumer GPU.** The controlled experiments (`llama3.1:8b` served by Ollama, about 4.9 GB) run on a single 12 GB card (developed on an RTX 4070); see [`REPRODUCIBILITY_COOKBOOK.md`](REPRODUCIBILITY_COOKBOOK.md) for setup and replication steps.
+**Reproducible on one consumer GPU.** The controlled experiments (`llama3.1:8b` served by Ollama, about 4.9 GB) run on a single 12 GB card (developed on an RTX 4070): `bash scripts/reproduce_12gb_gpu.sh` runs the tests, the hidden-profile file check and a 170-call smoke run, and records its own wall time (the expected runtimes in the script header are derived from a measured batch rate, not from a timed run of the script).
 
 Official replication repository, audited contrast ledger (`9` primary studies, `516` unique multi-agent configurations from `531` raw extracted rows, `834` contrast records), `pace` CLI and evaluation toolkit (legacy aliases: `cme`, `mae-eval`), and zero-dependency browser workbench (**PACE Studio**) for Parity-Aware Compute Evaluation.
 
@@ -44,8 +45,8 @@ enforces directional resource feasibility, and measures the frontier gap relativ
 - **Consistency Across Studies:** Multi-agent systems fail to lead in **`74%`** (`352` of `474`) of Category B/C contrasts, feasible baselines match or beat them in **`36%`** (`171` of `474` directionally feasible; `56` below `-1.96 SE`; `69%` or `356` of `516` unique configurations across Categories A/B/C), and **`8 of 9`** study means are nonpositive (sole positive exception: Wunderlich et al. at **`+0.020`** at stated configurations on MMLU-Pro, compute not matched).
 - **Sampling Gap ($\Delta_{\text{gap}}$):** Across `5` dual-baseline studies (`318` pairs spanning `72` unique baseline cells, `64 of 72` negative), switching from greedy to sampled baselines lowers accuracy differences by **`-0.038`** weighted equally by study (**`-0.028`** across pairs; **`-0.036`** across the `72` unique cells; cell-level REML $\hat\beta = \mathbf{-0.178}$, CR2 95% CI `[-0.347, -0.009]`).
 - **Controlled Open-Weight Experiment (`llama3.1:8b` via Ollama):**
-  - **Shared-evidence MMLU-Pro (`n=250`):** Vanilla debate (`+0.014` frontier gap, `0.567` vs. `0.553` frontier) and Mixture-of-Agents (`-0.043` frontier gap) do not clear the equal-token self-consistency frontier under Holm correction.
-  - **Complementary Hidden Profile split-view control (`n=200`):** Split-view debate exceeds the split-view independent-voting frontier (`+0.076` frontier gap, `0.182` vs. `0.106`, Holm-adjusted `p = 0.004`), while trailing content-free placebo prompts (`0.248`) and four-choice chance (`0.250`).
+  - **Shared-evidence MMLU-Pro (`n=250`):** Vanilla debate (`−0.015` frontier gap, `0.567` vs. `0.581` frontier) and Mixture-of-Agents (`−0.072` frontier gap) do not clear the equal-token self-consistency frontier under Holm correction.
+  - **Complementary Hidden Profile split-view control (`n=200`):** Split-view debate exceeds the split-view independent-voting frontier (`+0.073` frontier gap, `0.182` vs. `0.109`, Holm-adjusted `p = 0.007`), while trailing content-free placebo prompts (`0.248`) and four-choice chance (`0.250`).
 
 ---
 
@@ -53,20 +54,41 @@ enforces directional resource feasibility, and measures the frontier gap relativ
 
 ```text
 ├── .github/                   # CI workflows & study-contrast issue template (add_study_contrast.yml)
-├── data/                      # Baseline contrast tables, REML JSON & moderator synthesis
+├── analysis/                  # Synthesis, REML pooling, plotting, and LaTeX build gates
+│   ├── assemble_paper.py      # Assembles & compiles manuscript/main.pdf
+│   ├── run_baseline_tiers.py  # Descriptive corpus synthesis, dual-baseline pairing & numbers.tex
+│   └── run_k9_reml.py         # Three-level REML + CR2 inference (including 72-cell Model D)
+├── code/
+│   ├── pace/                  # Standalone PACE CLI, importers (incl. Inspect AI), & browser Studio
+│   ├── cme/                   # Legacy CLI/API aliases preserved for backwards compatibility
+│   └── mae_eval/              # Legacy resource tracker/auditor package aliases
+├── dist/
+│   ├── assets/                # Explainer GIF & cheatsheet (PNG/PDF)
+│   ├── github_release_staging/# Offline-verified GitHub release staging tree
+│   └── hf_space_pace_studio/  # Hugging Face Space workbench + corpus_contrasts.json (832 rows)
 ├── docs/                      # Project landing page (index.html), community playbook & visual assets
+├── evidence/                  # Verified extracted CSVs, screening ledger & audit reports
+│   ├── contrasts_anchor5_core.csv
+│   ├── contrasts_dual_baseline.csv
+│   ├── extension_contrasts.csv
+│   └── verification_worksheet.csv
+├── figures/                   # Publication vector PDF figures and PNG previews
+├── manuscript/                # Modular LaTeX source of truth and generated macro files
 ├── notebooks/                 # Interactive Colab/Jupyter log-auditing notebook (audit_your_log.ipynb)
-├── pace/                      # Standalone PACE CLI, importers (incl. Inspect AI), & browser Studio
-├── pace_lab/                  # Experiment runner, clients, data loaders & graders
+├── outputs/                   # Baseline contrast tables, REML JSON & experimental logs
+├── paper/                     # Synchronized manuscript build targets and figure/table mirrors
 ├── pyproject.toml             # PEP 621 package metadata (`pace-eval`) & CLI entry points
-└── scripts/                   # Offline release verification (`verify_release_offline.py`)
+├── review/                    # Programmatic concordance ledgers & claim-verification tables
+├── scripts/                   # Reproducibility runner (12 GB GPU), corpus builders & exporters
+├── supplement/                # Moderator synthesis, empirical trace harvest & author templates
+└── tests/                     # Automated unit, regression, and concordance test suite
 ```
 
 ---
 
 ## Quickstart: the `pace` CLI & PACE Studio
 
-Install `pace-eval` from the repository root (`pyproject.toml`):
+Install `pace-eval` from the repository root (`pyproject.toml`) or from `code/`:
 
 ```bash
 pip install -e .               # installs `pace` (plus legacy `cme` and `mae-eval` console aliases)
@@ -78,7 +100,7 @@ Core auditing, reporting, log import (including Inspect AI via `--format inspect
 pace studio                    # launches the zero-dependency browser UI (PACE Studio)
 pace classify --config sas.json
 pace audit run_trace.jsonl
-pace audit eval_log.json --format inspect
+pace import-logs --format inspect --input eval_log.json --output trace.jsonl && pace audit trace.jsonl
 pace report --pool pool.jsonl --logs run.jsonl --system debate --export-latex card.tex
 pace dynamics debate_log.jsonl --null null.jsonl --json
 pace card run_trace.jsonl --latex --output pace-card.tex
@@ -89,7 +111,7 @@ Constructive planning, simulation, meta-analysis, frontier, and rebuttal command
 ```bash
 pace pool-size --agents 5 --rounds 3 --prompt-tokens 100 --msg-tokens 20 --json
 pace simulate --mode debate --items 100 --agents 5 --rounds 3 --out debate.jsonl
-pace meta --contrasts data/baseline_tier_contrasts.csv --scale log_or --json
+pace meta --contrasts outputs/baseline_tier_contrasts.csv --scale log_or --json
 pace power --p-base .55 --delta .10 --n-items 40 --json
 pace benchmark-gen --route clue_grid --out clues.jsonl
 pace aggregate-open --input candidates.jsonl --metric token_jaccard --out centroids.jsonl
@@ -99,10 +121,14 @@ pace frontier --samples pool.jsonl --logs run.jsonl --out frontier.pdf
 pace rebuttal --contrasts data/baseline_tier_contrasts.csv --export-markdown rebuttal.md
 ```
 
-Interactive Colab notebook, community study-submission playbook, and visual assets live in:
+End-to-end synthetic walkthrough, interactive Colab notebook, GitHub Action CI workflow template, and community study-submission playbook live in:
 - [`notebooks/audit_your_log.ipynb`](notebooks/audit_your_log.ipynb)
+- [`code/examples/end_to_end_walkthrough.py`](code/examples/end_to_end_walkthrough.py)
+- [`code/examples/github_action_pace_audit.yml`](code/examples/github_action_pace_audit.yml)
 - [`docs/index.html`](docs/index.html), [`docs/COMMUNITY_AND_PR_PLAYBOOK.md`](docs/COMMUNITY_AND_PR_PLAYBOOK.md), and [`.github/ISSUE_TEMPLATE/add_study_contrast.yml`](.github/ISSUE_TEMPLATE/add_study_contrast.yml)
-- Visual assets: [`docs/assets/pace_explainer.gif`](docs/assets/pace_explainer.gif), [`docs/assets/pace_cheatsheet.png`](docs/assets/pace_cheatsheet.png), and [`docs/assets/pace_cheatsheet.pdf`](docs/assets/pace_cheatsheet.pdf)
+- Visual assets: [`docs/assets/pace_explainer.gif`](docs/assets/pace_explainer.gif), [`docs/assets/pace_cheatsheet.png`](docs/assets/pace_cheatsheet.png), and [`dist/assets/`](dist/assets/)
+
+Legacy imports (`from cme ...` and `from mae_eval ...`) remain supported alongside `pace`.
 
 ---
 
@@ -117,15 +143,19 @@ Every completed comparison should report:
 
 ---
 
-## Verification
+## Verification & Manuscript Compilation
 
-Run the offline release integrity and leak-scan check:
+Run the full automated verification suite (`865 passed, 8 skipped`):
 
 ```bash
-python scripts/verify_release_offline.py
+pytest -q tests/
 ```
 
-Check hashes and file sizes against [`RELEASE_MANIFEST.json`](RELEASE_MANIFEST.json).
+Assemble and verify all PDF targets (`manuscript/main.pdf`, `paper/main.pdf`) with Build Gates 1 and 2:
+
+```bash
+python -I analysis/assemble_paper.py
+```
 
 ---
 

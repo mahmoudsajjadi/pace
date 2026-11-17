@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from collections.abc import Sequence
 
@@ -117,6 +118,35 @@ def _report(a) -> int:
 
         for path in write_block(rep, a.export_rollout_card, a.run_id):
             print("wrote " + path)
+    return 0
+
+
+def _inflate(a) -> int:
+    from .inflate import estimate_wrong_options, inflate_report, successes_from_rows
+
+    try:
+        rows = [json.loads(line) for line in open(a.samples, encoding="utf-8") if line.strip()]
+        succ, n = successes_from_rows(rows)
+        ks = [int(x) for x in a.k.split(",") if x.strip()]
+        w = None
+        if a.wrong_options == "auto":
+            w = estimate_wrong_options(rows)
+            if w is None:
+                raise ValueError("--wrong-options auto needs rows with an answer label and at least one item with two wrong samples")
+        elif a.wrong_options:
+            w = float(a.wrong_options)
+        rep = inflate_report(succ, n, ks, wrong_options=w)
+    except (OSError, ValueError, KeyError) as e:
+        print("error: %s" % e, file=sys.stderr)
+        return 1
+    if a.json:
+        print(json.dumps(rep, indent=1))
+        return 0
+    print("items=%d pool=%d  Beta(alpha=%.3f, beta=%.3f)  single-sample accuracy %.3f (observed %.3f)" % (rep["n_items"], rep["pool_size"], rep["alpha"], rep["beta"], rep["mean_single_sample_accuracy"], rep["single_sample_accuracy_observed"]))
+    print("%5s %10s %13s %14s %18s" % ("K", "predicted", "pool_observed", "over_1_sample", "plurality(W=%s)" % (("%.2f" % rep["wrong_options"]) if rep.get("wrong_options") else "-")))
+    for r in rep["inflation"]:
+        print("%5d %10.3f %13s %14.3f %18s" % (r["K"], r["predicted"], ("%.3f" % r["pool_observed"]) if "pool_observed" in r else "n/a", r["over_single_sample"], ("%.3f" % r["predicted_plurality"]) if "predicted_plurality" in r else "n/a"))
+    print(rep["model"])
     return 0
 
 
@@ -510,6 +540,8 @@ def _rebuttal(a) -> int:
     from .rebuttal import rows_from_contrasts, to_markdown
     from .rebuttal import to_latex as rb_tex
 
+    if a.contrasts == "outputs/baseline_tier_contrasts.csv" and not os.path.exists(a.contrasts) and os.path.exists("data/baseline_tier_contrasts.csv"):
+        a.contrasts = "data/baseline_tier_contrasts.csv"   # release tree layout: the corpus lives in data/
     try:
         rows = rows_from_contrasts(a.contrasts, a.study)
     except (OSError, KeyError, ValueError) as e:
@@ -619,6 +651,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="target id used in the rollout-card annotation rows",
     )
     r.set_defaults(func=_report)
+    inf = sub.add_parser("inflate", help="beta-binomial sampling inflation: predicted accuracy of a K-sample vote from a pool of samples (CPU only)")
+    inf.add_argument("--samples", required=True, help="JSONL, one row per sample with item and correct")
+    inf.add_argument("--k", default="1,3,5,9,16,24", help="comma-separated vote sizes K to predict")
+    inf.add_argument("--wrong-options", default=None, help="plurality model: number of wrong options W the wrong answers spread over (a number), or auto to estimate it from answer labels in the rows")
+    inf.add_argument("--json", action="store_true")
+    inf.set_defaults(func=_inflate)
     c = sub.add_parser(
         "classify",
         help="baseline rung (A to D) of a single-agent configuration given as JSON",
@@ -835,7 +873,7 @@ def build_parser() -> argparse.ArgumentParser:
     f.set_defaults(func=_frontier)
     t = sub.add_parser(
         "rebuttal",
-        help="nine-column rebuttal table from a contrasts CSV (default: outputs/baseline_tier_contrasts.csv)",
+        help="nine-column rebuttal table from a contrasts CSV (default: outputs/baseline_tier_contrasts.csv, or data/baseline_tier_contrasts.csv in the release tree)",
     )
     t.add_argument(
         "--contrasts",

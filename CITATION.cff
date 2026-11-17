@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use the PACE toolkit (pace, pace-eval; legacy aliases cme, mae-eval), the extracted contrast datasets, or the hidden-profile control task, please cite the manuscript below."
 type: software
-title: "More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs"
+title: "PACE: More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs"
 abstract: "Software, extracted data and analysis code for comparing multi-agent language-model systems with single-agent baselines of different strength: a six-dimension resource vector, a baseline ladder (A single pass, B sampled, C resource-matched, D Pareto frontier), a self-consistency frontier with a paired bootstrap interval, a baseline-rung classifier, a seven-field PACE Evaluation Card, PACE Studio interactive workbench, controlled MMLU-Pro and Hidden Profile experiments, and a synthetic split-evidence positive control."
 authors:
   - family-names: "Sajjadi Mohammadabadi"
@@ -9,14 +9,25 @@ authors:
     affiliation: "Department of Computer Science and Engineering, University of Nevada, Reno"
     email: "mahmoud.sajjadi@unr.edu"
 license: "Apache-2.0"
-url: "https://github.com/mahmoudsajjadi/pace"
+doi: "10.5281/zenodo.24286397"
+url: "https://mahmoudsajjadi.github.io/pace/"
+repository-code: "https://github.com/mahmoudsajjadi/pace"
 identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24286397"
+    description: "Zenodo software and dataset archive"
+  - type: doi
+    value: "10.48550/arXiv.2611.17610"
+    description: "arXiv preprint DOI"
   - type: url
     value: "https://arxiv.org/abs/2611.17610"
-    description: "arXiv preprint"
+    description: "arXiv abstract"
   - type: url
     value: "https://arxiv.org/html/2611.17610v1"
     description: "arXiv HTML version"
+  - type: url
+    value: "https://mahmoudsajjadi.github.io/pace/"
+    description: "Project landing page"
 keywords:
   - "multi-agent systems"
   - "test-time compute"
@@ -28,12 +39,13 @@ keywords:
   - "evaluation"
 preferred-citation:
   type: article
-  title: "More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs"
+  title: "PACE: More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs"
   authors:
     - family-names: "Sajjadi Mohammadabadi"
       given-names: "Seyed Mahmoud"
       affiliation: "Department of Computer Science and Engineering, University of Nevada, Reno"
   year: 2026
-  status: in-preparation
-  url: "https://arxiv.org/html/2611.17610v1"
+  journal: "arXiv preprint arXiv:2611.17610"
+  doi: "10.48550/arXiv.2611.17610"
+  url: "https://arxiv.org/abs/2611.17610"
   notes: "arXiv:2611.17610 (Parity-Aware Compute Evaluation, PACE)."

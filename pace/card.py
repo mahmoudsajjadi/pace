@@ -27,7 +27,18 @@ def resource_vector(rows: list[dict[str, Any]]) -> dict[str, float | None]:
     n_items = max(1, len(items))
     calls = len(rows)
     rounds = {int(row["round"]) for row in rows}
-    agents = {str(row["agent"]) for row in rows}
+    # Independent trajectories per item = calls made in the item's first round, before any communication (an agent that answers again in a later round is the same trajectory, not a new sample)
+    first_round, later_calls = {}, 0
+    for row in rows:
+        first_round.setdefault(str(row["item"]), int(row["round"]))
+        first_round[str(row["item"])] = min(first_round[str(row["item"])], int(row["round"]))
+    trajectories = {}
+    for row in rows:
+        key = str(row["item"])
+        if int(row["round"]) == first_round[key]:
+            trajectories[key] = trajectories.get(key, 0) + 1
+        else:
+            later_calls += 1
     token_values = [
         float(row["prompt_tokens"]) + float(row["completion_tokens"])
         for row in rows
@@ -54,13 +65,13 @@ def resource_vector(rows: list[dict[str, Any]]) -> dict[str, float | None]:
         "r_token": (sum(token_values) / n_items) if token_values else None,
         "r_cost": (sum(cost_values) / n_items) if cost_values else None,
         "r_lat": (sum(lat_values) / n_items) if lat_values else None,
-        "r_sample": float(len(agents)),
+        "r_sample": sum(trajectories.values()) / n_items,
         "r_sys": float(
             sum(1 for row in rows if row.get("tool_calls")) / n_items
         ),
         "r_call": calls / n_items,
         "r_round": float(max(rounds) - min(rounds) + 1),
-        "r_context": float(max(0, calls - len(items))),
+        "r_context": later_calls / n_items,
         "r_scaff": float(
             sum(1 for row in rows if row.get("scaffold") or row.get("tool_calls"))
         ),
@@ -68,16 +79,26 @@ def resource_vector(rows: list[dict[str, Any]]) -> dict[str, float | None]:
 
 
 def classify_baseline(vector: dict[str, float | None]) -> str:
+    """Rung (A, B or C) that this log would occupy as a single-agent baseline, following Table 7 of the paper; "n/a" if the log is a multi-agent system.
+
+    A: one greedy-style pass (one trajectory, one round, no later-round context). B: several independent trajectories in one round (sampled; no named
+    resource is known to be matched). C: one trajectory refined over several rounds (a named resource, the iteration count, may be matched; confirm with
+    `pace classify`). Rung D (the Pareto frontier) is a property of a family of runs and cannot be read from one log.
+    """
+    return classify_baseline_detail(vector)[0]
+
+
+def classify_baseline_detail(vector: dict[str, float | None]) -> tuple[str, str]:
     r_round = float(vector.get("r_round") or 0.0)
     r_sample = float(vector.get("r_sample") or 0.0)
     r_context = float(vector.get("r_context") or 0.0)
     if r_round <= 1 and r_sample <= 1 and r_context <= 0:
-        return "single_pass"
+        return "A", "one trajectory, one round"
     if r_round <= 1 and r_context <= 0:
-        return "sampled"
+        return "B", "%.3g independent trajectories in one round, no resource known to be matched" % r_sample
     if r_sample <= 1:
-        return "single_context"
-    return "multi_agent_unmatched"
+        return "C", "one trajectory over %.3g rounds; C only if the iteration ceiling is matched" % r_round
+    return "n/a", "several trajectories with later-round communication: a multi-agent system, not a single-agent baseline"
 
 
 def feasibility(vector: dict[str, float | None]) -> dict[str, Any]:
@@ -134,6 +155,7 @@ def build_card(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "n_items": len({str(row["item"]) for row in rows}),
         "resource_vector": vector,
         "baseline": classify_baseline(vector),
+        "baseline_reason": classify_baseline_detail(vector)[1],
         "feasibility": feasibility(vector),
         "transition_matrix": transition_matrix(rows),
     }
