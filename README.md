@@ -10,6 +10,7 @@
 **Paper PDF:** Preprint: [`manuscript/main.pdf`](manuscript/main.pdf) | Visual Cheatsheet: [`docs/assets/pace_cheatsheet.pdf`](docs/assets/pace_cheatsheet.pdf) | Interactive Studio: [`dist/hf_space_pace_studio/`](dist/hf_space_pace_studio/)
 
 [![arXiv:2611.17610](https://img.shields.io/badge/arXiv-2611.17610-b31b1b.svg)](https://arxiv.org/abs/2611.17610)
+[![Upvote on Hugging Face](https://img.shields.io/badge/🤗_Upvote_Paper-Hugging_Face_Daily_Papers-ffd21e.svg)](https://huggingface.co/papers/2611.17610)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/Data-CC%20BY%204.0-lightgrey.svg)](zenodo_datasets.json)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-brightgreen.svg)](https://www.python.org/downloads/)
@@ -100,6 +101,7 @@ pace audit run_trace.jsonl
 pace import-logs --format inspect --input eval_log.json --output trace.jsonl && pace audit trace.jsonl
 pace report --pool pool.jsonl --logs run.jsonl --system debate --export-latex card.tex
 pace dynamics debate_log.jsonl --null null.jsonl --json
+pace inflate --samples pool.jsonl --k 1,3,5,9,16,24 --wrong-options auto   # beta-binomial sampling inflation (auto needs an answer label per row)
 pace card run_trace.jsonl --latex --output pace-card.tex
 ```
 
