@@ -40,10 +40,7 @@ plot = ["matplotlib>=3.7.0"]
 dev = ["pytest>=7.4.0", "matplotlib>=3.7.0"]
 
 [project.urls]
-Homepage = "https://mahmoudsajjadi.github.io/pace/"
-Documentation = "https://mahmoudsajjadi.github.io/pace/"
-Repository = "https://github.com/mahmoudsajjadi/pace"
-Issues = "https://github.com/mahmoudsajjadi/pace/issues"
+Homepage = "https://github.com/mahmoudsajjadi/pace"
 Paper = "https://arxiv.org/abs/2611.17610"
 Studio = "https://huggingface.co/spaces/sajjadi/pace-studio"
 Dataset = "https://huggingface.co/datasets/sajjadi/pace-contrasts"

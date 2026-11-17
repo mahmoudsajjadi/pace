@@ -63,6 +63,7 @@ def generate_distributed_code_items(
                 {"agent": 2, "prompt": "Callee reads payload_json."},
             ],
             "shared": "Caller sends payload; schema and callee require payload_json.",
+            "synthetic": True,   # template item: every item is identical (one question), see docs/REVISION notes; not a benchmark
         }
         for i in range(n_items)
     ]

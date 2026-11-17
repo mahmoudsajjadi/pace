@@ -5,20 +5,17 @@
 **Author:** Seyed Mahmoud Sajjadi Mohammadabadi  
 **Affiliation:** Department of Computer Science and Engineering, University of Nevada, Reno  
 **Correspondence:** `mahmoud.sajjadi@unr.edu`  
-**Repository:** [https://github.com/mahmoudsajjadi/pace](https://github.com/mahmoudsajjadi/pace) | **Project Page:** [mahmoudsajjadi.github.io/pace](https://mahmoudsajjadi.github.io/pace/)  
-**arXiv Preprint:** [arXiv:2611.17610](https://arxiv.org/abs/2611.17610) ([HTML version](https://arxiv.org/html/2611.17610v1) | [PDF](https://arxiv.org/pdf/2611.17610) | [alphaXiv](https://www.alphaxiv.org/abs/2611.17610) | [HF Paper](https://huggingface.co/papers/2611.17610))  
-**Interactive Studio & Datasets:** [PACE Studio (HF Space)](https://huggingface.co/spaces/sajjadi/pace-studio) | [Contrast Dataset (`sajjadi/pace-contrasts`)](https://huggingface.co/datasets/sajjadi/pace-contrasts) | [Hidden Profile Dataset (`sajjadi/hidden-profile-control`)](https://huggingface.co/datasets/sajjadi/hidden-profile-control) | [Visual Cheatsheet](docs/assets/pace_cheatsheet.pdf)
+**Repository:** [https://github.com/mahmoudsajjadi/pace](https://github.com/mahmoudsajjadi/pace)  
+**arXiv Preprint:** [arXiv:2611.17610](https://arxiv.org/abs/2611.17610) ([HTML version](https://arxiv.org/html/2611.17610v1))  
+**Paper PDF:** Preprint: [`manuscript/main.pdf`](manuscript/main.pdf) | Visual Cheatsheet: [`docs/assets/pace_cheatsheet.pdf`](docs/assets/pace_cheatsheet.pdf) | Interactive Studio: [`dist/hf_space_pace_studio/`](dist/hf_space_pace_studio/)
 
 [![arXiv:2611.17610](https://img.shields.io/badge/arXiv-2611.17610-b31b1b.svg)](https://arxiv.org/abs/2611.17610)
-[![Project Page](https://img.shields.io/badge/Project%20Page-GitHub%20Pages-176b68.svg)](https://mahmoudsajjadi.github.io/pace/)
-[![HF Space](https://img.shields.io/badge/🤗%20Space-PACE%20Studio-blue.svg)](https://huggingface.co/spaces/sajjadi/pace-studio)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/Data-CC%20BY%204.0-lightgrey.svg)](zenodo_datasets.json)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-brightgreen.svg)](https://www.python.org/downloads/)
 [![Test Suite: 865 Passing](https://img.shields.io/badge/Tests-865%20Passing-success.svg)](tests/)
 [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24286397.svg)](https://doi.org/10.5281/zenodo.24286397)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mahmoudsajjadi/pace/blob/main/notebooks/audit_your_log.ipynb)
-[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-PACE%20Studio-ffd21e)](https://huggingface.co/spaces/sajjadi/pace-studio)
 
 **Reproducible on one consumer GPU.** The controlled experiments (`llama3.1:8b` served by Ollama, about 4.9 GB) run on a single 12 GB card (developed on an RTX 4070): `bash scripts/reproduce_12gb_gpu.sh` runs the tests, the hidden-profile file check and a 170-call smoke run, and records its own wall time (the expected runtimes in the script header are derived from a measured batch rate, not from a timed run of the script).
 

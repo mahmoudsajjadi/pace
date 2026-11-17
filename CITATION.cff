@@ -9,25 +9,14 @@ authors:
     affiliation: "Department of Computer Science and Engineering, University of Nevada, Reno"
     email: "mahmoud.sajjadi@unr.edu"
 license: "Apache-2.0"
-doi: "10.5281/zenodo.24286397"
-url: "https://mahmoudsajjadi.github.io/pace/"
-repository-code: "https://github.com/mahmoudsajjadi/pace"
+url: "https://github.com/mahmoudsajjadi/pace"
 identifiers:
-  - type: doi
-    value: "10.5281/zenodo.24286397"
-    description: "Zenodo software and dataset archive"
-  - type: doi
-    value: "10.48550/arXiv.2611.17610"
-    description: "arXiv preprint DOI"
   - type: url
     value: "https://arxiv.org/abs/2611.17610"
-    description: "arXiv abstract"
+    description: "arXiv preprint"
   - type: url
     value: "https://arxiv.org/html/2611.17610v1"
     description: "arXiv HTML version"
-  - type: url
-    value: "https://mahmoudsajjadi.github.io/pace/"
-    description: "Project landing page"
 keywords:
   - "multi-agent systems"
   - "test-time compute"
@@ -38,14 +27,13 @@ keywords:
   - "large language models"
   - "evaluation"
 preferred-citation:
-  type: article
+  type: unpublished
   title: "PACE: More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs"
   authors:
     - family-names: "Sajjadi Mohammadabadi"
       given-names: "Seyed Mahmoud"
       affiliation: "Department of Computer Science and Engineering, University of Nevada, Reno"
   year: 2026
-  journal: "arXiv preprint arXiv:2611.17610"
-  doi: "10.48550/arXiv.2611.17610"
-  url: "https://arxiv.org/abs/2611.17610"
+  status: in-preparation
+  url: "https://arxiv.org/html/2611.17610v1"
   notes: "arXiv:2611.17610 (Parity-Aware Compute Evaluation, PACE)."
