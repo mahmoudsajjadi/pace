@@ -6,6 +6,7 @@
 **Affiliation:** Department of Computer Science and Engineering, University of Nevada, Reno  
 **Correspondence:** `mahmoud.sajjadi@unr.edu`  
 **Repository:** [https://github.com/mahmoudsajjadi/pace](https://github.com/mahmoudsajjadi/pace)  
+**Interactive Demo:** [PACE Studio (Hugging Face Spaces)](https://huggingface.co/spaces/sajjadi/pace-studio)  
 **arXiv Preprint:** [arXiv:2611.17610](https://arxiv.org/abs/2611.17610) ([HTML version](https://arxiv.org/html/2611.17610v1))  
 **Paper PDF:** [arXiv:2611.17610 (PDF)](https://arxiv.org/pdf/2611.17610) | [HTML version](https://arxiv.org/html/2611.17610v1) | Visual Cheatsheet: [`docs/assets/pace_cheatsheet.pdf`](docs/assets/pace_cheatsheet.pdf)
 
@@ -16,6 +17,7 @@
 [![Offline Release Check](https://img.shields.io/badge/Release-Offline%20Verified-success.svg)](scripts/verify_release_offline.py)
 [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24286397.svg)](https://doi.org/10.5281/zenodo.24286397)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mahmoudsajjadi/pace/blob/main/notebooks/audit_your_log.ipynb)
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-PACE%20Studio-ffd21e)](https://huggingface.co/spaces/sajjadi/pace-studio)
 
 **Reproducible on one consumer GPU.** The controlled experiments (`llama3.1:8b` served by Ollama, about 4.9 GB) run on a single 12 GB card (developed on an RTX 4070); see [`REPRODUCIBILITY_COOKBOOK.md`](REPRODUCIBILITY_COOKBOOK.md) for setup and replication steps.
 

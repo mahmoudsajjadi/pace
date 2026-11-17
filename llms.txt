@@ -1,0 +1,19 @@
+# PACE: Parity-Aware Compute Evaluation
+
+> Official replication repository, audited contrast ledger, and evaluation toolkit for compute-matched multi-agent LLM evaluation.
+
+## Key Links
+- **GitHub Repository:** https://github.com/mahmoudsajjadi/pace
+- **Interactive Demo (Hugging Face Space):** https://huggingface.co/spaces/sajjadi/pace-studio
+- **arXiv Preprint:** https://arxiv.org/abs/2611.17610
+- **arXiv HTML:** https://arxiv.org/html/2611.17610v1
+- **Zenodo Dataset DOI:** https://doi.org/10.5281/zenodo.24286397
+
+## Summary
+PACE (Parity-Aware Compute Evaluation) provides:
+- A six-dimension resource vector for compute-matched evaluation
+- A four-rung baseline ladder (A: single pass, B: sampled, C: resource-matched, D: Pareto frontier)
+- A self-consistency frontier with paired bootstrap intervals
+- A seven-field PACE Evaluation Card and `pace` CLI (`pace`, `pace-eval`)
+- Audited contrast ledger across 9 primary studies (516 unique multi-agent configurations, 834 contrast records)
+- Reproducibility cookbook (`REPRODUCIBILITY_COOKBOOK.md`) for single-GPU consumer replication (`llama3.1:8b` via Ollama)
