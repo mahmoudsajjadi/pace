@@ -7,5 +7,5 @@ from .frontier import Pool, frontier_at, frontier_curve, frontier_gap, pav_incre
 from .report import build_report, to_latex
 from .client import wrap, track, log_result
 
-__version__ = "0.2.0"
+__version__ = "0.1.0"
 __all__ = ["Pool", "frontier_at", "frontier_curve", "frontier_gap", "pav_increasing", "build_report", "to_latex", "wrap", "track", "log_result"]

@@ -7,21 +7,23 @@
 **Correspondence:** `mahmoud.sajjadi@unr.edu`  
 **Repository:** [https://github.com/mahmoudsajjadi/pace](https://github.com/mahmoudsajjadi/pace)  
 **arXiv Preprint:** [arXiv:2611.17610](https://arxiv.org/abs/2611.17610) ([HTML version](https://arxiv.org/html/2611.17610v1))  
-**Paper PDF:** [arXiv:2611.17610 (PDF)](https://arxiv.org/pdf/2611.17610) | [HTML version](https://arxiv.org/html/2611.17610v1)
+**Paper PDF:** [arXiv:2611.17610 (PDF)](https://arxiv.org/pdf/2611.17610) | [HTML version](https://arxiv.org/html/2611.17610v1) | Visual Cheatsheet: [`docs/assets/pace_cheatsheet.pdf`](docs/assets/pace_cheatsheet.pdf)
 
 [![arXiv:2611.17610](https://img.shields.io/badge/arXiv-2611.17610-b31b1b.svg)](https://arxiv.org/abs/2611.17610)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/Data-CC%20BY%204.0-lightgrey.svg)](zenodo_datasets.json)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-brightgreen.svg)](https://www.python.org/downloads/)
-[![Test Suite: 864 Passing](https://img.shields.io/badge/Tests-864%20Passing-success.svg)](tests/)
+[![Offline Release Check](https://img.shields.io/badge/Release-Offline%20Verified-success.svg)](scripts/verify_release_offline.py)
 [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24286397.svg)](https://doi.org/10.5281/zenodo.24286397)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mahmoudsajjadi/pace/blob/main/notebooks/audit_your_log.ipynb)
 
-**Reproducible on one consumer GPU.** The controlled experiments (`llama3.1:8b` served by Ollama, about 4.9 GB) run on a single 12 GB card (developed on an RTX 4070): `bash scripts/reproduce_12gb_gpu.sh` runs the tests, the hidden-profile file check and a 170-call smoke run, and records its own wall time (the expected runtimes in the script header are derived from a measured batch rate, not from a timed run of the script).
+**Reproducible on one consumer GPU.** The controlled experiments (`llama3.1:8b` served by Ollama, about 4.9 GB) run on a single 12 GB card (developed on an RTX 4070); see [`REPRODUCIBILITY_COOKBOOK.md`](REPRODUCIBILITY_COOKBOOK.md) for setup and replication steps.
 
 Official replication repository, audited contrast ledger (`9` primary studies, `516` unique multi-agent configurations from `531` raw extracted rows, `834` contrast records), `pace` CLI and evaluation toolkit (legacy aliases: `cme`, `mae-eval`), and zero-dependency browser workbench (**PACE Studio**) for Parity-Aware Compute Evaluation.
 
 **Licences.** Code (`code/`, `analysis/`, `scripts/`, `tests/`): Apache-2.0 (`LICENSE`). Dataset files (extracted contrast tables and the hidden-profile task, staged in `zenodo_datasets.json`): CC-BY-4.0.
+
+![PACE 60-second explainer](docs/assets/pace_explainer.gif)
 
 ---
 
@@ -48,45 +50,33 @@ enforces directional resource feasibility, and measures the frontier gap relativ
 ## Repository Structure
 
 ```text
-├── analysis/                  # Synthesis, REML pooling, plotting, and LaTeX build gates
-│   ├── assemble_paper.py      # Assembles & compiles main.pdf (70p) & tmlr_submission.pdf (59p)
-│   ├── run_baseline_tiers.py  # Descriptive corpus synthesis, dual-baseline pairing & numbers.tex
-│   └── run_k9_reml.py         # Three-level REML + CR2 inference (including 72-cell Model D)
-├── code/
-│   ├── pace/                  # Standalone PACE CLI, analytics engine & zero-dependency Studio GUI
-│   ├── cme/                   # Legacy CLI/API aliases preserved for backwards compatibility
-│   └── mae_eval/              # Legacy resource tracker/auditor package aliases
-├── evidence/                  # Verified extracted CSVs, screening ledger & audit reports
-│   ├── contrasts_anchor5_core.csv
-│   ├── contrasts_dual_baseline.csv
-│   ├── extension_contrasts.csv
-│   └── verification_worksheet.csv
-├── figures/                   # Publication vector PDF figures and PNG previews
-├── manuscript/                # Modular LaTeX source of truth and generated macro files
-├── outputs/                   # Baseline contrast tables, REML JSON & experimental logs
-├── paper/                     # Synchronized manuscript build targets and figure/table mirrors
-├── review/                    # Programmatic concordance ledgers & claim-verification tables
-├── scripts/                   # Reproducibility runner (12 GB GPU) & double-blind zip bundler
-├── supplement/                # Moderator synthesis, empirical trace harvest & author templates
-└── tests/                     # 864 passing automated unit, regression, and concordance tests
+├── .github/                   # CI workflows & study-contrast issue template (add_study_contrast.yml)
+├── data/                      # Baseline contrast tables, REML JSON & moderator synthesis
+├── docs/                      # Project landing page (index.html), community playbook & visual assets
+├── notebooks/                 # Interactive Colab/Jupyter log-auditing notebook (audit_your_log.ipynb)
+├── pace/                      # Standalone PACE CLI, importers (incl. Inspect AI), & browser Studio
+├── pace_lab/                  # Experiment runner, clients, data loaders & graders
+├── pyproject.toml             # PEP 621 package metadata (`pace-eval`) & CLI entry points
+└── scripts/                   # Offline release verification (`verify_release_offline.py`)
 ```
 
 ---
 
 ## Quickstart: the `pace` CLI & PACE Studio
 
-Install the editable package from `code/`:
+Install `pace-eval` from the repository root (`pyproject.toml`):
 
 ```bash
-pip install -e code            # installs `pace` (plus legacy `cme` and `mae-eval` console aliases)
+pip install -e .               # installs `pace` (plus legacy `cme` and `mae-eval` console aliases)
 ```
 
-Core auditing, reporting, and local GUI commands:
+Core auditing, reporting, log import (including Inspect AI via `--format inspect`), and local GUI commands:
 
 ```bash
 pace studio                    # launches the zero-dependency browser UI (PACE Studio)
 pace classify --config sas.json
 pace audit run_trace.jsonl
+pace audit eval_log.json --format inspect
 pace report --pool pool.jsonl --logs run.jsonl --system debate --export-latex card.tex
 pace dynamics debate_log.jsonl --null null.jsonl --json
 pace card run_trace.jsonl --latex --output pace-card.tex
@@ -97,17 +87,20 @@ Constructive planning, simulation, meta-analysis, frontier, and rebuttal command
 ```bash
 pace pool-size --agents 5 --rounds 3 --prompt-tokens 100 --msg-tokens 20 --json
 pace simulate --mode debate --items 100 --agents 5 --rounds 3 --out debate.jsonl
-pace meta --contrasts outputs/baseline_tier_contrasts.csv --scale log_or --json
+pace meta --contrasts data/baseline_tier_contrasts.csv --scale log_or --json
 pace power --p-base .55 --delta .10 --n-items 40 --json
 pace benchmark-gen --route clue_grid --out clues.jsonl
 pace aggregate-open --input candidates.jsonl --metric token_jaccard --out centroids.jsonl
 pace plot --kind phase --out phase.svg
 pace hidden-profile --n 100 --out hp.jsonl
 pace frontier --samples pool.jsonl --logs run.jsonl --out frontier.pdf
-pace rebuttal --contrasts outputs/baseline_tier_contrasts.csv --export-markdown rebuttal.md
+pace rebuttal --contrasts data/baseline_tier_contrasts.csv --export-markdown rebuttal.md
 ```
 
-End-to-end synthetic walkthrough and GitHub Action CI workflow template live in [`code/examples/end_to_end_walkthrough.py`](code/examples/end_to_end_walkthrough.py) and [`code/examples/github_action_pace_audit.yml`](code/examples/github_action_pace_audit.yml). Legacy imports (`from cme ...` and `from mae_eval ...`) remain supported alongside `pace`.
+Interactive Colab notebook, community study-submission playbook, and visual assets live in:
+- [`notebooks/audit_your_log.ipynb`](notebooks/audit_your_log.ipynb)
+- [`docs/index.html`](docs/index.html), [`docs/COMMUNITY_AND_PR_PLAYBOOK.md`](docs/COMMUNITY_AND_PR_PLAYBOOK.md), and [`.github/ISSUE_TEMPLATE/add_study_contrast.yml`](.github/ISSUE_TEMPLATE/add_study_contrast.yml)
+- Visual assets: [`docs/assets/pace_explainer.gif`](docs/assets/pace_explainer.gif), [`docs/assets/pace_cheatsheet.png`](docs/assets/pace_cheatsheet.png), and [`docs/assets/pace_cheatsheet.pdf`](docs/assets/pace_cheatsheet.pdf)
 
 ---
 
@@ -122,19 +115,15 @@ Every completed comparison should report:
 
 ---
 
-## Verification & Manuscript Compilation
+## Verification
 
-Run the full automated verification suite (`864 passed, 8 skipped`):
-
-```bash
-pytest -q tests/
-```
-
-Assemble and verify all PDF targets (`manuscript/main.pdf`, `paper/main.pdf`) with Build Gates 1 and 2:
+Run the offline release integrity and leak-scan check:
 
 ```bash
-python -I analysis/assemble_paper.py
+python scripts/verify_release_offline.py
 ```
+
+Check hashes and file sizes against [`RELEASE_MANIFEST.json`](RELEASE_MANIFEST.json).
 
 ---
 

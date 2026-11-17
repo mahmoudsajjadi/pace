@@ -673,7 +673,7 @@ def build_parser() -> argparse.ArgumentParser:
     d.set_defaults(func=_dynamics)
     i = sub.add_parser("import-logs", help="convert an external trace to PACE JSONL")
     i.add_argument(
-        "--format", choices=["autogen", "langgraph", "crewai", "csv"], required=True
+        "--format", choices=["autogen", "langgraph", "crewai", "inspect", "csv"], required=True
     )
     i.add_argument("--input", required=True)
     i.add_argument("--output", required=True)

@@ -143,6 +143,52 @@ def import_csv(records: list[Any]) -> list[ItemLog]:
     return [item_log_from_mapping(row) for row in records if isinstance(row, dict)]
 
 
+def import_inspect(records: list[Any]) -> list[ItemLog]:
+    """Convert Inspect AI EvalLog JSON payloads into canonical PACE ItemLog records."""
+    result = []
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        samples = record.get("samples", [record])
+        for sample in samples:
+            if not isinstance(sample, dict):
+                continue
+            item_id = str(sample.get("id", "item_0"))
+            scores = sample.get("scores", {})
+            correct = False
+            if isinstance(scores, dict):
+                for scorer_obj in scores.values():
+                    val = scorer_obj.get("value") if isinstance(scorer_obj, dict) else scorer_obj
+                    if val in ("C", "correct", 1, 1.0, True):
+                        correct = True
+                        break
+            messages = sample.get("messages", [])
+            assistant_turns = [m for m in messages if isinstance(m, dict) and m.get("role") == "assistant"]
+            usage = sample.get("model_usage", {})
+            total_in = sum(u.get("input_tokens", 0) for u in usage.values() if isinstance(u, dict)) if isinstance(usage, dict) else 0
+            total_out = sum(u.get("output_tokens", 0) for u in usage.values() if isinstance(u, dict)) if isinstance(usage, dict) else 0
+            total_reason = sum(u.get("reasoning_tokens", 0) for u in usage.values() if isinstance(u, dict)) if isinstance(usage, dict) else 0
+            n_turns = max(1, len(assistant_turns))
+            for idx, msg in enumerate(assistant_turns or [{}]):
+                agent_id = str(msg.get("source") or msg.get("name") or f"agent_{idx}")
+                tool_calls = bool(msg.get("tool_calls"))
+                result.append(
+                    item_log_from_mapping(
+                        {
+                            "item": item_id,
+                            "agent": agent_id,
+                            "round": idx + 1,
+                            "correct": bool(correct),
+                            "prompt_tokens": round(total_in / n_turns, 2) if total_in else None,
+                            "completion_tokens": round(total_out / n_turns, 2) if total_out else None,
+                            "reasoning_tokens": round(total_reason / n_turns, 2) if total_reason else None,
+                            "tool_calls": 1 if tool_calls else 0,
+                        }
+                    )
+                )
+    return result
+
+
 def load_and_import(path: str, format_name: str) -> list[ItemLog]:
     if format_name == "csv":
         with open(path, newline="", encoding="utf-8") as handle:
@@ -152,6 +198,7 @@ def load_and_import(path: str, format_name: str) -> list[ItemLog]:
         "autogen": import_autogen,
         "langgraph": import_langgraph,
         "crewai": import_crewai,
+        "inspect": import_inspect,
     }.get(format_name)
     if importer is None:
         raise ValueError("unknown trace format: %s" % format_name)

@@ -3,52 +3,904 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PACE Studio</title>
+<title>PACE Studio · Parity-Aware Compute Evaluation</title>
 <style>
-:root{--ink:#17212b;--muted:#607080;--paper:#f5f0e8;--panel:#fffdf8;--line:#d8d0c3;--accent:#bb4d2e;--accent2:#1d6b68}
-*{box-sizing:border-box}body{margin:0;color:var(--ink);font:15px Georgia,serif;background:radial-gradient(circle at 85% 0,#e7cdb7 0,transparent 28%),var(--paper)}
-header{padding:42px max(24px,calc((100vw - 1120px)/2));border-bottom:1px solid var(--line)}h1{font-size:clamp(2rem,5vw,4.5rem);line-height:.95;margin:0 0 12px;letter-spacing:0}header p{max-width:680px;color:var(--muted);font-size:1.05rem}
-main{max-width:1120px;margin:28px auto;padding:0 24px}.drop{padding:28px;border:2px dashed var(--accent);background:var(--panel);text-align:center;cursor:pointer}.drop.drag{background:#f3dfd2}.drop input{display:none}.actions{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.actions button{border:1px solid var(--ink);background:var(--ink);color:white;padding:10px 14px;cursor:pointer}.actions button.secondary{background:transparent;color:var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.panel{background:var(--panel);border-top:4px solid var(--accent2);padding:18px;box-shadow:0 8px 24px #6d594018}.panel h2{font-size:1.1rem;margin:0 0 14px}.value{font-size:2rem;color:var(--accent)}.axis{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line)}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line)}.empty{color:var(--muted)}pre{white-space:pre-wrap;overflow:auto;background:#202b32;color:#f8eee3;padding:16px;min-height:80px}
-@media(max-width:600px){header{padding:30px 20px}main{padding:0 16px}.actions button{flex:1 1 40%}}
-.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}.tab{border:1px solid var(--line);background:var(--panel);padding:10px;cursor:pointer}.tab.active{background:var(--accent2);color:white}.tab-panel{display:none}.tab-panel.active{display:block}.demo-bar{border-bottom:1px solid var(--line);padding-bottom:12px}
+:root{
+  --ink:#17212b;
+  --muted:#52606d;
+  --paper:#f6f3ed;
+  --panel:#ffffff;
+  --line:#dfd8cc;
+  --accent:#bb4d2e;
+  --accent2:#1d6b68;
+  --ok:#1b6e42;
+  --warn:#9a5b13;
+  --bad:#a62b2b;
+  --radius:10px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--ink);
+  font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background:radial-gradient(circle at 88% 0,#ebd7c3 0,transparent 36%),var(--paper);
+}
+header{
+  padding:30px max(24px,calc((100vw - 1140px)/2)) 24px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,#fffcf7 0%,transparent 100%);
+}
+.header-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px}
+.badge{
+  display:inline-block;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+  color:var(--accent2);
+  background:#e6f2f1;
+  padding:4px 10px;
+  border-radius:999px;
+  margin-bottom:8px;
+}
+h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.9rem,4vw,3rem);
+  line-height:1.06;
+  margin:0 0 8px;
+  letter-spacing:-.01em;
+}
+header p{max-width:720px;color:var(--muted);font-size:.98rem;margin:0}
+.cite-box{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-left:4px solid var(--accent);
+  border-radius:var(--radius);
+  padding:12px 16px;
+  max-width:410px;
+  font-size:13px;
+  box-shadow:0 4px 14px rgba(23,33,43,.04);
+}
+.cite-box strong{display:block;margin-bottom:4px;font-size:13.5px}
+.cite-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;align-items:center}
+main{max-width:1140px;margin:22px auto 52px;padding:0 24px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.tab{
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--panel);
+  padding:9px 15px;
+  font:600 13.5px/1.2 inherit;
+  cursor:pointer;
+  color:var(--ink);
+  transition:all .15s;
+}
+.tab:hover{border-color:var(--accent2)}
+.tab.active{background:var(--accent2);border-color:var(--accent2);color:#fff}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0;align-items:center}
+button,.btn{
+  border:1px solid var(--ink);
+  border-radius:8px;
+  background:var(--ink);
+  color:#fff;
+  padding:8px 14px;
+  font:600 13.5px/1.2 inherit;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:opacity .15s,background .15s;
+}
+button:hover,.btn:hover{opacity:.88}
+button.secondary,.btn.secondary{background:var(--panel);color:var(--ink);border-color:var(--line)}
+button.teal{background:var(--accent2);border-color:var(--accent2);color:#fff}
+button.accent{background:var(--accent);border-color:var(--accent);color:#fff}
+.actions label{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500}
+.actions input,.actions select{
+  padding:7px 10px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:var(--panel);
+  font:inherit;
+}
+.demo-bar{
+  border-bottom:1px solid var(--line);
+  padding-bottom:14px;
+  margin-bottom:14px;
+}
+.demo-label{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-right:4px}
+.drop{
+  display:block;
+  width:100%;
+  margin:14px 0;
+  padding:20px;
+  border:2px dashed var(--accent);
+  border-radius:var(--radius);
+  background:var(--panel);
+  text-align:center;
+  cursor:pointer;
+  font-weight:500;
+  transition:background .15s,border-color .15s;
+}
+.drop:hover,.drop.drag{background:#fdf3ee;border-color:#9e3c20}
+.drop input{display:none}
+.drop small{display:block;color:var(--muted);font-weight:400;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:12px 0}
+.kpi{
+  background:#faf8f4;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:12px 14px;
+}
+.kpi .k-label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.kpi .k-val{font-family:Georgia,serif;font-size:1.5rem;color:var(--ink);margin-top:2px}
+.kpi .k-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-top:4px solid var(--accent2);
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:0 6px 20px rgba(23,33,43,.05);
+}
+.panel.accent-top{border-top-color:var(--accent)}
+.panel h2{font-size:1.05rem;font-weight:700;margin:0 0 10px}
+.panel-sub{font-size:13.5px;color:var(--muted);margin:-4px 0 12px}
+.value{font-family:Georgia,serif;font-size:1.85rem;color:var(--accent);margin-bottom:6px}
+.axis{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 0;
+  border-bottom:1px solid var(--line);
+  font-size:13.5px;
+  gap:10px;
+}
+.axis:last-child{border-bottom:none}
+.axis-name{display:flex;flex-direction:column}
+.axis-desc{font-size:11.5px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);background:#faf8f4}
+.bar-wrap{width:90px;height:8px;background:#ece6dc;border-radius:999px;overflow:hidden;display:inline-block;vertical-align:middle;margin-right:6px}
+.bar-fill{height:100%;background:var(--accent2);border-radius:999px}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.pill.ok{background:#e3f3ea;color:var(--ok)}
+.pill.warn{background:#fbf0df;color:var(--warn)}
+.pill.bad{background:#fae5e5;color:var(--bad)}
+.banner{
+  padding:10px 14px;
+  border-radius:8px;
+  font-size:13.5px;
+  margin-bottom:12px;
+  border:1px solid var(--line);
+  background:#faf8f4;
+}
+.banner.ok{background:#edf8f2;border-color:#b8e1c8;color:var(--ok)}
+.banner.warn{background:#fdf6ea;border-color:#ecd2a6;color:var(--warn)}
+.banner.bad{background:#fdf0f0;border-color:#ebc0c0;color:var(--bad)}
+.empty{color:var(--muted);font-size:14px}
+.forest-wrap{
+  margin:14px 0 18px;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fffcf8;
+  overflow-x:auto;
+}
+.forest-title{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:8px}
+pre{
+  white-space:pre-wrap;
+  overflow:auto;
+  background:#1b242b;
+  color:#f5ede3;
+  padding:16px;
+  border-radius:8px;
+  min-height:80px;
+  font-size:13px;
+  line-height:1.5;
+  margin:0;
+}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.rung{padding:6px 8px;border-radius:6px;border:1px solid var(--line);font-size:11.5px;text-align:center;color:var(--muted);background:#faf8f4}
+.rung.on{border-color:var(--accent);background:#fdf3ee;color:var(--accent);font-weight:700}
+.toast{font-size:12.5px;color:var(--ok);font-weight:600;margin-left:6px}
+.toast.err{color:var(--bad)}
+@media(max-width:720px){
+  header{padding:24px 16px 18px}
+  main{padding:0 16px}
+  .ladder{grid-template-columns:repeat(2,1fr)}
+  .actions button{flex:1 1 44%}
+}
 </style>
 </head>
 <body>
-<header><h1>PACE Studio</h1><p>Inspect a multi-agent trace locally. Your file stays in this browser tab.</p></header>
+<header>
+  <div class="header-top">
+    <div>
+      <span class="badge">arXiv:2611.17610 · Parity-Aware Compute Evaluation (PACE)</span>
+      <h1>PACE Studio</h1>
+      <p>Audit multi-agent LLM traces against compute-matched single-agent baselines, inspect debate peer-influence dynamics, explore the 9-study corpus noise band, and size self-consistency pools locally in your browser.</p>
+    </div>
+    <div class="cite-box">
+      <strong>Cite PACE (arXiv:2611.17610)</strong>
+      <div>Sajjadi Mohammadabadi (2026). <em>More Agents, More Samples, or More Thinking?</em> · Code DOI: <code>10.5281/zenodo.24286397</code></div>
+      <div class="cite-actions">
+        <button id="copyBib" class="accent" type="button">Copy BibTeX</button>
+        <span id="citeToast" class="toast"></span>
+      </div>
+    </div>
+  </div>
+</header>
+
 <main>
-<nav class="tabs" aria-label="PACE Studio tabs"><button class="tab active" data-tab="trace">Trace &amp; Resource Auditor</button><button class="tab" data-tab="dynamics">Debate Dynamics</button><button class="tab" data-tab="corpus">Corpus &amp; Noise-Band Explorer</button><button class="tab" data-tab="planner">Experiment Planner</button></nav>
-<div class="actions demo-bar"><button id="demoDebate">Load Demo: Debate JSONL</button><button id="demoHidden">Load Demo: Hidden-Profile Split vs Shared</button><button id="demoContrasts">Load Demo: 9-Study Contrasts CSV</button></div>
-<label class="drop" id="drop">Drop a PACE JSONL log or contrast CSV here, or choose a file<input id="file" type="file" accept=".jsonl,.json,.csv"></label>
-<div class="actions"><button id="md">Export Markdown</button><button id="tex">Export LaTeX</button><button id="json" class="secondary">Export JSON</button></div>
-<section class="tab-panel active" data-panel="trace"><section class="grid"><article class="panel"><h2>Baseline</h2><div id="baseline" class="value">Waiting</div><p id="status" class="empty">Load a scored trace to calculate its resource vector.</p></article><article class="panel"><h2>Resource Vector R</h2><div id="vector" class="empty">No data</div></article><article class="panel"><h2>Directional feasibility</h2><div id="feasible" class="empty">No data</div></article></section></section>
-<section class="panel" style="margin-top:14px"><h2>Round transitions</h2><div id="transitions" class="empty">No data</div></section>
-<section class="tab-panel" data-panel="dynamics"><section class="panel" style="margin-top:14px"><h2>Debate Dynamics, Flow Identity &amp; Peer-Influence Lab</h2><div id="dynamicsLab" class="empty">Load a debate log.</div></section></section>
-<section class="tab-panel" data-panel="corpus"><section class="panel" style="margin-top:14px"><h2>Corpus &amp; Noise-Band Explorer</h2><label>phi <input id="phiSlider" type="range" min="0" max=".9" step=".01" value=".5"></label><div id="corpusLab" class="empty">Load contrast CSV.</div></section></section>
-<section class="tab-panel" data-panel="planner"><section class="panel" style="margin-top:14px"><h2>Prospective Experiment Planner</h2><div class="actions"><label>K <input id="pk" type="number" value="3" min="1"></label><label>T <input id="pt" type="number" value="2" min="1"></label><label>c0 <input id="pc" type="number" value="100" min="0"></label><label>l <input id="pl" type="number" value="20" min="0"></label><select id="topology"><option>last_round_peers</option><option>last_round_all</option><option>full_history_echo</option></select><button id="calcPool">Calculate k_tok</button></div><div id="theory" class="empty">Configure a budget.</div><div id="powerLab" class="empty">Power calculator available through pace power.</div></section></section>
-<section class="panel" style="margin-top:14px"><h2>PACE Card preview</h2><pre id="preview">Load a file to render the card.</pre></section>
+  <nav class="tabs" aria-label="PACE Studio tabs">
+    <button class="tab active" data-tab="trace" type="button">Trace &amp; Resource Auditor</button>
+    <button class="tab" data-tab="dynamics" type="button">Debate Dynamics</button>
+    <button class="tab" data-tab="corpus" type="button">Corpus &amp; Noise-Band Explorer</button>
+    <button class="tab" data-tab="planner" type="button">Experiment Planner</button>
+  </nav>
+
+  <div class="actions demo-bar">
+    <span class="demo-label">Quick Demos:</span>
+    <button id="demoDebate" class="teal" type="button">Load Demo: Debate JSONL</button>
+    <button id="demoHidden" class="secondary" type="button">Load Demo: Hidden-Profile Split vs Shared</button>
+    <button id="demoContrasts" class="secondary" type="button">Load Demo: 9-Study Contrasts CSV</button>
+    <span id="loadStatus" class="toast"></span>
+  </div>
+
+  <label class="drop" id="drop">
+    Drop a PACE JSONL/JSON log or contrast/trace CSV here, or click to choose a file
+    <small>100% client-side · Supports JSONL/JSON traces (<code>item, agent, round, correct, prompt_tokens, completion_tokens</code>) and contrast CSVs (<code>study, p_mas, p_base, n</code>)</small>
+    <input id="file" type="file" accept=".jsonl,.json,.csv">
+  </label>
+
+  <section class="tab-panel active" data-panel="trace">
+    <section class="grid">
+      <article class="panel accent-top">
+        <h2>Baseline Classification</h2>
+        <div id="baseline" class="value">Waiting</div>
+        <p id="status" class="empty">Load a scored trace to calculate its resource vector.</p>
+        <div class="ladder" aria-label="Baseline Ladder">
+          <div class="rung" id="rungA">A · Single Pass</div>
+          <div class="rung" id="rungB">B · Sampled</div>
+          <div class="rung" id="rungC">C · Resource-Matched</div>
+          <div class="rung" id="rungD">D · Pareto Frontier</div>
+        </div>
+      </article>
+      <article class="panel">
+        <h2>Resource Vector R</h2>
+        <div id="vector" class="empty">No data</div>
+      </article>
+      <article class="panel">
+        <h2>Directional Feasibility</h2>
+        <div id="feasible" class="empty">No data</div>
+      </article>
+    </section>
+  </section>
+
+  <section class="tab-panel" data-panel="dynamics">
+    <section class="panel">
+      <h2>Debate Dynamics, Flow Identity &amp; Peer-Influence Lab</h2>
+      <p class="panel-sub">Tracks accuracy from first to final round, wrong-to-right (&tau;<sub>ic</sub>) vs. right-to-wrong (&tau;<sub>ci</sub>) flip rates, and the exact flow-identity equilibrium p*.</p>
+      <div id="dynamicsLab" class="empty">Load a debate log to inspect round-by-round dynamics.</div>
+    </section>
+  </section>
+
+  <section class="tab-panel" data-panel="corpus">
+    <section class="panel">
+      <h2>Corpus &amp; Noise-Band Explorer</h2>
+      <p class="panel-sub">Test whether reported MAS-vs-baseline accuracy differences exceed the paired binomial noise band &plusmn;1.96&thinsp;SE(&phi;) under assumed paired correlation &phi;.</p>
+      <div class="actions">
+        <label>Paired correlation &phi; = <strong id="phiVal">0.50</strong>
+          <input id="phiSlider" type="range" min="0" max="0.9" step="0.01" value="0.5">
+        </label>
+      </div>
+      <div id="corpusLab" class="empty">Load a contrast CSV or click "Load Demo: 9-Study Contrasts CSV".</div>
+    </section>
+  </section>
+
+  <section class="tab-panel" data-panel="planner">
+    <section class="panel">
+      <h2>Prospective Experiment Planner (k<sub>tok</sub> &amp; Pool Sizer)</h2>
+      <p class="panel-sub">Compute the token-equivalent single-agent sample count k<sub>tok</sub> for a K-agent, T-round multi-agent protocol and size your benchmark sample count n before running.</p>
+      <div class="actions">
+        <label>Agents K <input id="pk" type="number" value="5" min="1" style="width:72px"></label>
+        <label>Rounds T <input id="pt" type="number" value="3" min="1" style="width:72px"></label>
+        <label>Prompt c<sub>0</sub> <input id="pc" type="number" value="400" min="0" style="width:84px"></label>
+        <label>Message l <input id="pl" type="number" value="120" min="0" style="width:84px"></label>
+        <label>Topology
+          <select id="topology">
+            <option value="last_round_peers">last_round_peers</option>
+            <option value="last_round_all">last_round_all</option>
+            <option value="full_history_echo">full_history_echo</option>
+          </select>
+        </label>
+        <label>Items n <input id="pn" type="number" value="200" min="10" style="width:80px"></label>
+        <label>Base acc p<sub>0</sub> <input id="pp0" type="number" value="0.50" min="0.01" max="0.99" step="0.05" style="width:78px"></label>
+        <button id="calcPool" class="teal" type="button">Calculate k_tok</button>
+      </div>
+      <div id="theory" class="empty">Configure a budget.</div>
+      <div id="powerLab" class="empty" style="margin-top:12px">Power calculator available through pace power.</div>
+    </section>
+  </section>
+
+  <section class="panel" style="margin-top:16px">
+    <h2>Active Trace: Round Transitions &amp; Peer Correctness</h2>
+    <p class="panel-sub">Empirical probability P(correct at t+1) conditioned on own correctness and number of correct peers at round t.</p>
+    <div id="transitions" class="empty">No data</div>
+  </section>
+
+  <section class="panel" style="margin-top:16px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px">
+      <h2 style="margin:0">PACE Card Preview &amp; Export</h2>
+      <div class="actions" style="margin:0">
+        <span id="exportToast" class="toast"></span>
+        <button id="copyMd" class="secondary" type="button">Copy Markdown</button>
+        <button id="copyTex" class="secondary" type="button">Copy LaTeX</button>
+        <button id="md" type="button">Export Markdown</button>
+        <button id="tex" type="button">Export LaTeX</button>
+        <button id="json" class="secondary" type="button">Export JSON</button>
+      </div>
+    </div>
+    <pre id="preview">Load a file to render the card.</pre>
+  </section>
 </main>
+
 <script>
 let card=null;
+let currentRows=[];
+let currentContrasts=[];
 const $=id=>document.getElementById(id);
-function csv(text){const lines=text.trim().split(/\r?\n/);const head=lines.shift().split(',');return lines.filter(Boolean).map(line=>{const cells=line.split(',');return Object.fromEntries(head.map((key,i)=>[key.trim(),cells[i]===undefined?'':cells[i].trim()]))})}
+
+const BIBTEX=`@article{sajjadi2026more,
+  title   = {More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs},
+  author  = {Sajjadi Mohammadabadi, Seyed Mahmoud},
+  year    = {2026},
+  eprint  = {2611.17610},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  doi     = {10.48550/arXiv.2611.17610}
+}`;
+
+function esc(s){
+  return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function copyText(text,toastEl,msg){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(()=>flash(toastEl,msg)).catch(()=>fallbackCopy(text,toastEl,msg));
+  }else{
+    fallbackCopy(text,toastEl,msg);
+  }
+}
+function fallbackCopy(text,toastEl,msg){
+  const ta=document.createElement('textarea');
+  ta.value=text;
+  document.body.appendChild(ta);
+  ta.select();
+  try{document.execCommand('copy');flash(toastEl,msg)}catch(e){}
+  document.body.removeChild(ta);
+}
+function flash(el,msg,isErr){
+  if(!el)return;
+  el.classList.toggle('err',!!isErr);
+  el.textContent=msg;
+  setTimeout(()=>{if(el.textContent===msg){el.textContent='';el.classList.remove('err')}},2600);
+}
+
+function parseCsvLine(line){
+  const out=[];
+  let cur='',inQ=false;
+  for(let i=0;i<line.length;i++){
+    const ch=line[i];
+    if(inQ){
+      if(ch==='"'&&line[i+1]==='"'){cur+='"';i++}
+      else if(ch==='"'){inQ=false}
+      else{cur+=ch}
+    }else{
+      if(ch==='"'){inQ=true}
+      else if(ch===','){out.push(cur.trim());cur=''}
+      else{cur+=ch}
+    }
+  }
+  out.push(cur.trim());
+  return out;
+}
+
+function csv(text){
+  const lines=text.trim().split(/\r?\n/).filter(Boolean);
+  if(!lines.length)return [];
+  const head=parseCsvLine(lines.shift());
+  return lines.map(line=>{
+    const cells=parseCsvLine(line);
+    return Object.fromEntries(head.map((key,i)=>[key.trim(),cells[i]===undefined?'':cells[i]]));
+  });
+}
 function bool(v){return v===true||v===1||v==='1'||String(v).toLowerCase()==='true'||String(v).toLowerCase()==='correct'}
-function parseRows(text,name){if(name.toLowerCase().endsWith('.csv'))return csv(text);return text.trim().split(/\r?\n/).filter(Boolean).map(JSON.parse)}
-function compute(rows){const items=new Set(rows.map(r=>String(r.item??r.item_id)));const agents=new Set(rows.map(r=>String(r.agent??r.agent_id)));const rounds=rows.map(r=>Number(r.round));const tokens=rows.filter(r=>r.prompt_tokens!==undefined&&r.completion_tokens!==undefined).map(r=>Number(r.prompt_tokens)+Number(r.completion_tokens));const R={r_token:tokens.reduce((a,b)=>a+b,0)/Math.max(1,items.size),r_call:rows.length/Math.max(1,items.size),r_round:Math.max(...rounds)-Math.min(...rounds)+1,r_sample:agents.size,r_context:Math.max(0,rows.length-items.size),r_scaff:rows.filter(r=>r.scaffold||r.tool_calls).length};let baseline=R.r_round<=1&&R.r_sample<=1&&R.r_context<=0?'single_pass':R.r_round<=1&&R.r_context<=0?'sampled':R.r_sample<=1?'single_context':'frontier';const by={};rows.forEach(r=>{const k=String(r.item??r.item_id)+'\u0000'+String(r.agent??r.agent_id);(by[k]??={})[Number(r.round)]=bool(r.correct)});const counts={};Object.keys(by).forEach(k=>{const rs=Object.keys(by[k]).map(Number).sort((a,b)=>a-b);for(let i=0;i<rs.length-1;i++){const own=by[k][rs[i]]?1:0;const next=by[k][rs[i+1]]?1:0;const peers=Object.keys(by).filter(x=>x.startsWith(k.split('\u0000')[0]+'\u0000')).map(x=>by[x][rs[i]]).filter(x=>x!==undefined).reduce((a,b)=>a+(b?1:0),0)-own;const key='own='+own+',peers_right='+peers;(counts[key]??={good:0,n:0});counts[key].good+=next;counts[key].n++}});const T=Object.fromEntries(Object.entries(counts).map(([k,v])=>[k,{p_next:v.good/v.n,n:v.n}]));return {schema:'pace-card/v1',n_records:rows.length,n_items:items.size,resource_vector:R,baseline,feasibility:{status:Object.values(R).some(v=>v>0)?'feasible':'insufficient_data',active_axes:Object.keys(R).filter(k=>R[k]>0),direction:'increasing resources'},transition_matrix:T}}
-function markdown(c){return '# PACE Card\n\nBaseline: **'+c.baseline+'**\n\n| Axis | Value |\n|---|---:|\n'+Object.entries(c.resource_vector).map(([k,v])=>'| '+k+' | '+Number(v).toFixed(3)+' |').join('\n')+'\n\nTransition matrix\n\n| State | P(correct at t+1) | n |\n|---|---:|---:|\n'+Object.entries(c.transition_matrix).map(([k,v])=>'| '+k+' | '+v.p_next.toFixed(3)+' | '+v.n+' |').join('\n')+'\n'}
-function latex(c){return '\\begin{tcolorbox}[title={PACE Card}]\n\\textbf{Baseline:} '+c.baseline+'\\par\n\\begin{tabular}{lr}\n\\toprule\nAxis & Value\\\\\n\\midrule\n'+Object.entries(c.resource_vector).map(([k,v])=>k.replaceAll('_','\\_')+' & '+Number(v).toFixed(3)+'\\\\').join('\n')+'\n\\bottomrule\n\\end{tabular}\n\\end{tcolorbox}\n'}
-function download(text,ext){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'}));a.download='pace-card.'+ext;a.click();URL.revokeObjectURL(a.href)}
-function poolSize(){const K=Number($('pk').value),T=Number($('pt').value),c=Number($('pc').value),l=Number($('pl').value),r=l/(c+l||1),top=$('topology').value;const coefficient=top==='last_round_peers'?(T-1)*K*(K-1):top==='last_round_all'?(T-1)*K*K:.5*K*K*T*(T-1);const tok=K*T+coefficient*r;let recommended=8;while(recommended<Math.ceil(tok))recommended*=2;return 'k_tok = '+tok.toFixed(3)+'; recommended pool = '+recommended+'; r = '+r.toFixed(3)}
-function noise(rows){const valid=rows.filter(r=>r.p_mas!==undefined&&r.p_base!==undefined);if(!valid.length)return '';let band96=0,band1=0,clamp=0;const hs=[];valid.forEach(r=>{const m=Number(r.p_mas),b=Number(r.p_base),n=Number(r.n||1),se=Math.sqrt(Math.max(0,(m*(1-m)+b*(1-b)-2*.5*Math.sqrt(Math.max(0,m*(1-m)*b*(1-b))))/n)),d=m-b;if(Math.abs(d)>1.96*se)band96++;if(Math.abs(d)>se)band1++;hs.push(2*Math.asin(Math.sqrt(Math.max(0,m)))-2*Math.asin(Math.sqrt(Math.max(0,b))));const p11=Math.min(m,b),p10=m-p11,p01=b-p11,p00=1-m-b+p11;const logor=p10*p01?Math.log(Math.max(1e-300,p11*p00/(p10*p01))):Infinity;if(.5>(isFinite(logor)?Math.exp(-Math.abs(logor)/2):0))clamp++});return 'Noise band: '+band96+'/'+valid.length+' outside +-1.96 SE; '+band1+'/'+valid.length+' outside +-1.0 SE; mean Cohen h = '+(hs.reduce((a,b)=>a+b,0)/hs.length).toFixed(3)+'; Frechet clamp count = '+clamp}
-function influence(rows){if(!rows.length||rows[0].correct===undefined)return '';const first=Math.min(...rows.map(r=>Number(r.round))),last=Math.max(...rows.map(r=>Number(r.round)));const by={};rows.forEach(r=>{const k=r.item+'\u0000'+r.agent;(by[k]??={})[Number(r.round)]=!!r.correct});let w=0,r=0,fic=0,fci=0;Object.values(by).forEach(s=>{if(s[first]!==undefined){if(s[first])r++;else w++}if(s[first]!==undefined&&s[last]!==undefined){if(!s[first]&&s[last])fic++;if(s[first]&&!s[last])fci++}});const p1=r/(r+w),ti=w?fic/w:0,tc=r?fci/r:0,ps=ti+tc?ti/(ti+tc):0;return 'Flow identity: gap = '+Math.abs((ps-p1)-((r*w*(fic-fci))/((fic*r+fci*w)*(r+w)||1))).toExponential(2)+'; best-fitting peer-influence model is reported by the Python API.'}
-function render(rows){if(!card)return;$('baseline').textContent=card.baseline;$('status').textContent=card.feasibility.status+'; active axes: '+card.feasibility.active_axes.join(', ');$('vector').innerHTML=Object.entries(card.resource_vector).map(([k,v])=>'<div class="axis"><span>'+k+'</span><strong>'+Number(v).toFixed(3)+'</strong></div>').join('');$('feasible').innerHTML='<p>'+card.feasibility.direction+'</p><p>'+card.feasibility.active_axes.length+' active axes</p>';$('transitions').innerHTML='<table><tr><th>Own state, correct peers</th><th>P(correct next)</th><th>n</th></tr>'+Object.entries(card.transition_matrix).map(([k,v])=>'<tr><td>'+k+'</td><td>'+v.p_next.toFixed(3)+'</td><td>'+v.n+'</td></tr>').join('')+'</table>';$('theory').textContent=[poolSize(),noise(rows),influence(rows)].filter(Boolean).join(' | ');$('preview').textContent=markdown(card)}
-function showTab(name){document.querySelectorAll('.tab').forEach(button=>button.classList.toggle('active',button.dataset.tab===name));document.querySelectorAll('.tab-panel').forEach(panel=>panel.classList.toggle('active',panel.dataset.panel===name))}
-const demoRows=Array.from({length:15},(_,i)=>({item:'demo_'+Math.floor(i/5),agent:'agent_'+(i%5),round:Math.floor(i/5)+1,correct:i%3!==0,answer:i%3!==0?'A':'B',prompt_tokens:100,completion_tokens:20}));
-function loadDemo(kind){if(kind==='contrasts'){$('theory').textContent=noise(Array.from({length:9},(_,i)=>({p_mas:.55+i*.02,p_base:.5,n:20,study:'study'+i,benchmark:'demo',model:'model',category:'C'})));showTab('corpus');return}card=compute(demoRows);render(demoRows);showTab(kind==='hidden'?'trace':'dynamics')}
-function load(file){const reader=new FileReader();reader.onload=()=>{try{const rows=parseRows(reader.result,file.name);if(file.name.toLowerCase().endsWith('.csv')){$('theory').textContent=[poolSize(),noise(rows)].filter(Boolean).join(' | ');$('preview').textContent='Contrast diagnostics loaded. Drop a PACE JSONL log to render the full card.';return}card=compute(rows);render(rows)}catch(e){$('preview').textContent='Could not parse file: '+e.message}};reader.readAsText(file)}
-$('file').onchange=e=>e.target.files[0]&&load(e.target.files[0]);$('drop').ondragover=e=>{e.preventDefault();$('drop').classList.add('drag')};$('drop').ondragleave=()=> $('drop').classList.remove('drag');$('drop').ondrop=e=>{e.preventDefault();$('drop').classList.remove('drag');if(e.dataTransfer.files[0])load(e.dataTransfer.files[0])};$('md').onclick=()=>card&&download(markdown(card),'md');$('tex').onclick=()=>card&&download(latex(card),'tex');$('json').onclick=()=>card&&download(JSON.stringify(card,null,2),'json');
-$('calcPool').onclick=()=>{$('theory').textContent=poolSize()};
-document.querySelectorAll('.tab').forEach(button=>button.onclick=()=>showTab(button.dataset.tab));$('demoDebate').onclick=()=>loadDemo('debate');$('demoHidden').onclick=()=>loadDemo('hidden');$('demoContrasts').onclick=()=>loadDemo('contrasts');$('phiSlider').oninput=()=>{$('corpusLab').textContent='Assumed paired correlation phi = '+$('phiSlider').value};
+
+function normalizeJsonObj(obj){
+  if(Array.isArray(obj))return obj;
+  if(obj&&Array.isArray(obj.messages)){
+    const item=obj.item??obj.item_id??obj.id??'item_0';
+    return obj.messages.map((m,i)=>({item,agent:m.name||m.agent||('agent_'+i),round:m.round??0,correct:m.correct,prompt_tokens:m.prompt_tokens,completion_tokens:m.completion_tokens}));
+  }
+  if(obj&&obj.state&&Array.isArray(obj.state.messages)){
+    const item=obj.item??obj.item_id??obj.id??'item_0';
+    return obj.state.messages.map((m,i)=>({item,agent:m.name||m.agent||('agent_'+i),round:m.round??0,correct:m.correct,prompt_tokens:m.prompt_tokens,completion_tokens:m.completion_tokens}));
+  }
+  if(obj&&Array.isArray(obj.tasks)){
+    const item=obj.item??obj.item_id??obj.id??'item_0';
+    return obj.tasks.map((t,i)=>({item,agent:t.agent||('agent_'+i),round:t.round??i,correct:t.correct,prompt_tokens:t.prompt_tokens,completion_tokens:t.completion_tokens}));
+  }
+  return obj?[obj]:[];
+}
+
+function parseRows(text,name){
+  const trimmed=text.trim();
+  if(!trimmed)return [];
+  if(name.toLowerCase().endsWith('.csv'))return csv(trimmed);
+  try{
+    const parsed=JSON.parse(trimmed);
+    if(Array.isArray(parsed)){
+      return parsed.flatMap(el=>(el&&(el.messages||el.state||el.tasks)&&el.correct===undefined)?normalizeJsonObj(el):[el]);
+    }
+    return normalizeJsonObj(parsed);
+  }catch(_){
+    return trimmed.split(/\r?\n/).filter(Boolean).flatMap(line=>{
+      const obj=JSON.parse(line);
+      return (obj&&(obj.messages||obj.state||obj.tasks)&&obj.correct===undefined)?normalizeJsonObj(obj):[obj];
+    });
+  }
+}
+
+function numOrNull(v){
+  if(v===undefined||v===null||v==='')return null;
+  const n=Number(v);
+  return Number.isFinite(n)?n:null;
+}
+
+function compute(rows){
+  if(!rows||!rows.length){
+    return {
+      schema:'pace-card/v1',
+      n_records:0,
+      n_items:0,
+      resource_vector:{r_token:0,r_call:0,r_round:0,r_sample:0,r_context:0,r_scaff:0},
+      baseline:'insufficient_data',
+      feasibility:{status:'insufficient_data',active_axes:[],direction:'empty trace'},
+      transition_matrix:{}
+    };
+  }
+  const items=new Set(rows.map(r=>String(r.item??r.item_id??'item_0')));
+  const agents=new Set(rows.map(r=>String(r.agent??r.agent_id??'agent_0')));
+  const rounds=rows.map(r=>numOrNull(r.round)??0);
+  const tokens=rows.map(r=>{
+    const p=numOrNull(r.prompt_tokens),c=numOrNull(r.completion_tokens);
+    return (p!==null&&c!==null)?p+c:null;
+  }).filter(v=>v!==null);
+  const reasons=rows.map(r=>numOrNull(r.reasoning_tokens)).filter(v=>v!==null);
+  const R={
+    r_token:tokens.length?tokens.reduce((a,b)=>a+b,0)/Math.max(1,items.size):0,
+    r_call:rows.length/Math.max(1,items.size),
+    r_round:Math.max(...rounds)-Math.min(...rounds)+1,
+    r_sample:agents.size,
+    r_context:Math.max(0,rows.length-items.size),
+    r_scaff:rows.filter(r=>r.scaffold||r.tool_calls).length
+  };
+  if(reasons.length)R.r_reason=reasons.reduce((a,b)=>a+b,0)/Math.max(1,items.size);
+  let baseline=R.r_round<=1&&R.r_sample<=1&&R.r_context<=0?'single_pass':R.r_round<=1&&R.r_context<=0?'sampled':R.r_sample<=1?'single_context':'multi_agent_unmatched';
+  const by={};
+  rows.forEach(r=>{
+    const k=String(r.item??r.item_id??'item_0')+'\u0000'+String(r.agent??r.agent_id??'agent_0');
+    (by[k]??={})[numOrNull(r.round)??0]=bool(r.correct);
+  });
+  const counts={};
+  Object.keys(by).forEach(k=>{
+    const rs=Object.keys(by[k]).map(Number).sort((a,b)=>a-b);
+    const itemPrefix=k.split('\u0000')[0]+'\u0000';
+    for(let i=0;i<rs.length-1;i++){
+      const own=by[k][rs[i]]?1:0;
+      const next=by[k][rs[i+1]]?1:0;
+      const peers=Object.keys(by).filter(x=>x.startsWith(itemPrefix)).map(x=>by[x][rs[i]]).filter(x=>x!==undefined).reduce((a,b)=>a+(b?1:0),0)-own;
+      const key='own='+own+',peers_right='+peers;
+      (counts[key]??={good:0,n:0});
+      counts[key].good+=next;
+      counts[key].n++;
+    }
+  });
+  const T=Object.fromEntries(Object.entries(counts).map(([k,v])=>[k,{p_next:v.good/v.n,n:v.n}]));
+  return {
+    schema:'pace-card/v1',
+    n_records:rows.length,
+    n_items:items.size,
+    resource_vector:R,
+    baseline,
+    feasibility:{
+      status:tokens.length?'measured_only':'insufficient_data',
+      active_axes:Object.keys(R).filter(k=>R[k]>0),
+      direction:tokens.length?'requires compute-matched baseline comparison':'missing token logs'
+    },
+    transition_matrix:T
+  };
+}
+
+function markdown(c){
+  return '<!-- Generated by PACE Studio (arXiv:2611.17610) -->\n# PACE Card\n\nBaseline: **'+c.baseline+'** ('+c.n_items+' items, '+c.n_records+' calls)\n\n| Axis | Value |\n|---|---:|\n'+
+    Object.entries(c.resource_vector).map(([k,v])=>'| '+k+' | '+Number(v).toFixed(3)+' |').join('\n')+
+    '\n\n## Transition Matrix\n\n| State | P(correct at t+1) | n |\n|---|---:|---:|\n'+
+    Object.entries(c.transition_matrix).map(([k,v])=>'| '+k+' | '+v.p_next.toFixed(3)+' | '+v.n+' |').join('\n')+'\n';
+}
+
+function latex(c){
+  return '% Generated by PACE Studio (arXiv:2611.17610) — \\cite{sajjadi2026more}\n\\begin{table}[t]\n\\centering\n\\caption{PACE Evaluation Card (Baseline: '+c.baseline.replaceAll('_','\\_')+', '+c.n_items+' items).}\n\\begin{tabular}{lr}\n\\toprule\nAxis & Value\\\\\n\\midrule\n'+
+    Object.entries(c.resource_vector).map(([k,v])=>k.replaceAll('_','\\_')+' & '+Number(v).toFixed(3)+'\\\\').join('\n')+
+    '\n\\bottomrule\n\\end{tabular}\n\\end{table}\n';
+}
+
+function download(text,ext){
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'}));
+  a.download='pace-card.'+ext;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function poolSize(){
+  const K=Math.max(1,Number($('pk').value||1));
+  const T=Math.max(1,Number($('pt').value||1));
+  const c=Math.max(0,Number($('pc').value||0));
+  const l=Math.max(0,Number($('pl').value||0));
+  const nTarget=Math.max(10,Number($('pn')?$('pn').value:200)||200);
+  const p0=Math.min(0.99,Math.max(0.01,Number($('pp0')?$('pp0').value:0.5)||0.5));
+  const r=l/(c+l||1);
+  const top=$('topology').value;
+  const coefficient=top==='last_round_peers'?(T-1)*K*(K-1):top==='last_round_all'?(T-1)*K*K:.5*K*K*T*(T-1);
+  const kMin=K*T;
+  const kMax=kMin+coefficient;
+  const tok=kMin+coefficient*r;
+  let recommended=8;
+  while(recommended<Math.ceil(tok))recommended*=2;
+
+  $('theory').innerHTML=
+    '<div class="kpi-grid">'+
+      '<div class="kpi"><div class="k-label">Effective Samples k<sub>tok</sub></div><div class="k-val">'+tok.toFixed(2)+'</div><div class="k-sub">Range ['+kMin.toFixed(0)+', '+kMax.toFixed(0)+']</div></div>'+
+      '<div class="kpi"><div class="k-label">Recommended SC Pool</div><div class="k-val">k = '+recommended+'</div><div class="k-sub">Power-of-2 ceiling &ge; &lceil;k<sub>tok</sub>&rceil;</div></div>'+
+      '<div class="kpi"><div class="k-label">Message Ratio r</div><div class="k-val">'+r.toFixed(3)+'</div><div class="k-sub">l / (c<sub>0</sub> + l)</div></div>'+
+      '<div class="kpi"><div class="k-label">Context Multiplier</div><div class="k-val">'+coefficient.toFixed(0)+'</div><div class="k-sub">'+esc(top)+'</div></div>'+
+    '</div>';
+
+  const phi=Number($('phiSlider')?$('phiSlider').value:0.5);
+  const seTarget=Math.sqrt(2*p0*(1-p0)*(1-phi)/nTarget);
+  const mdeTarget=2.8*seTarget*100;
+  const se500=Math.sqrt(2*p0*(1-p0)*(1-phi)/500);
+  $('powerLab').innerHTML=
+    '<div class="banner"><strong>Protocol Checklist:</strong> To claim a Category C gain over single-agent compute for K='+K+', T='+T+' ('+esc(top)+'), evaluate a single-agent self-consistency baseline with <strong>k = '+recommended+' samples</strong> on <strong>n = '+nTarget+' items</strong> (detectable difference &ge; &plusmn;'+mdeTarget.toFixed(1)+' pp at 80% power).</div>'+
+    '<div class="kpi-grid">'+
+      '<div class="kpi"><div class="k-label">MDE (80% power, n='+nTarget+')</div><div class="k-val">&plusmn;'+mdeTarget.toFixed(1)+' pp</div><div class="k-sub">at p<sub>0</sub>='+p0.toFixed(2)+', &phi;='+phi.toFixed(2)+'</div></div>'+
+      '<div class="kpi"><div class="k-label">MDE Reference (n=500)</div><div class="k-val">&plusmn;'+(2.8*se500*100).toFixed(1)+' pp</div><div class="k-sub">CLI: <code>pace power --p-base '+p0.toFixed(2)+' --delta 0.05 --n-items '+nTarget+' --phi '+phi.toFixed(2)+'</code></div></div>'+
+    '</div>';
+
+  return 'k_tok = '+tok.toFixed(3)+'; recommended pool = '+recommended+'; r = '+r.toFixed(3);
+}
+
+function renderForestSvg(items){
+  if(!items.length)return '';
+  const rowH=24,topPad=22,leftPad=185,rightPad=75,width=760;
+  const plotW=width-leftPad-rightPad;
+  const height=topPad+items.length*rowH+26;
+  const maxAbs=Math.max(0.15,...items.map(it=>Math.abs(it.d)+1.96*it.se));
+  const xOf=v=>leftPad+((v+maxAbs)/(2*maxAbs))*plotW;
+  const x0=xOf(0);
+  const lines=items.map((it,idx)=>{
+    const y=topPad+idx*rowH+rowH/2;
+    const xL=xOf(it.d-1.96*it.se),xR=xOf(it.d+1.96*it.se),xC=xOf(it.d);
+    const col=Math.abs(it.d)<=1.96*it.se?'#9a5b13':(it.d>0?'#1b6e42':'#a62b2b');
+    const label=esc((it.study||'study').slice(0,25));
+    return '<text x="'+(leftPad-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="11.5" fill="#17212b">'+label+'</text>'+
+      '<line x1="'+xL.toFixed(1)+'" y1="'+y+'" x2="'+xR.toFixed(1)+'" y2="'+y+'" stroke="'+col+'" stroke-width="2.2"/>'+
+      '<circle cx="'+xC.toFixed(1)+'" cy="'+y+'" r="4" fill="'+col+'"/>'+
+      '<text x="'+(width-6)+'" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="'+col+'">'+(it.d>=0?'+':'')+(it.d*100).toFixed(1)+' pp</text>';
+  }).join('');
+  const axisY=topPad+items.length*rowH+4;
+  return '<div class="forest-wrap"><div class="forest-title">Paired Noise-Band Forest Plot (&Delta; = p<sub>MAS</sub> &minus; p<sub>base</sub> with &plusmn;1.96 SE(&phi;))</div>'+
+    '<svg viewBox="0 0 '+width+' '+height+'" style="width:100%;max-width:860px;height:auto;display:block">'+
+    '<line x1="'+x0.toFixed(1)+'" y1="'+topPad+'" x2="'+x0.toFixed(1)+'" y2="'+axisY+'" stroke="#52606d" stroke-dasharray="4 3" stroke-width="1.2"/>'+
+    lines+
+    '<text x="'+x0.toFixed(1)+'" y="'+(axisY+14)+'" text-anchor="middle" font-size="11" fill="#52606d">0.0 pp (Parity)</text>'+
+    '<text x="'+xOf(-maxAbs).toFixed(1)+'" y="'+(axisY+14)+'" text-anchor="start" font-size="11" fill="#52606d">&minus;'+(maxAbs*100).toFixed(0)+' pp</text>'+
+    '<text x="'+xOf(maxAbs).toFixed(1)+'" y="'+(axisY+14)+'" text-anchor="end" font-size="11" fill="#52606d">+'+(maxAbs*100).toFixed(0)+' pp</text>'+
+    '</svg></div>';
+}
+
+function noise(rows,phi){
+  const pCorr=(phi===undefined)?Number($('phiSlider')?$('phiSlider').value:0.5):Number(phi);
+  const valid=rows.filter(r=>r.p_mas!==undefined&&r.p_base!==undefined&&r.p_mas!==''&&r.p_base!=='');
+  if(!valid.length)return '';
+  let band96=0,band1=0,clamp=0;
+  const hs=[];
+  const plotItems=[];
+  const tableRows=[];
+  valid.forEach(r=>{
+    const m=Number(r.p_mas),b=Number(r.p_base),n=Math.max(1,Number(r.n||1));
+    const se=Math.sqrt(Math.max(0,(m*(1-m)+b*(1-b)-2*pCorr*Math.sqrt(Math.max(0,m*(1-m)*b*(1-b))))/n));
+    const d=m-b;
+    if(Math.abs(d)>1.96*se)band96++;
+    if(Math.abs(d)>se)band1++;
+    hs.push(2*Math.asin(Math.sqrt(Math.max(0,m)))-2*Math.asin(Math.sqrt(Math.max(0,b))));
+    const denom=b*(1-m);
+    const o=denom>0?(m*(1-b))/denom:Infinity;
+    const phiMax=(o>0&&isFinite(o))?Math.min(Math.sqrt(o),Math.sqrt(1/o)):0;
+    const clamped=pCorr>phiMax;
+    if(clamped)clamp++;
+    plotItems.push({study:r.study||'study',d,se});
+    const status=Math.abs(d)<=1.96*se?'<span class="pill warn">Within Noise Band</span>':(d>0?'<span class="pill ok">Above +1.96 SE</span>':'<span class="pill bad">Below -1.96 SE</span>');
+    tableRows.push('<tr><td>'+esc(r.study||'study')+'</td><td>'+esc(r.benchmark||'—')+'</td><td>'+esc(r.category||'B/C')+'</td><td>'+m.toFixed(3)+'</td><td>'+b.toFixed(3)+'</td><td>'+(d>=0?'+':'')+d.toFixed(3)+'</td><td>'+n+'</td><td>'+se.toFixed(3)+'</td><td>'+status+'</td></tr>');
+  });
+  const meanH=hs.reduce((a,b)=>a+b,0)/hs.length;
+  const summary='Noise band (&phi;='+pCorr.toFixed(2)+'): '+band96+'/'+valid.length+' outside +-1.96 SE; '+band1+'/'+valid.length+' outside +-1.0 SE; mean Cohen h = '+meanH.toFixed(3)+'; Frechet clamp count = '+clamp;
+
+  const isSyntheticDemo=rows===demoContrastRows;
+  $('corpusLab').innerHTML=
+    (isSyntheticDemo?'<div class="banner warn"><strong>Synthetic Illustrative Demo:</strong> Placeholder rows (Studies A&ndash;I) for UI demonstration only. Upload <code>baseline_tier_contrasts.csv</code> to audit the extracted 9-study corpus.</div>':'')+
+    '<div class="kpi-grid">'+
+      '<div class="kpi"><div class="k-label">Outside &plusmn;1.96 SE</div><div class="k-val">'+band96+' / '+valid.length+'</div><div class="k-sub">Paired 95% noise band</div></div>'+
+      '<div class="kpi"><div class="k-label">Outside &plusmn;1.0 SE</div><div class="k-val">'+band1+' / '+valid.length+'</div><div class="k-sub">At &phi; = '+pCorr.toFixed(2)+'</div></div>'+
+      '<div class="kpi"><div class="k-label">Mean Cohen&rsquo;s h</div><div class="k-val">'+(meanH>=0?'+':'')+meanH.toFixed(3)+'</div><div class="k-sub">Arcsine effect size</div></div>'+
+      '<div class="kpi"><div class="k-label">Fr&eacute;chet Clamps</div><div class="k-val">'+clamp+'</div><div class="k-sub">Rows hitting correlation bound</div></div>'+
+    '</div>'+
+    renderForestSvg(plotItems)+
+    '<div style="overflow:auto"><table><tr><th>Study</th><th>Benchmark</th><th>Cat.</th><th>p<sub>MAS</sub></th><th>p<sub>base</sub></th><th>&Delta;</th><th>n</th><th>SE(&phi;)</th><th>Noise Band</th></tr>'+tableRows.join('')+'</table></div>';
+
+  return summary;
+}
+
+function influence(rows){
+  if(!rows.length||rows[0].correct===undefined)return '';
+  const rounds=[...new Set(rows.map(r=>numOrNull(r.round)??0))].sort((a,b)=>a-b);
+  const first=rounds[0],last=rounds[rounds.length-1];
+  const by={};
+  rows.forEach(r=>{
+    const k=String(r.item??r.item_id??'item_0')+'\u0000'+String(r.agent??r.agent_id??'agent_0');
+    (by[k]??={})[numOrNull(r.round)??0]=bool(r.correct);
+  });
+  let w=0,r=0,fic=0,fci=0,rLast=0,nLast=0;
+  Object.values(by).forEach(s=>{
+    if(s[first]!==undefined){if(s[first])r++;else w++}
+    if(s[last]!==undefined){nLast++;if(s[last])rLast++}
+    if(s[first]!==undefined&&s[last]!==undefined){
+      if(!s[first]&&s[last])fic++;
+      if(s[first]&&!s[last])fci++;
+    }
+  });
+  const p1=(r+w)?r/(r+w):0;
+  const pT=nLast?rLast/nLast:0;
+  const ti=w?fic/w:0;
+  const tc=r?fci/r:0;
+  const ps=(ti+tc)?ti/(ti+tc):0;
+  const gap=Math.abs((ps-p1)-((r*w*(fic-fci))/((fic*r+fci*w)*(r+w)||1)));
+
+  const diagCls=rounds.length<=1?'warn':(fic>fci?'ok':'bad');
+  const diagText=rounds.length<=1
+    ?'Single-round trace: no multi-round peer influence transitions observed.'
+    :(fic>fci
+      ?'<strong>Net Positive Correction (f<sub>ic</sub> &gt; f<sub>ci</sub>):</strong> Wrong-to-right flips ('+fic+') exceed right-to-wrong flips ('+fci+'), moving toward p* = '+(ps*100).toFixed(1)+'%.'
+      :'<strong>Accuracy Fell or Stalled Across Rounds (f<sub>ci</sub> &ge; f<sub>ic</sub>):</strong> Right-to-wrong flips ('+fci+') equal or exceed wrong-to-right flips ('+fic+'); attribution requires a no-communication control.');
+
+  const perRound=rounds.map(rd=>{
+    const sub=rows.filter(x=>(numOrNull(x.round)??0)===rd);
+    const acc=sub.filter(x=>bool(x.correct)).length/Math.max(1,sub.length);
+    const toks=sub.map(x=>{
+      const p=numOrNull(x.prompt_tokens),c=numOrNull(x.completion_tokens);
+      return (p!==null&&c!==null)?p+c:null;
+    }).filter(v=>v!==null);
+    const meanTok=toks.length?toks.reduce((a,b)=>a+b,0)/toks.length:0;
+    return '<tr><td>Round '+rd+'</td><td>'+sub.length+'</td><td><span class="bar-wrap"><span class="bar-fill" style="width:'+Math.round(acc*100)+'%"></span></span>'+(acc*100).toFixed(1)+'%</td><td>'+meanTok.toFixed(0)+' tok</td></tr>';
+  }).join('');
+
+  $('dynamicsLab').innerHTML=
+    '<div class="banner '+diagCls+'">'+diagText+'</div>'+
+    '<div class="kpi-grid">'+
+      '<div class="kpi"><div class="k-label">Round '+first+' Accuracy</div><div class="k-val">'+(p1*100).toFixed(1)+'%</div><div class="k-sub">n = '+(r+w)+' agent-items</div></div>'+
+      '<div class="kpi"><div class="k-label">Round '+last+' Accuracy</div><div class="k-val">'+(pT*100).toFixed(1)+'%</div><div class="k-sub">&Delta; = '+((pT-p1)>=0?'+':'')+((pT-p1)*100).toFixed(1)+' pp</div></div>'+
+      '<div class="kpi"><div class="k-label">Wrong &rarr; Right (&tau;<sub>ic</sub>)</div><div class="k-val">'+ti.toFixed(3)+'</div><div class="k-sub">'+fic+' / '+w+' flips</div></div>'+
+      '<div class="kpi"><div class="k-label">Right &rarr; Wrong (&tau;<sub>ci</sub>)</div><div class="k-val">'+tc.toFixed(3)+'</div><div class="k-sub">'+fci+' / '+r+' flips</div></div>'+
+      '<div class="kpi"><div class="k-label">Equilibrium p*</div><div class="k-val">'+(ps*100).toFixed(1)+'%</div><div class="k-sub">Flow gap: '+gap.toExponential(1)+'</div></div>'+
+    '</div>'+
+    '<table><tr><th>Round</th><th>Calls</th><th>Agent Accuracy</th><th>Mean Tokens / Call</th></tr>'+perRound+'</table>';
+
+  return 'Flow identity: gap = '+gap.toExponential(2)+'; p1 = '+p1.toFixed(3)+', p* = '+ps.toFixed(3);
+}
+
+const AXIS_DESC={
+  r_token:'Mean total tokens per item',
+  r_call:'Mean LLM calls per item',
+  r_round:'Debate / interaction rounds',
+  r_sample:'Distinct agents / samples',
+  r_context:'Extra context-echo calls',
+  r_scaff:'Tool / scaffolded calls',
+  r_reason:'Mean reasoning tokens per item'
+};
+
+function render(rows){
+  if(!card)return;
+  $('baseline').textContent=card.baseline;
+  $('status').textContent=card.feasibility.status+' · '+card.n_items+' items · '+card.n_records+' calls';
+  ['rungA','rungB','rungC','rungD'].forEach(id=>$(id).classList.remove('on'));
+  if(card.baseline==='single_pass')$('rungA').classList.add('on');
+  else if(card.baseline==='sampled')$('rungB').classList.add('on');
+
+  $('vector').innerHTML=Object.entries(card.resource_vector).map(([k,v])=>
+    '<div class="axis"><span class="axis-name"><strong>'+esc(k)+'</strong><span class="axis-desc">'+(AXIS_DESC[k]||'')+'</span></span><strong>'+Number(v).toFixed(2)+'</strong></div>'
+  ).join('');
+
+  $('feasible').innerHTML=
+    '<p style="margin:0 0 8px"><strong>Status:</strong> '+esc(card.feasibility.status)+'</p>'+
+    '<p style="margin:0 0 8px"><strong>Guidance:</strong> '+esc(card.feasibility.direction)+'</p>'+
+    (card.baseline==='multi_agent_unmatched'?'<p style="margin:0 0 8px"><span class="pill warn">Unmatched MAS</span> Compare against Category B (Sampled) or Category C (Resource-Matched) baseline.</p>':'')+
+    '<p style="margin:0;color:var(--muted);font-size:13px">Active axes ('+card.feasibility.active_axes.length+'): '+esc(card.feasibility.active_axes.join(', '))+'</p>';
+
+  const tEntries=Object.entries(card.transition_matrix);
+  $('transitions').innerHTML=tEntries.length
+    ?'<table><tr><th>State at Round t</th><th>P(correct at t+1)</th><th>n</th></tr>'+
+      tEntries.map(([k,v])=>'<tr><td><code>'+esc(k)+'</code></td><td><span class="bar-wrap"><span class="bar-fill" style="width:'+Math.round(v.p_next*100)+'%"></span></span>'+v.p_next.toFixed(3)+'</td><td>'+v.n+'</td></tr>').join('')+'</table>'
+    :'<p class="empty">Single-round trace: no round-to-round transitions.</p>';
+
+  influence(rows);
+  poolSize();
+  $('preview').textContent=markdown(card);
+}
+
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(button=>button.classList.toggle('active',button.dataset.tab===name));
+  document.querySelectorAll('.tab-panel').forEach(panel=>panel.classList.toggle('active',panel.dataset.panel===name));
+  if(history.replaceState&&['trace','dynamics','corpus','planner'].includes(name)){
+    history.replaceState(null,'','#'+name);
+  }
+}
+
+const demoDebateRows=[];
+for(let item=0;item<6;item++){
+  for(let round=1;round<=3;round++){
+    for(let agent=0;agent<5;agent++){
+      const baseOk=(item+agent)%2===0;
+      const ok=round===1?baseOk:(round===2?(item<4?((agent+item)%3!==0):baseOk):(item<4?true:(agent%2===0)));
+      demoDebateRows.push({
+        item:'mmlu_pro_'+String(item+1).padStart(2,'0'),
+        agent:'agent_'+(agent+1),
+        round,
+        correct:ok,
+        answer:ok?'C':'A',
+        prompt_tokens:380+(round-1)*240,
+        completion_tokens:115
+      });
+    }
+  }
+}
+
+const demoHiddenRows=[];
+for(let item=0;item<8;item++){
+  for(let round=1;round<=3;round++){
+    for(let agent=0;agent<5;agent++){
+      const ok=round===1?(agent===0):(round===2?(agent<3):(item<7||agent<4));
+      demoHiddenRows.push({
+        item:'hp_split_'+String(item+1).padStart(2,'0'),
+        agent:'view_'+(agent+1),
+        round,
+        correct:ok,
+        answer:ok?'Target':'Decoy',
+        prompt_tokens:420+(round-1)*260,
+        completion_tokens:95
+      });
+    }
+  }
+}
+
+const demoContrastRows=[
+  {study:'Synthetic Study A',benchmark:'Math / MMLU',category:'B',p_mas:0.780,p_base:0.810,n:200},
+  {study:'Synthetic Study B',benchmark:'Commonsense / Math',category:'B',p_mas:0.640,p_base:0.690,n:150},
+  {study:'Synthetic Study C',benchmark:'Reasoning',category:'C',p_mas:0.715,p_base:0.730,n:180},
+  {study:'Synthetic Study D',benchmark:'QA / Math',category:'B',p_mas:0.742,p_base:0.768,n:220},
+  {study:'Synthetic Study E',benchmark:'MATH / BBH',category:'B',p_mas:0.590,p_base:0.645,n:300},
+  {study:'Synthetic Study F',benchmark:'MMLU-Pro',category:'D',p_mas:0.620,p_base:0.600,n:250},
+  {study:'Synthetic Study G',benchmark:'MMLU',category:'B',p_mas:0.695,p_base:0.735,n:200},
+  {study:'Synthetic Study H',benchmark:'MMLU / ARC',category:'B',p_mas:0.660,p_base:0.705,n:180},
+  {study:'Synthetic Study I',benchmark:'Multi-step',category:'C',p_mas:0.540,p_base:0.555,n:160}
+];
+
+function loadDemo(kind,silent){
+  if(kind==='contrasts'){
+    currentContrasts=demoContrastRows;
+    noise(currentContrasts);
+    if(!silent){
+      showTab('corpus');
+      flash($('loadStatus'),'Loaded 9-study contrast demo');
+    }
+    return;
+  }
+  const rows=kind==='hidden'?demoHiddenRows:demoDebateRows;
+  currentRows=rows;
+  card=compute(rows);
+  render(rows);
+  if(!silent){
+    showTab(kind==='hidden'?'dynamics':'trace');
+    flash($('loadStatus'),kind==='hidden'?'Loaded Hidden-Profile demo':'Loaded Debate JSONL demo');
+  }
+}
+
+function load(file){
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const rows=parseRows(reader.result,file.name);
+      if(!rows.length){
+        flash($('loadStatus'),'Empty file: no records found',true);
+        return;
+      }
+      if(rows[0].p_mas!==undefined&&rows[0].p_base!==undefined){
+        currentContrasts=rows;
+        noise(currentContrasts);
+        showTab('corpus');
+        flash($('loadStatus'),'Loaded contrast table: '+file.name);
+        return;
+      }
+      if(rows[0].item===undefined&&rows[0].item_id===undefined){
+        flash($('loadStatus'),'Unrecognized schema (need item/correct or p_mas/p_base)',true);
+        return;
+      }
+      currentRows=rows;
+      card=compute(rows);
+      render(rows);
+      showTab('trace');
+      flash($('loadStatus'),'Loaded trace: '+file.name);
+    }catch(e){
+      flash($('loadStatus'),'Parse error: '+e.message,true);
+      $('preview').textContent='Could not parse file: '+e.message;
+    }
+  };
+  reader.readAsText(file);
+}
+
+$('file').onchange=e=>e.target.files[0]&&load(e.target.files[0]);
+$('drop').ondragover=e=>{e.preventDefault();$('drop').classList.add('drag')};
+$('drop').ondragleave=()=>$('drop').classList.remove('drag');
+$('drop').ondrop=e=>{e.preventDefault();$('drop').classList.remove('drag');if(e.dataTransfer.files[0])load(e.dataTransfer.files[0])};
+
+$('md').onclick=()=>card&&download(markdown(card),'md');
+$('tex').onclick=()=>card&&download(latex(card),'tex');
+$('json').onclick=()=>card&&download(JSON.stringify(card,null,2),'json');
+$('copyMd').onclick=()=>card&&copyText(markdown(card),$('exportToast'),'Copied Markdown!');
+$('copyTex').onclick=()=>card&&copyText(latex(card),$('exportToast'),'Copied LaTeX!');
+$('copyBib').onclick=()=>copyText(BIBTEX,$('citeToast'),'BibTeX copied!');
+
+$('calcPool').onclick=()=>poolSize();
+['pk','pt','pc','pl','topology','pn','pp0'].forEach(id=>{
+  $(id).addEventListener('input',()=>poolSize());
+  $(id).addEventListener('change',()=>poolSize());
+});
+
+document.querySelectorAll('.tab').forEach(button=>{
+  button.onclick=()=>showTab(button.dataset.tab);
+});
+
+$('demoDebate').onclick=()=>loadDemo('debate');
+$('demoHidden').onclick=()=>loadDemo('hidden');
+$('demoContrasts').onclick=()=>loadDemo('contrasts');
+
+$('phiSlider').oninput=()=>{
+  $('phiVal').textContent=Number($('phiSlider').value).toFixed(2);
+  if(currentContrasts.length)noise(currentContrasts);
+  poolSize();
+};
+
+currentContrasts=demoContrastRows;
+noise(currentContrasts);
+loadDemo('debate',true);
+const initHash=(window.location.hash||'').replace('#','');
+if(['trace','dynamics','corpus','planner'].includes(initHash))showTab(initHash);
 </script>
 </body>
 </html>
