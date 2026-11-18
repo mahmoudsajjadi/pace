@@ -310,6 +310,19 @@ def run_s7(client: LLMClient, items: Sequence[dict], **kwargs: Any) -> list[dict
     )
 
 
+def run_s7v(client: LLMClient, items: Sequence[dict], **kwargs: Any) -> list[dict]:
+    """Length-matched placebo debate on split views: each agent keeps only its own view and receives noninformative peer messages."""
+    return _debate(
+        client,
+        items,
+        "S7v",
+        kwargs.pop("k_agents", 3),
+        kwargs.pop("rounds", 3),
+        lambda item, agent: (item.get("views") or [item["prompt"]])[agent] + "\nContinue independently; do not use peer content.",
+        kwargs,
+    )
+
+
 def run_s8(client: LLMClient, items: Sequence[dict], **kwargs: Any) -> list[dict]:
     """Two-layer mixture-of-agents runner: parallel first layer followed by an aggregator call."""
     rows = _run_views(client, items, "S8", 1, kwargs)
@@ -341,5 +354,6 @@ STRATEGIES = {
     "S4v": run_s4v,
     "S5": run_s5,
     "S7": run_s7,
+    "S7v": run_s7v,
     "S8": run_s8,
 }

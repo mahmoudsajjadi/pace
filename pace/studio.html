@@ -3,31 +3,140 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PACE Studio · Parity-Aware Compute Evaluation</title>
+<meta name="citation_title" content="More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs">
+<meta name="citation_author" content="Sajjadi Mohammadabadi, Seyed Mahmoud">
+<meta name="citation_author_institution" content="Department of Computer Science and Engineering, University of Nevada, Reno">
+<meta name="citation_publication_date" content="2026/11">
+<meta name="citation_online_date" content="2026/11">
+<meta name="citation_arxiv_id" content="2611.17610">
+<meta name="citation_doi" content="10.48550/arXiv.2611.17610">
+<meta name="citation_pdf_url" content="https://arxiv.org/pdf/2611.17610">
+<meta name="citation_abstract_html_url" content="https://arxiv.org/abs/2611.17610">
+<meta name="citation_fulltext_html_url" content="https://arxiv.org/html/2611.17610v1">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="multi-agent systems; test-time compute; test-time scaling; self-consistency; parity-aware compute evaluation; reasoning tokens; large language models; evaluation">
+
+<!-- Dublin Core Meta Tags -->
+<meta name="DC.title" content="More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs">
+<meta name="DC.creator" content="Sajjadi Mohammadabadi, Seyed Mahmoud">
+<meta name="DC.subject" content="Multi-Agent LLMs; Test-Time Compute; Self-Consistency; Evaluation; Parity-Aware Compute Evaluation">
+<meta name="DC.description" content="Parity-Aware Compute Evaluation (PACE): 4-rung baseline ladder, 6D resource vector, 9-study synthesis (516 configurations, 834 contrasts), controlled MMLU-Pro and Hidden Profile experiments, and open-source Python CLI and Studio.">
+<meta name="DC.date" content="2026-11">
+<meta name="DC.type" content="Text">
+<meta name="DC.identifier" content="arXiv:2611.17610">
+<meta name="DC.identifier" content="doi:10.5281/zenodo.24286397">
+<meta name="DC.language" content="en">
+<meta name="DC.rights" content="Apache-2.0 / CC-BY-4.0">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:site_name" content="PACE · Parity-Aware Compute Evaluation">
 <meta property="og:title" content="PACE Studio · Parity-Aware Compute Evaluation">
 <meta property="og:description" content="Audit multi-agent LLM traces against compute-matched single-agent baselines, inspect debate transition dynamics, and size self-consistency pools (arXiv:2611.17610).">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://huggingface.co/spaces/sajjadi/pace-studio">
 <meta property="og:image" content="https://raw.githubusercontent.com/mahmoudsajjadi/pace/main/docs/assets/pace_cheatsheet.png">
+<meta property="og:image:alt" content="PACE Parity-Aware Compute Evaluation visual summary card">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/mahmoudsajjadi/pace/main/docs/assets/pace_cheatsheet.png">
 <meta name="twitter:title" content="PACE Studio · Parity-Aware Compute Evaluation">
-<meta name="twitter:description" content="Audit multi-agent LLM traces against compute-matched single-agent baselines (arXiv:2611.17610).">
-<title>PACE Studio · Parity-Aware Compute Evaluation</title>
+<meta name="twitter:description" content="Audit multi-agent LLM traces against compute-matched single-agent baselines, inspect debate transition dynamics, and size self-consistency pools (arXiv:2611.17610).">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mahmoudsajjadi/pace/main/docs/assets/pace_cheatsheet.png">
+<meta name="twitter:image:alt" content="PACE Parity-Aware Compute Evaluation visual summary card">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://arxiv.org/abs/2611.17610",
+      "headline": "More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs",
+      "name": "More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs",
+      "author": {
+        "@type": "Person",
+        "name": "Seyed Mahmoud Sajjadi Mohammadabadi",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Department of Computer Science and Engineering, University of Nevada, Reno"
+        },
+        "email": "mahmoud.sajjadi@unr.edu"
+      },
+      "datePublished": "2026-11",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "url": "https://arxiv.org/abs/2611.17610",
+      "sameAs": [
+        "https://arxiv.org/abs/2611.17610",
+        "https://arxiv.org/html/2611.17610v1",
+        "https://arxiv.org/pdf/2611.17610",
+        "https://doi.org/10.5281/zenodo.24286397",
+        "https://huggingface.co/papers/2611.17610",
+        "https://www.alphaxiv.org/abs/2611.17610",
+        "https://mahmoudsajjadi.github.io/pace/",
+        "https://github.com/mahmoudsajjadi/pace"
+      ],
+      "keywords": [
+        "multi-agent systems",
+        "test-time compute",
+        "test-time scaling",
+        "self-consistency",
+        "parity-aware compute evaluation",
+        "reasoning tokens",
+        "large language models",
+        "evaluation"
+      ],
+      "abstract": "Multi-agent language model evaluations often compare communicating systems against a single greedy pass, confounding inter-agent coordination with independent sampling and expanded test-time compute. We introduce Parity-Aware Compute Evaluation (PACE), classifying baselines on a four-category ladder (A greedy, B sampled, C resource-matched, D Pareto frontier), auditing a six-dimension resource vector, and evaluating 9 primary studies (516 unique configurations, 834 contrasts) alongside controlled MMLU-Pro and Hidden Profile experiments."
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "PACE (pace-eval)",
+      "codeRepository": "https://github.com/mahmoudsajjadi/pace",
+      "programmingLanguage": "Python",
+      "runtimePlatform": "Python 3.10+",
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "url": "https://mahmoudsajjadi.github.io/pace/",
+      "isBasedOn": { "@id": "https://arxiv.org/abs/2611.17610" },
+      "author": {
+        "@type": "Person",
+        "name": "Seyed Mahmoud Sajjadi Mohammadabadi"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "PACE Studio",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (Browser)",
+      "url": "https://huggingface.co/spaces/sajjadi/pace-studio",
+      "isBasedOn": { "@id": "https://arxiv.org/abs/2611.17610" },
+      "author": {
+        "@type": "Person",
+        "name": "Seyed Mahmoud Sajjadi Mohammadabadi"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "name": "PACE Extracted Contrast Ledger & Hidden Profile Control",
+      "description": "834 baseline-specific contrast records across 9 multi-agent LLM studies (516 configurations) and 200-item Hidden Profile split-view control benchmark.",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "url": "https://huggingface.co/datasets/sajjadi/pace-contrasts",
+      "isBasedOn": { "@id": "https://arxiv.org/abs/2611.17610" },
+      "creator": {
+        "@type": "Person",
+        "name": "Seyed Mahmoud Sajjadi Mohammadabadi"
+      },
+      "sameAs": [
+        "https://huggingface.co/datasets/sajjadi/hidden-profile-control",
+        "https://doi.org/10.5281/zenodo.24286397"
+      ]
+    }
+  ]
+}
+</script>
 <style>
 :root{
-  --ink:#17212b;
-  --muted:#52606d;
-  --paper:#f6f3ed;
-  --panel:#ffffff;
-  --line:#dfd8cc;
-  --accent:#bb4d2e;
-  --accent2:#1d6b68;
-  --ok:#1b6e42;
-  --warn:#9a5b13;
-  --bad:#a62b2b;
-  --radius:10px;
+  --ink:#17212b;--muted:#52606d;--paper:#f6f3ed;--panel:#ffffff;
+  --line:#dfd8cc;--accent:#bb4d2e;--accent2:#1d6b68;--ok:#1b6e42;--warn:#b56b15;--bad:#b42318;--radius:10px;
 }
-*{box-sizing:border-box}
 body{
   margin:0;
   color:var(--ink);
@@ -292,6 +401,7 @@ footer a:hover{text-decoration:underline}
       <div>Sajjadi Mohammadabadi (2026). <em>More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs.</em></div>
       <div class="cite-actions">
         <button id="copyBib" class="accent" type="button">Copy BibTeX</button>
+        <button id="copyRev" class="accent" type="button" title="Copies the short PACE OpenReview reviewer block">Copy Reviewer Block</button>
         <a class="btn secondary" href="https://github.com/mahmoudsajjadi/pace" target="_blank" rel="noopener">Get Python Toolkit</a>
         <span id="citeToast" class="toast"></span>
       </div>
@@ -361,8 +471,24 @@ footer a:hover{text-decoration:underline}
         <label>Paired correlation &phi; = <strong id="phiVal">0.50</strong>
           <input id="phiSlider" type="range" min="0" max="0.9" step="0.01" value="0.5">
         </label>
+        <label>Category
+          <select id="catFilter">
+            <option value="BC" selected>Category B/C (Sampled / Resource-Matched)</option>
+            <option value="B">Category B (Sampled)</option>
+            <option value="C">Category C (Resource-Matched)</option>
+            <option value="D">Category D (Pareto)</option>
+            <option value="ALL">All Categories (Including A)</option>
+          </select>
+        </label>
+        <label>Study
+          <select id="studyFilter">
+            <option value="ALL" selected>All Studies</option>
+          </select>
+        </label>
+        <button id="copyLink" class="secondary" type="button" title="Copies a link to this tab, category and study (?tab=&cat=&study=)">Copy link to this view</button>
+        <span id="linkToast" class="toast"></span>
       </div>
-      <div id="corpusLab" class="empty">Load a contrast CSV or click "Load Demo: 9-Study Contrasts CSV".</div>
+      <div id="corpusLab" class="empty">Load contrast data to inspect paired noise bands.</div>
     </section>
   </section>
 
@@ -388,6 +514,20 @@ footer a:hover{text-decoration:underline}
       </div>
       <div id="theory" class="empty">Configure a budget.</div>
       <div id="powerLab" class="empty" style="margin-top:12px">Power calculator available through pace power.</div>
+      <div id="inflateLab" style="margin-top:14px;border-top:1px solid var(--line);padding-top:12px">
+        <h3 style="margin:0 0 6px">pace inflate: what does a K-sample vote buy?</h3>
+        <p class="panel-sub">Beta-binomial model of item difficulty. Paste per-item success counts out of n samples to fit it (the browser version of <code>pace inflate</code>), or give a mean accuracy and a concentration. Binary majority is a lower bound for multiple-choice plurality voting; set wrong options W above 1 to model wrong answers that split.</p>
+        <div class="actions">
+          <label>Pool size n <input id="infN" type="number" value="16" min="1" style="width:70px"></label>
+          <label>K values <input id="infK" type="text" value="1,3,5,9,16,24" style="width:120px"></label>
+          <label>Wrong options W <input id="infW" type="number" value="1" min="1" step="0.5" style="width:70px"></label>
+          <label>Mean acc <input id="infP" type="number" value="0.47" min="0.01" max="0.99" step="0.01" style="width:70px"></label>
+          <label>Concentration a+b <input id="infC" type="number" value="1.0" min="0.05" step="0.1" style="width:70px"></label>
+          <button id="calcInf" class="teal" type="button">Calculate</button>
+        </div>
+        <textarea id="infCounts" rows="2" style="width:100%;margin-top:8px" placeholder="Optional: success count per item out of n, separated by spaces or commas (for example 3 16 0 9). If given, alpha and beta are fitted and mean acc and concentration are ignored."></textarea>
+        <div id="infOut" class="empty" style="margin-top:8px">Enter values and calculate.</div>
+      </div>
     </section>
   </section>
 
@@ -404,6 +544,8 @@ footer a:hover{text-decoration:underline}
         <span id="exportToast" class="toast"></span>
         <button id="copyMd" class="secondary" type="button">Copy Markdown</button>
         <button id="copyTex" class="secondary" type="button">Copy LaTeX</button>
+        <button id="copyTexV1" class="secondary" type="button">Copy PACE Card v1.0 (LaTeX)</button>
+        <button id="jsonV2" class="secondary" type="button">Download Card JSON (v2 schema)</button>
         <button id="md" type="button">Export Markdown</button>
         <button id="tex" type="button">Export LaTeX</button>
         <button id="json" class="secondary" type="button">Export JSON</button>
@@ -420,7 +562,7 @@ footer a:hover{text-decoration:underline}
     </div>
   </div>
 
-  <div class="cli-strip" style="margin-top:10px;background:#faf8f4;border-left:4px solid var(--accent)">
+  <div class="cli-strip" style="margin-top:10px;background:#faf8f4;color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--accent)">
     <div><strong>Feedback &amp; Community Ledger:</strong> Found a bug, want a new importer, or have Category B/C/D results to add? (Your traces never leave this browser tab.)</div>
     <div style="display:flex;flex-wrap:wrap;gap:8px">
       <a class="btn secondary" href="https://github.com/mahmoudsajjadi/pace/issues/new?template=add_study_contrast.yml" target="_blank" rel="noopener">Submit Study Contrast</a>
@@ -445,6 +587,12 @@ let card=null;
 let currentRows=[];
 let currentContrasts=[];
 const $=id=>document.getElementById(id);
+
+const REVBLOCK=`PACE Baseline Parity Request (arXiv:2611.17610):
+1. Baseline rung: State the strongest single-agent Category [A/B/C/D] (policy and k).
+2. Resource vector R: Verify [R_reason, R_token, R_cost, R_lat, R_sample, R_sys] on both arms.
+3. Feasibility direction: A positive claim requires baseline resource >= MAS; a null requires <=.
+4. Frontier gap & controls: Require the frontier-gap 95% CI and the Route I/II/III controls.`;
 
 const BIBTEX=`@article{sajjadi2026more,
   title   = {More Agents, More Samples, or More Thinking? Untangling Coordination, Ensembling, and Test-Time Compute in Multi-Agent LLMs},
@@ -589,7 +737,12 @@ function compute(rows){
     r_context:laterCalls/Math.max(1,items.size),
     r_scaff:rows.filter(r=>r.scaffold||r.tool_calls).length
   };
-  if(reasons.length)R.r_reason=reasons.reduce((a,b)=>a+b,0)/Math.max(1,items.size);
+  const costs=rows.map(r=>numOrNull(r.cost_usd)).filter(v=>v!==null);
+  const lats=rows.map(r=>numOrNull(r.latency_s)).filter(v=>v!==null);
+  R.r_reason=reasons.length?reasons.reduce((a,b)=>a+b,0)/Math.max(1,items.size):null;
+  R.r_cost=costs.length?costs.reduce((a,b)=>a+b,0)/Math.max(1,items.size):null;
+  R.r_lat=lats.length?lats.reduce((a,b)=>a+b,0)/Math.max(1,items.size):null;
+  R.r_sys=rows.some(r=>Object.prototype.hasOwnProperty.call(r,'tool_calls'))?rows.filter(r=>r.tool_calls).length/Math.max(1,items.size):null;
   let baseline=R.r_round<=1&&R.r_sample<=1&&R.r_context<=0?'A':R.r_round<=1&&R.r_context<=0?'B':R.r_sample<=1?'C':'n/a';
   const by={};
   rows.forEach(r=>{
@@ -639,6 +792,42 @@ function latex(c){
   return '% Generated by PACE Studio (https://arxiv.org/abs/2611.17610) — \\cite{sajjadi2026more}\n\\begin{table}[t]\n\\centering\n\\caption{PACE Evaluation Card (Baseline: '+c.baseline.replaceAll('_','\\_')+', '+c.n_items+' items).}\n\\begin{tabular}{lr}\n\\toprule\nAxis & Value\\\\\n\\midrule\n'+
     Object.entries(c.resource_vector).map(([k,v])=>k.replaceAll('_','\\_')+' & '+fmtAxis(v,3)+'\\\\').join('\n')+
     '\n\\bottomrule\n\\end{tabular}\n\\end{table}\n';
+}
+
+/* PACE Card v1.0 export: the LaTeX table of the paper (one row per card field) and the JSON of the v2 schema (docs/pace_card_v2.schema.json). */
+const CARD_AXES=['r_reason','r_token','r_cost','r_sample','r_sys','r_call','r_round','r_context','r_scaff'];
+function cardV2(c,rows){
+  const R=c.resource_vector||{};
+  const axes={};
+  CARD_AXES.forEach(k=>{const v=R[k];axes[k]=(v===undefined||v===null||Number.isNaN(Number(v)))?null:Number(v)});
+  const lat=(R.r_lat===undefined||R.r_lat===null||Number.isNaN(Number(R.r_lat)))?null:Number(R.r_lat);
+  const unmeasured=Object.keys(axes).filter(k=>axes[k]===null).concat(lat===null?['r_lat']:[]).sort();
+  return {
+    schema:'pace-card/v2',
+    A_identity:{name:null,system:null,task:null,model:null,n_items:c.n_items||0,n_records:c.n_records||0},
+    B_resource_accounting:{axes:axes,latency:{summed_s_per_item:lat,critical_path_s_per_item:null},unmeasured:unmeasured},
+    C_baseline_specification:{rung:c.baseline,reason:'computed in the browser from the first-round and the later-round calls of the log',matched_axes:(c.feasibility&&c.feasibility.active_axes)||[]},
+    D_statistical_evidence:{single_trace:null,transition_matrix:c.transition_matrix||{}},
+    E_reproducibility:{pace_version:'browser',log_sha256:null,citation_instructions:'Cite the framework paper (PACE: Parity-Aware Compute Evaluation), the pace-eval package version and the dataset DOI of the contrast corpus; report this card with the execution log it was computed from.'}
+  };
+}
+function texEsc(s){return String(s).replace(/\\/g,'\\textbackslash{}').replace(/([_%&#$])/g,'\\$1')}
+function latexV1(c){
+  const R=c.resource_vector||{};
+  const f=(v,d)=>(v===null||v===undefined||Number.isNaN(Number(v)))?'n/a':Number(v).toFixed(d);
+  const cells=Object.keys(c.transition_matrix||{}).length;
+  const rows=[
+    ['1','Baseline rung','Category '+c.baseline,'Min','classify'],
+    ['2','Resource vector','tokens '+f(R.r_token,1)+', calls '+f(R.r_call,2)+', rounds '+f(R.r_round,0)+', samples '+f(R.r_sample,2)+', cost '+f(R.r_cost,4)+', latency '+f(R.r_lat,2)+' s, tool calls '+f(R.r_sys,2),'Min','audit'],
+    ['3','Token accounting','tokens per item '+f(R.r_token,1)+'; scaffold or tool rows '+f(R.r_scaff,0),'Min, Rec','card -{}-v2'],
+    ['4','Resource ratios and feasibility',(c.feasibility&&c.feasibility.direction)||'n/a','Rec','audit'],
+    ['5','Frontier gap','not computed in the browser; run pace report with a sample pool','Min, Rec','report'],
+    ['6','Evidence and routes',c.n_items+' items, '+c.n_records+' calls, '+cells+' transition cells','Rec','dynamics'],
+    ['7','Per-item budgets and search cost','not computed in the browser; run pace card -{}-v2','Ext','card -{}-v2']
+  ];
+  const noDash=s=>s.replace(/-\{\}-/g,'\u0001');
+  const body=rows.map(r=>r[0]+' & '+texEsc(noDash(r[1]+': '+r[2])).replace(/\u0001/g,'-{}-')+' & '+r[3]+' & \\texttt{'+texEsc(noDash(r[4])).replace(/\u0001/g,'-{}-')+'} \\\\').join('\n');
+  return '% PACE Card v1.0 (generated in the browser by PACE Studio; fields as in the paper, arXiv:2611.17610)\n\\begin{table}[t]\n\\centering\n\\footnotesize\n\\caption{PACE Card v1.0. Fields not computed from the log alone are marked; a dimension that was not measured is stated as n/a, never imputed.}\n\\begin{tabular}{@{}rp{0.62\\linewidth}ll@{}}\n\\toprule\n & Field: reported value & Level & Command \\\\\n\\midrule\n'+body+'\n\\bottomrule\n\\end{tabular}\n\\end{table}\n';
 }
 
 function download(text,ext){
@@ -731,10 +920,66 @@ function renderForestSvg(items){
     '</svg></div>';
 }
 
+let pendingStudyParam=null;
+
+function syncStudyFilterOptions(rows){
+  const sel=$('studyFilter');
+  if(!sel)return;
+  const studies=[...new Set(rows.map(r=>String(r.study||'study')))].sort();
+  const prev=pendingStudyParam||sel.value||'ALL';
+  sel.innerHTML='<option value="ALL">All Studies</option>'+studies.map(s=>'<option value="'+esc(s)+'">'+esc(s)+'</option>').join('');
+  const match=studies.find(s=>s.toLowerCase()===prev.toLowerCase())||studies.find(s=>s.toLowerCase().includes(prev.toLowerCase()));
+  if(prev!=='ALL'&&match){
+    sel.value=match;
+    pendingStudyParam=null;
+  }else if(prev==='ALL'){
+    sel.value='ALL';
+  }
+}
+
+function filterContrasts(rows){
+  const cat=$('catFilter')?$('catFilter').value:'BC';
+  const st=$('studyFilter')?$('studyFilter').value:'ALL';
+  const studyTarget=(st==='ALL'&&pendingStudyParam)?pendingStudyParam:st;
+  return rows.filter(r=>{
+    const c=String(r.category||'B/C').toUpperCase().trim();
+    const catOk=cat==='ALL'||(cat==='BC'&&(c==='B'||c==='C'||c==='B/C'))||c===cat;
+    const sn=String(r.study||'study').toLowerCase();
+    const stOk=!studyTarget||studyTarget==='ALL'||sn===studyTarget.toLowerCase()||sn.includes(studyTarget.toLowerCase());
+    return catOk&&stOk;
+  });
+}
+
+function updateUrlState(activeTab){
+  if(!history.replaceState)return;
+  try{
+    const u=new URL(window.location.href);
+    const activeBtn=document.querySelector('.tab.active');
+    const tab=activeTab||(activeBtn?activeBtn.dataset.tab:'');
+    if(tab&&['trace','dynamics','corpus','planner'].includes(tab)){
+      u.searchParams.set('tab',tab);
+      u.hash=tab;
+    }
+    const cat=$('catFilter')?$('catFilter').value:'BC';
+    if(cat&&cat!=='BC')u.searchParams.set('cat',cat);else u.searchParams.delete('cat');
+    const selStudy=$('studyFilter')?$('studyFilter').value:'ALL';
+    const st=(selStudy&&selStudy!=='ALL')?selStudy:(pendingStudyParam||'ALL');
+    if(st&&st!=='ALL')u.searchParams.set('study',st);else u.searchParams.delete('study');
+    history.replaceState(null,'',u.pathname+u.search+u.hash);
+  }catch(_){}
+}
+
 function noise(rows,phi){
   const pCorr=(phi===undefined)?Number($('phiSlider')?$('phiSlider').value:0.5):Number(phi);
-  const valid=rows.filter(r=>r.p_mas!==undefined&&r.p_base!==undefined&&r.p_mas!==''&&r.p_base!=='');
-  if(!valid.length)return '';
+  syncStudyFilterOptions(rows);
+  const filtered=filterContrasts(rows);
+  const valid=filtered.filter(r=>r.p_mas!==undefined&&r.p_base!==undefined&&r.p_mas!==''&&r.p_base!=='');
+  const isSyntheticDemo=rows===demoContrastRows;
+  const isLoadedCorpus=loadedCorpusRows!==null&&rows===loadedCorpusRows;
+  if(!valid.length){
+    $('corpusLab').innerHTML='<div class="banner warn">No contrast rows match the current Category / Study filter ('+rows.length+' total rows loaded). Change Category or Study above.</div>';
+    return 'Noise band (&phi;='+pCorr.toFixed(2)+'): 0 matching rows';
+  }
   let band96=0,band1=0,clamp=0;
   const hs=[];
   const plotItems=[];
@@ -758,11 +1003,9 @@ function noise(rows,phi){
   const meanH=hs.reduce((a,b)=>a+b,0)/hs.length;
   const summary='Noise band (&phi;='+pCorr.toFixed(2)+'): '+band96+'/'+valid.length+' outside +-1.96 SE; '+band1+'/'+valid.length+' outside +-1.0 SE; mean Cohen h = '+meanH.toFixed(3)+'; Frechet clamp count = '+clamp;
 
-  const isSyntheticDemo=rows===demoContrastRows;
-  const isLoadedCorpus=loadedCorpusRows!==null&&rows===loadedCorpusRows;
   $('corpusLab').innerHTML=
     (isSyntheticDemo?'<div class="banner warn"><strong>Synthetic Illustrative Demo:</strong> Placeholder rows (Studies A&ndash;I) for UI demonstration only. Upload <code>baseline_tier_contrasts.csv</code> to audit the extracted 9-study corpus.</div>':'')+
-    (isLoadedCorpus?'<div class="banner"><strong>Extracted Corpus Loaded:</strong> '+rows.length+' contrast records across '+new Set(rows.map(r=>r.study)).size+' studies (<code>corpus_contrasts.json</code>).</div>':'')+
+    (isLoadedCorpus?'<div class="banner"><strong>Extracted Corpus Loaded:</strong> Showing '+valid.length+' of '+rows.length+' contrast records across '+new Set(valid.map(r=>r.study)).size+' studies (<code>corpus_contrasts.json</code>).</div>':'')+
     '<div class="kpi-grid">'+
       '<div class="kpi"><div class="k-label">Outside &plusmn;1.96 SE</div><div class="k-val">'+band96+' / '+valid.length+'</div><div class="k-sub">Paired 95% noise band</div></div>'+
       '<div class="kpi"><div class="k-label">Outside &plusmn;1.0 SE</div><div class="k-val">'+band1+' / '+valid.length+'</div><div class="k-sub">At &phi; = '+pCorr.toFixed(2)+'</div></div>'+
@@ -839,7 +1082,10 @@ const AXIS_DESC={
   r_sample:'Independent first-round trajectories per item',
   r_context:'Later-round calls per item (see earlier context)',
   r_scaff:'Tool / scaffolded calls',
-  r_reason:'Mean reasoning tokens per item'
+  r_reason:'Mean reasoning tokens per item',
+  r_cost:'Mean USD per item',
+  r_lat:'Summed call latency per item in seconds (serialised sum, not the critical path of concurrent calls)',
+  r_sys:'Tool or verifier calls per item (n/a when the log has no tool_calls field)'
 };
 
 function render(rows){
@@ -875,9 +1121,7 @@ function render(rows){
 function showTab(name){
   document.querySelectorAll('.tab').forEach(button=>button.classList.toggle('active',button.dataset.tab===name));
   document.querySelectorAll('.tab-panel').forEach(panel=>panel.classList.toggle('active',panel.dataset.panel===name));
-  if(history.replaceState&&['trace','dynamics','corpus','planner'].includes(name)){
-    history.replaceState(null,'','#'+name);
-  }
+  updateUrlState(name);
 }
 
 const demoDebateRows=[];
@@ -993,10 +1237,80 @@ $('tex').onclick=()=>card&&download(latex(card),'tex');
 $('json').onclick=()=>card&&download(JSON.stringify(card,null,2),'json');
 $('copyMd').onclick=()=>card&&copyText(markdown(card),$('exportToast'),'Copied Markdown!');
 $('copyTex').onclick=()=>card&&copyText(latex(card),$('exportToast'),'Copied LaTeX!');
+$('copyTexV1').onclick=()=>card&&copyText(latexV1(card),$('exportToast'),'Copied PACE Card v1.0 (LaTeX)!');
+$('jsonV2').onclick=()=>card&&download(JSON.stringify(cardV2(card,currentRows),null,2),'v2.json');
 $('copyBib').onclick=()=>copyText(BIBTEX,$('citeToast'),'BibTeX copied!');
+$('copyRev').onclick=()=>copyText(REVBLOCK,$('citeToast'),'Reviewer block copied!');
 $('copyCli').onclick=()=>copyText(CLI_CMD,$('cliToast'),'CLI copied!');
+$('copyLink').onclick=()=>{updateUrlState();copyText(window.location.href,$('linkToast'),'Link copied!')};
 
+function lgam(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,t=x+5.5;t-=(x+0.5)*Math.log(t);let s=1.000000000190015;for(let j=0;j<6;j++){y+=1;s+=c[j]/y;}return -t+Math.log(2.5066282746310005*s/x);}
+function lbet(a,b){return lgam(a)+lgam(b)-lgam(a+b);}
+function lcho(n,k){return lgam(n+1)-lgam(k+1)-lgam(n-k+1);}
+function bbLog(s,n,a,b){return lcho(n,s)+lbet(s+a,n-s+b)-lbet(a,b);}
+function infLL(counts,n,a,b){const m={};counts.forEach(c=>{m[c]=(m[c]||0)+1;});let t=0;Object.keys(m).forEach(k=>{t+=m[k]*bbLog(Number(k),n,a,b);});return t;}
+function infFit(counts,n){
+  const LO=Math.log(1e-3),HI=Math.log(1e4);
+  const mean=Math.min(0.999,Math.max(0.001,counts.reduce((x,y)=>x+y,0)/(n*counts.length)));
+  let la=Math.log(mean*2),lb=Math.log((1-mean)*2),best=infLL(counts,n,Math.exp(la),Math.exp(lb)),step=2;
+  for(let it=0;it<200&&step>1e-6;it++){
+    let improved=false;
+    for(const da of [-step,-step/2,0,step/2,step])for(const db of [-step,-step/2,0,step/2,step]){
+      const ca=Math.min(HI,Math.max(LO,la+da)),cb=Math.min(HI,Math.max(LO,lb+db)),ll=infLL(counts,n,Math.exp(ca),Math.exp(cb));
+      if(ll>best+1e-12){best=ll;la=ca;lb=cb;improved=true;}
+    }
+    if(!improved)step/=2;
+  }
+  return [Math.exp(la),Math.exp(lb)];
+}
+function infBinary(a,b,K){let t=0;for(let s=0;s<=K;s++){if(2*s>K)t+=Math.exp(bbLog(s,K,a,b));else if(2*s===K)t+=0.5*Math.exp(bbLog(s,K,a,b));}return Math.min(1,t);}
+function infFact(n){let f=1;for(let i=2;i<=n;i++)f*=i;return f;}
+function infChoose(n,k){return Math.round(Math.exp(lcho(n,k)));}
+function infWrongWins(s,r,W){
+  if(r===0)return s>0?1:0;if(s===0)return 0;let total=0;
+  for(let m=1;m<=r;m++){
+    const base=[];for(let i=0;i<m;i++)base.push(1/infFact(i));
+    const powers=[[1]];
+    for(let w=1;w<=W;w++){const prev=powers[w-1],nx=new Array(r+1).fill(0);prev.forEach((pv,i)=>{if(pv===0)return;base.forEach((bv,j)=>{if(i+j<=r)nx[i+j]+=pv*bv;});});powers.push(nx);}
+    for(let j=1;j<=Math.min(W,Math.floor(r/m));j++){
+      const rest=r-j*m,coef=(powers[W-j][rest]||0),ways=infChoose(W,j)*coef/Math.pow(infFact(m),j)*infFact(r)/Math.pow(W,r);
+      total+=ways*(s>m?1:(s===m?1/(1+j):0));
+    }
+  }
+  return Math.min(1,total);
+}
+function infPlural(a,b,K,W){
+  const at=Wi=>{let t=0;for(let s=0;s<=K;s++)t+=Math.exp(bbLog(s,K,a,b))*infWrongWins(s,K-s,Wi);return t;};
+  const lo=Math.floor(W);if(Math.abs(W-lo)<1e-12)return Math.min(1,at(lo));
+  return Math.min(1,(1-(W-lo))*at(lo)+(W-lo)*at(lo+1));
+}
+function infEmpirical(counts,n,K){
+  if(K>n)return null;let out=0;const den=infChoose(n,K);
+  counts.forEach(s=>{let acc=0;for(let j=Math.max(0,K-(n-s));j<=Math.min(K,s);j++){const w=2*j>K?1:(2*j===K?0.5:0);if(w)acc+=w*infChoose(s,j)*infChoose(n-s,K-j)/den;}out+=acc;});
+  return out/counts.length;
+}
+function inflateCalc(){
+  const out=$('infOut'),n=Math.max(1,Math.round(Number($('infN').value)||16)),W=Math.max(1,Number($('infW').value)||1);
+  const Ks=$('infK').value.replace(/[^0-9]+/g,' ').trim().split(' ').map(Number).filter(k=>k>=1&&k<=60);
+  if(!Ks.length){out.textContent='Give at least one K between 1 and 60.';return;}
+  const raw=$('infCounts').value.replace(/[^0-9]+/g,' ').trim();
+  let a,b,counts=null,note='';
+  if(raw){
+    counts=raw.split(' ').map(Number);
+    if(counts.some(c=>c>n)){out.textContent='A success count exceeds the pool size n.';return;}
+    [a,b]=infFit(counts,n);note='Fitted from '+counts.length+' items: alpha='+a.toFixed(3)+', beta='+b.toFixed(3)+', single-sample accuracy '+(a/(a+b)).toFixed(3)+'.';
+  }else{
+    const p=Math.min(0.99,Math.max(0.01,Number($('infP').value)||0.5)),c=Math.max(0.05,Number($('infC').value)||1);
+    a=p*c;b=(1-p)*c;note='From the inputs: alpha='+a.toFixed(3)+', beta='+b.toFixed(3)+'.';
+  }
+  const rows=Ks.map(K=>{
+    const bin=infBinary(a,b,K),pl=W>1?infPlural(a,b,K,W):null,emp=counts?infEmpirical(counts,n,K):null;
+    return '<tr><td>'+K+'</td><td>'+bin.toFixed(3)+'</td><td>'+(pl===null?'-':pl.toFixed(3))+'</td><td>'+(emp===null?'n/a':emp.toFixed(3))+'</td></tr>';
+  }).join('');
+  out.innerHTML='<p style="margin:0 0 6px">'+note+'</p><table><tr><th>K</th><th>Binary majority (predicted)</th><th>Plurality, W='+W+' (predicted)</th><th>Pool observed (binary)</th></tr>'+rows+'</table><p class="panel-sub" style="margin:6px 0 0">Model: item accuracy ~ Beta(alpha, beta); binary majority is a lower bound for plurality voting over split wrong answers. Fit and predict on the system you are auditing; the concentration does not transport across models or tasks.</p>';
+}
 $('calcPool').onclick=()=>poolSize();
+$('calcInf').onclick=()=>inflateCalc();
 ['pk','pt','pc','pl','topology','pn','pp0'].forEach(id=>{
   $(id).addEventListener('input',()=>poolSize());
   $(id).addEventListener('change',()=>poolSize());
@@ -1015,6 +1329,19 @@ $('phiSlider').oninput=()=>{
   if(currentContrasts.length)noise(currentContrasts);
   poolSize();
 };
+if($('catFilter')){
+  $('catFilter').onchange=()=>{
+    if(currentContrasts.length)noise(currentContrasts);
+    updateUrlState();
+  };
+}
+if($('studyFilter')){
+  $('studyFilter').onchange=()=>{
+    pendingStudyParam=null;
+    if(currentContrasts.length)noise(currentContrasts);
+    updateUrlState();
+  };
+}
 
 async function loadDefaultCorpus(){
   try{
@@ -1031,10 +1358,27 @@ async function loadDefaultCorpus(){
   currentContrasts=demoContrastRows;
   noise(currentContrasts);
 }
-loadDefaultCorpus();
+
+const initParams=new URLSearchParams(window.location.search);
+const initCat=(initParams.get('cat')||'').toUpperCase().replace('B/C','BC').replace('B-C','BC').trim();
+const hasValidCat=['BC','B','C','D','ALL'].includes(initCat);
+if(hasValidCat&&$('catFilter'))$('catFilter').value=initCat;
+const initStudy=initParams.get('study');
+if(initStudy)pendingStudyParam=initStudy;
+// a shared study link without a category shows all of that study's rows (the default B/C filter would hide categories A and D)
+if(initStudy&&!hasValidCat&&$('catFilter'))$('catFilter').value='ALL';
+const tabAliases={ladder:'trace',audit:'trace',noise:'corpus',reml:'corpus',meta:'corpus',pool:'planner',inflate:'planner'};
+const rawTabParam=(initParams.get('tab')||'').toLowerCase();
+const initTabParam=tabAliases[rawTabParam]||rawTabParam;
+const rawHash=(window.location.hash||'').replace('#','').toLowerCase();
+const initHash=tabAliases[rawHash]||rawHash;
+const startTab=['trace','dynamics','corpus','planner'].includes(initTabParam)?initTabParam:(['trace','dynamics','corpus','planner'].includes(initHash)?initHash:((initStudy||hasValidCat)?'corpus':''));
+
+loadDefaultCorpus().then(()=>{
+  if(startTab==='corpus')updateUrlState('corpus');
+});
 loadDemo('debate',true);
-const initHash=(window.location.hash||'').replace('#','');
-if(['trace','dynamics','corpus','planner'].includes(initHash))showTab(initHash);
+if(startTab)showTab(startTab);
 </script>
 </body>
 </html>

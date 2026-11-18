@@ -613,6 +613,39 @@ def grade_hidden_profile(text: str, gold: str, names: Sequence[str] = NAMES) -> 
     return g
 
 
+# ----------------------------------------------------------------------------- code (executable unit tests)
+_CODE_FENCE = re.compile(r"```(?:python|py)?\s*\n(.*?)```", re.S | re.I)
+
+
+def extract_code(text: str) -> str:
+    """The last fenced code block of a response, else the whole response."""
+    blocks = _CODE_FENCE.findall(text or "")
+    return blocks[-1] if blocks else (text or "")
+
+
+def run_code_tests(code: str, tests: Sequence[str], setup: str = "", timeout: float = 10.0) -> bool:
+    """Run `code` followed by the assert strings in a fresh Python process with a timeout (no sandbox beyond that: trusted development machine only)."""
+    import os
+    import subprocess
+    import sys
+    import tempfile
+
+    src = (setup or "") + "\n" + code + "\n" + "\n".join(tests) + "\n"
+    with tempfile.TemporaryDirectory() as d:
+        path = os.path.join(d, "t.py")
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(src)
+        try:
+            return subprocess.run([sys.executable, "-I", path], cwd=d, capture_output=True, timeout=timeout).returncode == 0
+        except subprocess.TimeoutExpired:
+            return False
+
+
+def grade_code(text: str, gold: dict) -> Grade:
+    code = extract_code(text)
+    return Grade(run_code_tests(code, gold.get("tests", []), gold.get("setup", "")), code if code.strip() else None, None, "unit_tests", False, 1 if code.strip() else 0)
+
+
 # ----------------------------------------------------------------------------- dispatcher
 def grade_item(item: dict, text: str) -> Grade:
     """Grade a response against an item of the pace_lab.data schema ('kind' is 'mc', 'num' or 'name')."""
@@ -623,4 +656,6 @@ def grade_item(item: dict, text: str) -> Grade:
         return grade_math(text, item["gold"])
     if kind == "name":
         return grade_hidden_profile(text, item["gold"])
+    if kind == "code":
+        return grade_code(text, item["gold"])
     raise ValueError("no grader for kind %r" % kind)

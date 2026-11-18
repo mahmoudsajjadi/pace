@@ -19,7 +19,7 @@
 <meta name="citation_publication_date" content="2026/11">
 <meta name="citation_online_date" content="2026/11">
 <meta name="citation_arxiv_id" content="2611.17610">
-<meta name="citation_doi" content="10.5281/zenodo.24286397">
+<meta name="citation_doi" content="10.48550/arXiv.2611.17610">
 <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2611.17610">
 <meta name="citation_abstract_html_url" content="https://arxiv.org/abs/2611.17610">
 <meta name="citation_fulltext_html_url" content="https://arxiv.org/html/2611.17610v1">
@@ -235,6 +235,7 @@ pre{
       <a class="btn" href="https://github.com/mahmoudsajjadi/pace" target="_blank" rel="noopener">GitHub Repo</a>
       <a class="btn" href="assets/pace_cheatsheet.pdf" target="_blank" rel="noopener">1-Page Cheat Sheet (PDF)</a>
       <button class="btn accent" id="topBibBtn" type="button">Copy BibTeX</button>
+      <button class="btn accent" id="topRevBtn" type="button" title="Copies the short PACE OpenReview reviewer block">Copy Reviewer Block</button>
       <span id="topToast" class="toast"></span>
     </div>
   </div>
@@ -318,7 +319,7 @@ pace dynamics debate_log.jsonl --null null.jsonl</pre>
 
   <div class="section two-col">
     <div class="card">
-      <h2 style="margin-top:0">Token-Equated Pool Sizer (Eq. 9)</h2>
+      <h2 style="margin-top:0">Token-Equated Pool Sizer (k<sub>tok</sub> formula, Section 3)</h2>
       <p class="lead">Compute the single-agent sample count <strong>k<sub>tok</sub></strong> matching a K-agent, T-round debate run before claiming coordination gains.</p>
       <div class="calc-grid">
         <label>Agents (K)<input id="inK" type="number" value="5" min="1"></label>
@@ -327,8 +328,8 @@ pace dynamics debate_log.jsonl --null null.jsonl</pre>
         <label>Completion Tokens (l)<input id="inL" type="number" value="120" min="1"></label>
         <label>History Topology
           <select id="inTopo">
-            <option value="peers">Previous-round peers (Eq. 9)</option>
-            <option value="full">Full-history echo (Eq. 8)</option>
+            <option value="peers">Previous-round peers (k_tok)</option>
+            <option value="full">Full-history echo (k_tok, full history)</option>
           </select>
         </label>
       </div>
@@ -337,11 +338,11 @@ pace dynamics debate_log.jsonl --null null.jsonl</pre>
     <div class="card">
       <h2 style="margin-top:0">Reviewer &amp; Author Quick-Copy</h2>
       <p class="lead">Drop-in verification block for peer review or experimental setup sections:</p>
-<pre id="revBlock">Short Reviewer Parity Check (PACE, arXiv:2611.17610):
-1. Baseline rung: State strongest single-agent Category [A/B/C/D] (policy and k).
-2. Resource vector R: Report &lt;R_reason, R_token, R_cost, R_lat, R_sample, R_sys&gt; on both arms.
-3. Feasibility direction: Positive claim requires baseline resource &ge; MAS; null requires &le;.
-4. Frontier gap &amp; controls: Report &Delta;_frontier 95% paired bootstrap CI at k &ge; k_tok.</pre>
+<pre id="revBlock">PACE Baseline Parity Request (arXiv:2611.17610):
+1. Baseline rung: State the strongest single-agent Category [A/B/C/D] (policy and k).
+2. Resource vector R: Verify [R_reason, R_token, R_cost, R_lat, R_sample, R_sys] on both arms.
+3. Feasibility direction: A positive claim requires baseline resource &gt;= MAS; a null requires &lt;=.
+4. Frontier gap &amp; controls: Require the frontier-gap 95% CI and the Route I/II/III controls.</pre>
       <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
         <button class="btn" id="copyRevBtn" type="button">Copy Reviewer Block</button>
         <a class="btn" href="assets/pace_cheatsheet.png" download>Download 300 DPI PNG Card</a>
@@ -444,6 +445,11 @@ document.querySelectorAll('.rung-btn').forEach(b => b.onclick = () => showRung(b
 document.getElementById('topBibBtn').onclick = () => {
   navigator.clipboard.writeText(BIB);
   document.getElementById('topToast').textContent = 'BibTeX copied!';
+  setTimeout(() => document.getElementById('topToast').textContent = '', 2200);
+};
+document.getElementById('topRevBtn').onclick = () => {
+  navigator.clipboard.writeText(document.getElementById('revBlock').textContent);
+  document.getElementById('topToast').textContent = 'Reviewer block copied!';
   setTimeout(() => document.getElementById('topToast').textContent = '', 2200);
 };
 document.getElementById('copyCliBtn').onclick = () => {

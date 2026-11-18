@@ -50,23 +50,12 @@ def generate_clue_grid_items(
 def generate_distributed_code_items(
     n_items: int = 30, k_agents: int = 3, seed: int = 42
 ) -> list[dict]:
+    """Distinct, seed-controlled Python tasks with complementary constraints split across three agents and executable assert tests (see pace.distributed_code)."""
+    from .distributed_code import generate_items
+
     if n_items < 1 or k_agents != 3:
         raise ValueError("distributed code benchmark requires exactly three agents")
-    return [
-        {
-            "id": "code_%03d" % i,
-            "route": "information_partitioning",
-            "gold": "rename payload to payload_json",
-            "split": [
-                {"agent": 0, "prompt": "Caller module sends payload."},
-                {"agent": 1, "prompt": "API schema requires payload_json."},
-                {"agent": 2, "prompt": "Callee reads payload_json."},
-            ],
-            "shared": "Caller sends payload; schema and callee require payload_json.",
-            "synthetic": True,   # template item: every item is identical (one question), see docs/REVISION notes; not a benchmark
-        }
-        for i in range(n_items)
-    ]
+    return generate_items(n_items, k_agents, seed)
 
 
 def evaluate_with_verifier_threshold(

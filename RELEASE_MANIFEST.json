@@ -188,8 +188,8 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 9274,
-      "sha256": "dbc1518b32c1494723ec9d1b47048843d1bbb6d269e605d3fd3125e624218b6c"
+      "bytes": 28237,
+      "sha256": "f3a53ed69a179282236fdb2d60bb389bb1dfb9b0e2d45e472a181dbf48ea7027"
     },
     {
       "path": "docs/INDEXING_AND_VISIBILITY_PLAYBOOK.md",
@@ -198,18 +198,23 @@
     },
     {
       "path": "docs/llms.txt",
-      "bytes": 4236,
-      "sha256": "e5bacf8d65c5e737f8575471a56be2ab1cf157eeb66b519c281b383e135cf311"
+      "bytes": 4185,
+      "sha256": "0601cc39ae165cda7b50694159b2f83dd2d152b4aa26ceaa33f3cfda6312fe74"
     },
     {
       "path": "docs/robots.txt",
-      "bytes": 87,
-      "sha256": "accd771c76ba71c48ad9784d8442e2c5ec6a99d82d371ffbd5ff1bc5cf214c16"
+      "bytes": 83,
+      "sha256": "4297b230ee89cb0af0738951b7315a830f1f438975812ec7420e409b06d8c3c8"
     },
     {
       "path": "docs/sitemap.xml",
-      "bytes": 1082,
-      "sha256": "cbca6951710572d581b447cf9b8e8947d038b46a74efeb321a04201b1f80e549"
+      "bytes": 1049,
+      "sha256": "89cab35c3a587c88f213639451d941d79b33208616050c6989e2f8bc6cdc90eb"
+    },
+    {
+      "path": "docs/workbench.html",
+      "bytes": 18664,
+      "sha256": "de74671bc33fe8296a4f7c9c84b08b452747ca84c9a5fb97fd5eecc12515c036"
     },
     {
       "path": "LICENSE",
@@ -248,8 +253,8 @@
     },
     {
       "path": "mae_eval/README.md",
-      "bytes": 601,
-      "sha256": "aea59988fdc734b1be2835e255bec49c3c2e25591f091bbe56e07aca2d554bd7"
+      "bytes": 1029,
+      "sha256": "cd550800ffc46e4752903b440eb390e2857558863bea94c523e11ee5a3eb6451"
     },
     {
       "path": "mae_eval/tracker.py",
@@ -263,13 +268,18 @@
     },
     {
       "path": "notebooks/audit_your_log.ipynb",
-      "bytes": 2818,
-      "sha256": "612f8eb764389c22da6b59204170bbbd954fdd4f4bdb16e8b899526c36466c8b"
+      "bytes": 2784,
+      "sha256": "7ae3ed7490212c33ca609f8483b6f822cfa51f86b8dd871b4c845436cee5b929"
+    },
+    {
+      "path": "notebooks/cme_quickstart.ipynb",
+      "bytes": 4986,
+      "sha256": "693c196b9bdd98e71122dd16cdd2a1a21f8ed3702697c696c68dda000469a181"
     },
     {
       "path": "pace/__init__.py",
-      "bytes": 802,
-      "sha256": "68760fdbeb6dd4b589e03feef32032e37e1190b8e99718b8f9d5ffee8fb96c27"
+      "bytes": 949,
+      "sha256": "3c1970e4f3aae039939949bbeee9cdbe050f69db2c4e12922658deb8c450092e"
     },
     {
       "path": "pace/__main__.py",
@@ -293,13 +303,13 @@
     },
     {
       "path": "pace/card.py",
-      "bytes": 8126,
-      "sha256": "7a8b38d26fce3def687e96a2285892cd87942f85d3f0615d58e6425708d8f716"
+      "bytes": 24567,
+      "sha256": "a7fc083960dd163e67422755a7a6ecb6cea99843ae6e419170c792b8912ef91f"
     },
     {
       "path": "pace/cli.py",
-      "bytes": 32609,
-      "sha256": "356a79cd0cfe95e43e4df222dbdf68bcc04d99a5c78395f06c64eb14f56a7b57"
+      "bytes": 48558,
+      "sha256": "2a272b0d1ad5386ed104b9b84e9f31163dcc90794538a878ad9d1025f1e3aa98"
     },
     {
       "path": "pace/client.py",
@@ -307,14 +317,24 @@
       "sha256": "febe1f391b1f6dd1f7af1b4eb2a9b084d9c9f5ec3186123fbb0563c3c8830983"
     },
     {
+      "path": "pace/distributed_code.py",
+      "bytes": 13056,
+      "sha256": "0516c7e3bea39cb7e06ed55afd33a6e5069419b47edc39b26f40f6d5c60f9e6c"
+    },
+    {
       "path": "pace/dynamics.py",
       "bytes": 14800,
       "sha256": "77b2ff965d332e1aeb16edd905b7ec43c3aa3de9fbef8b20fcd5143d55ef064b"
     },
     {
+      "path": "pace/equivalence.py",
+      "bytes": 4695,
+      "sha256": "c650f26207a425be60dbadf2b3085c1ac9292a97d9adb33ae903a25361a8cfab"
+    },
+    {
       "path": "pace/escape_benchmarks.py",
-      "bytes": 5911,
-      "sha256": "cd97af787c0555145c4d0aec2da530ff5ab63dee641e6e6958f8036523088e9d"
+      "bytes": 5480,
+      "sha256": "6d1244aa2c5d8fb13fce4b14ae56d6665bfcee3240319199aa1759ad8027708f"
     },
     {
       "path": "pace/examples/crewai_integration.py",
@@ -353,8 +373,8 @@
     },
     {
       "path": "pace/frontier.py",
-      "bytes": 5750,
-      "sha256": "6a0e818b8850f6d41c76ee69f57c615c97d64b8b8b1e5256374929c7026ef510"
+      "bytes": 13827,
+      "sha256": "53dfa8a3b479f8d328d6355d86dca3a85b2de68e802b5fb2ca165bdfc8dbe0fb"
     },
     {
       "path": "pace/hidden_profile.py",
@@ -363,8 +383,8 @@
     },
     {
       "path": "pace/importers.py",
-      "bytes": 8833,
-      "sha256": "212901996bf049088d8c0355e089b3a904e0d5b7b8c49f087a07b8508cbc298f"
+      "bytes": 10527,
+      "sha256": "996bb08a14f4ad727754b68b65034cf8420c718fbbf6cd364cf4354901d03e95"
     },
     {
       "path": "pace/inflate.py",
@@ -402,6 +422,11 @@
       "sha256": "6c8f0d558a389b955ccea268d1bd3aff0ad51a3fb412405db0b09f6b24c4e1d9"
     },
     {
+      "path": "pace/power_audit.py",
+      "bytes": 3035,
+      "sha256": "89f6bc16b24b7b55a65e99f40a03c19e508d66d6230cb3610b96874502af2923"
+    },
+    {
       "path": "pace/protocol_v3.py",
       "bytes": 14252,
       "sha256": "b89a34b9a4dd26237e06398104f8608893e281f1d29e226578396ae8ee4cd1ca"
@@ -412,6 +437,11 @@
       "sha256": "17733162adb5f66ac4e382725d2de7b188defe8e4c567a200e1fb600188ba85d"
     },
     {
+      "path": "pace/pytest_plugin.py",
+      "bytes": 2706,
+      "sha256": "a646264ccb58e4207adf2217fb0110ca401de9d710a88f3e22cd057e160b08c0"
+    },
+    {
       "path": "pace/README.md",
       "bytes": 6705,
       "sha256": "4bc0dfce6227531b942fdde3198e5682fc2ed7da5be09342538eb846d4b31922"
@@ -420,6 +450,11 @@
       "path": "pace/rebuttal.py",
       "bytes": 7485,
       "sha256": "94f2127ba9e708785bb479fe75f1548614634ea8c8c5b4cd835b4f391a0ae913"
+    },
+    {
+      "path": "pace/reml.py",
+      "bytes": 33227,
+      "sha256": "8751bfbcdd9978238f34a929b368d4f8faeecf24c484eafa14bc323e6a3ad3ed"
     },
     {
       "path": "pace/report.py",
@@ -437,19 +472,34 @@
       "sha256": "ee48c5001e431176d6ab5383ef38a321059c06cd6ddb8b5c793512a27647615c"
     },
     {
+      "path": "pace/sdk.py",
+      "bytes": 12991,
+      "sha256": "e3b17615d850a95870f84e654ffd4e2a72132ee8e1de072aafc999e9b796b708"
+    },
+    {
       "path": "pace/simulator.py",
       "bytes": 7603,
       "sha256": "a30fa2114c1e40cfccbf00501a80d453118b13053cf61c0d838caf3a1d75a80d"
     },
     {
       "path": "pace/studio.html",
-      "bytes": 48697,
-      "sha256": "8fe4dc205cf531be086c0ba6ecdf8e6d754e16311c113e6bce15a376fa124dc5"
+      "bytes": 71072,
+      "sha256": "c10b07ed5af76da7055b274511977ea77e422df628d35633da553b2b1c19491a"
     },
     {
       "path": "pace/tasks.py",
       "bytes": 13483,
       "sha256": "3991ac954e7af415922c69eb20f7ad3841d659d2cbfa7a5e657574652b4b8fbd"
+    },
+    {
+      "path": "pace/theory.py",
+      "bytes": 2337,
+      "sha256": "66ca61bc65c3441671086bfc7ab659d271413e689d87a80516c3931c11befe3a"
+    },
+    {
+      "path": "pace/validate.py",
+      "bytes": 12678,
+      "sha256": "6743e581145742bab11ab157b996140f41d78cb64c7767ac42d3689200d8bebb"
     },
     {
       "path": "pace/verified_debate.py",
@@ -463,8 +513,8 @@
     },
     {
       "path": "pace/workbench.html",
-      "bytes": 9274,
-      "sha256": "dbc1518b32c1494723ec9d1b47048843d1bbb6d269e605d3fd3125e624218b6c"
+      "bytes": 18664,
+      "sha256": "de74671bc33fe8296a4f7c9c84b08b452747ca84c9a5fb97fd5eecc12515c036"
     },
     {
       "path": "pace/workbench.py",
@@ -493,13 +543,13 @@
     },
     {
       "path": "pace_lab/graders.py",
-      "bytes": 26278,
-      "sha256": "b8af9c46f152ef3ebd6caeefe86c12f33980b9fcb70c88e1addbf7774dd3652a"
+      "bytes": 27794,
+      "sha256": "e4457a05acca0d70c39755fc140d003794c4b3f4e62c6a43bf43b5f455552bd6"
     },
     {
       "path": "pace_lab/strategies.py",
-      "bytes": 11612,
-      "sha256": "2ac82ac50b249878524c58f6a6eaf967ecdf8f871c810d1a3726cc93657c4baf"
+      "bytes": 12153,
+      "sha256": "39e39717b92a177d9c8f36c3a343830a149cdcfc51c9c2517731e1b105d3feae"
     },
     {
       "path": "pyproject.toml",
@@ -508,8 +558,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 13307,
-      "sha256": "0cc4ec86520a50375ae3138c9dd543bc2e4c25edcd4856df9c5b5a389f749983"
+      "bytes": 14168,
+      "sha256": "86c1bd5f94e1e12613aa840e41a7cb553d7d8c86a79c56a008bc6931cbf29eff"
     },
     {
       "path": "REPRODUCIBILITY_COOKBOOK.md",

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PACE Workbench</title>
+<style>
+:root{--ink:#17202a;--muted:#607080;--paper:#f4f1ea;--panel:#fffdf8;--line:#d8d0c3;--accent:#bb4b35;--teal:#176b68}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#f4f1ea,#e5eee9);color:var(--ink);font:15px Georgia,serif}header{padding:28px 5vw 20px;display:flex;justify-content:space-between;align-items:end}h1{margin:0;font-size:clamp(28px,5vw,54px);letter-spacing:0}header p{max-width:480px;color:var(--muted);margin:0}.tabs{display:flex;gap:8px;flex-wrap:wrap;padding:0 5vw 16px}.tabs button{border:1px solid var(--line);background:var(--panel);padding:10px 13px;border-radius:4px;color:var(--ink);cursor:pointer}.tabs button.active{background:var(--accent);color:white}.page{padding:0 5vw 48px;max-width:1300px;margin:auto}.panel{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:6px;box-shadow:0 8px 24px #17202a0b}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.metric{font-size:30px;color:var(--teal);margin:8px 0}.drop{border:2px dashed var(--line);padding:28px;text-align:center;border-radius:6px;margin:12px 0}.controls{display:flex;gap:16px;flex-wrap:wrap;align-items:center}.controls label{display:grid;gap:5px}.controls input{accent-color:var(--accent)}svg{width:100%;height:230px;background:#f7f5ef;border:1px solid var(--line)}pre{white-space:pre-wrap;background:#202b31;color:#f5eee1;padding:14px;min-height:100px}button.action{background:var(--teal);color:white;border:0;border-radius:4px;padding:10px 13px;cursor:pointer}.hidden{display:none}.small{color:var(--muted);font-size:13px}
+</style></head>
+<body>
+<header><div><div class="small">PACE / LOCAL ANALYSIS DESK</div><h1>Workbench</h1></div><p>Interactive parity-aware inspection for evaluation cards, empirical dynamics, and the nine-study corpus.</p><button id="copyRevBtn" type="button" title="Copies the short PACE OpenReview reviewer block">Copy Reviewer Block</button></header>
+<nav class="tabs" aria-label="Workbench tabs">
+<button data-tab="card7" class="active">7-Field Card &amp; Trace Auditor</button><button data-tab="itemwise">Itemwise (k_i) &amp; Cache Pricing Lab</button><button data-tab="constructive">Placebo Overhead &amp; Verifier Drift Lab</button><button data-tab="callgraph">Call-Graph DAG &amp; Stopping Inspector</button><button data-tab="corpus9">9-Study Corpus &amp; Subfield Explorer</button><button data-tab="rebuttal">Experiment Planner &amp; Rebuttal Builder</button>
+</nav><main class="page">
+<section id="card7" class="tab"><div class="panel"><h2>7-field card and trace auditor</h2><div id="drop" class="drop">Drop a JSONL, CSV, or JSON run here <input id="file" type="file" accept=".jsonl,.csv,.json"></div><div class="grid"><div><div class="small">Preloaded confirmatory calls</div><div class="metric">27,500</div></div><div><div class="small">Seven-field status</div><div class="metric">PACE-Recommended</div></div></div><button class="action" onclick="exportCard('json')">Export JSON</button> <button class="action" onclick="exportCard('md')">Export Markdown</button> <button class="action" onclick="exportCard('tex')">Export LaTeX</button> <button class="action" onclick="exportCard('svg')">Export SVG</button> <button class="action" id="copyTexV1" type="button">Copy PACE Card v1.0 (LaTeX)</button> <button class="action" id="jsonV2" type="button">Download Card JSON (v2 schema)</button><pre id="cardOut">baseline_rung: unreported\nresource_vector: tokens / calls / cost\nfrontier_gap: unreported</pre></div></section>
+<section id="itemwise" class="tab hidden"><div class="panel"><h2>Itemwise frontier and cache pricing</h2><div class="controls"><label>alpha cache <input id="alphaCache" type="range" min="0" max="1" step=".05" value=".25"><output>0.25</output></label><label>alpha out <input id="alphaOut" type="range" min="0" max="2" step=".1" value="1"><output>1.0</output></label><label>pool k <input id="poolK" type="range" min="1" max="32" value="8"><output>8</output></label></div><svg id="frontierSvg" viewBox="0 0 700 230"><path d="M35 195H670M35 195V25" stroke="#607080"/><path id="frontierLine" d="M45 180 Q220 100 380 125 T650 55" fill="none" stroke="#bb4b35" stroke-width="4"/><text x="45" y="218">Expected</text><text x="520" y="218">Itemwise k_i</text></svg><p id="cacheReadout" class="small">Adjusted input pricing updates with the sliders.</p></div></section>
+<section id="constructive" class="tab hidden"><div class="panel"><h2>Constructive objectives</h2><div class="grid"><div><div class="small">Architecture contribution</div><div class="metric">reported</div></div><div><div class="small">Overhead contribution</div><div class="metric">reported</div></div><div><div class="small">Verifier drift</div><div class="metric">8 live traces</div></div></div><svg viewBox="0 0 700 230"><path d="M60 190H650M60 190V30" stroke="#607080"/><rect x="110" y="105" width="90" height="85" fill="#176b68"/><rect x="270" y="70" width="90" height="120" fill="#bb4b35"/><path d="M470 175L570 55" stroke="#176b68" stroke-width="5"/><text x="100" y="215">arch</text><text x="255" y="215">overhead</text><text x="470" y="215">threshold phase</text></svg></div></section>
+<section id="callgraph" class="tab hidden"><div class="panel"><h2>Call graph and stopping inspector</h2><div class="metric">Pi_agent / Pi_single</div><p class="small">Classifies cross-thread reads from imported traces and summarizes early stopping.</p><svg viewBox="0 0 700 230"><path d="M90 110L270 60M90 110L270 165M270 60L480 110M270 165L480 110M480 110L620 110" stroke="#176b68" stroke-width="4" fill="none"/><circle cx="90" cy="110" r="24" fill="#bb4b35"/><circle cx="270" cy="60" r="24" fill="#f0c36b"/><circle cx="270" cy="165" r="24" fill="#f0c36b"/><circle cx="480" cy="110" r="24" fill="#176b68"/><circle cx="620" cy="110" r="24" fill="#bb4b35"/></svg></div></section>
+<section id="corpus9" class="tab hidden"><div class="panel"><h2>Nine-study corpus explorer</h2><div class="controls"><label>Study <select id="study"><option>All</option><option>Jwalapuram</option><option>Zhang</option><option>Ke</option></select></label><label>Category <select><option>All</option><option>A</option><option>B</option><option>C</option></select></label><label>phi <input id="phi" type="range" min="0" max=".9" step=".05" value=".5"><output>0.50</output></label></div><div class="grid"><div><div class="small">Contrasts</div><div class="metric">832</div></div><div><div class="small">Noise band</div><div class="metric">phi=<span id="phiValue">0.50</span></div></div><div><div class="small">Subfield</div><div class="metric">5 routes</div></div></div></div></section>
+<section id="rebuttal" class="tab hidden"><div class="panel"><h2>Experiment planner and rebuttal builder</h2><div class="controls"><label>k_tok <input id="ktok" type="number" value="8"></label><label>Power <input id="power" type="number" value="0.8" step=".05"></label><button class="action" onclick="plan()">Calculate</button></div><pre id="planOut">Set k_tok and power, then calculate a compact setup.</pre></div></section>
+</main>
+<script>
+const REVBLOCK=`PACE Baseline Parity Request (arXiv:2611.17610):
+1. Baseline rung: State the strongest single-agent Category [A/B/C/D] (policy and k).
+2. Resource vector R: Verify [R_reason, R_token, R_cost, R_lat, R_sample, R_sys] on both arms.
+3. Feasibility direction: A positive claim requires baseline resource >= MAS; a null requires <=.
+4. Frontier gap & controls: Require the frontier-gap 95% CI and the Route I/II/III controls.`;document.getElementById('copyRevBtn').onclick=()=>{navigator.clipboard.writeText(REVBLOCK);const b=document.getElementById('copyRevBtn');b.textContent='Reviewer block copied!';setTimeout(()=>b.textContent='Copy Reviewer Block',2200)};
+const tabs=[...document.querySelectorAll('[data-tab]')];tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab))});
+function exportCard(kind){let text=document.getElementById('cardOut').textContent;if(kind==='svg')text='<svg xmlns="http://www.w3.org/2000/svg" width="640" height="180"><text x="20" y="40">PACE evaluation card v7</text><text x="20" y="80">PACE-Recommended / empirical trace</text></svg>';let blob=new Blob([text],{type:'text/plain'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='pace-card-v7.'+(kind==='tex'?'tex':kind==='md'?'md':kind);a.click()}
+function bindRange(id,cb){let e=document.getElementById(id);e.oninput=()=>{e.nextElementSibling.value=e.value;cb(e.value)}}bindRange('alphaCache',v=>document.getElementById('cacheReadout').textContent='Cache alpha '+v+'; output alpha '+document.getElementById('alphaOut').value+'; pool k '+document.getElementById('poolK').value);bindRange('alphaOut',v=>document.getElementById('cacheReadout').textContent='Cache alpha '+document.getElementById('alphaCache').value+'; output alpha '+v+'; pool k '+document.getElementById('poolK').value);bindRange('poolK',v=>document.getElementById('cacheReadout').textContent='Cache alpha '+document.getElementById('alphaCache').value+'; output alpha '+document.getElementById('alphaOut').value+'; pool k '+v);bindRange('phi',v=>document.getElementById('phiValue').textContent=Number(v).toFixed(2));
+function numOrNull(v){
+  if(v===undefined||v===null||v==='')return null;
+  const n=Number(v);
+  return Number.isFinite(n)?n:null;
+}
+function bool(v){return v===true||v===1||v==='1'||String(v).toLowerCase()==='true'||String(v).toLowerCase()==='correct'}
+function compute(rows){
+  if(!rows||!rows.length){
+    return {
+      schema:'pace-card/v1',
+      n_records:0,
+      n_items:0,
+      resource_vector:{r_token:null,r_call:null,r_round:null,r_sample:null,r_context:null,r_scaff:null},
+      baseline:'insufficient_data',
+      feasibility:{status:'insufficient_data',active_axes:[],direction:'empty trace'},
+      transition_matrix:{}
+    };
+  }
+  const items=new Set(rows.map(r=>String(r.item??r.item_id??'item_0')));
+  const firstRound={};
+  rows.forEach(r=>{const k=String(r.item??r.item_id??'item_0'),rd=numOrNull(r.round)??0;if(!(k in firstRound)||rd<firstRound[k])firstRound[k]=rd;});
+  let trajectories=0,laterCalls=0;
+  rows.forEach(r=>{const k=String(r.item??r.item_id??'item_0');if((numOrNull(r.round)??0)===firstRound[k])trajectories++;else laterCalls++;});
+  const rounds=rows.map(r=>numOrNull(r.round)??0);
+  const tokens=rows.map(r=>{
+    const p=numOrNull(r.prompt_tokens),c=numOrNull(r.completion_tokens);
+    return (p!==null&&c!==null)?p+c:null;
+  }).filter(v=>v!==null);
+  const reasons=rows.map(r=>numOrNull(r.reasoning_tokens)).filter(v=>v!==null);
+  const R={
+    r_token:tokens.length?tokens.reduce((a,b)=>a+b,0)/Math.max(1,items.size):null,
+    r_call:rows.length/Math.max(1,items.size),
+    r_round:Math.max(...rounds)-Math.min(...rounds)+1,
+    r_sample:trajectories/Math.max(1,items.size),
+    r_context:laterCalls/Math.max(1,items.size),
+    r_scaff:rows.filter(r=>r.scaffold||r.tool_calls).length
+  };
+  const costs=rows.map(r=>numOrNull(r.cost_usd)).filter(v=>v!==null);
+  const lats=rows.map(r=>numOrNull(r.latency_s)).filter(v=>v!==null);
+  R.r_reason=reasons.length?reasons.reduce((a,b)=>a+b,0)/Math.max(1,items.size):null;
+  R.r_cost=costs.length?costs.reduce((a,b)=>a+b,0)/Math.max(1,items.size):null;
+  R.r_lat=lats.length?lats.reduce((a,b)=>a+b,0)/Math.max(1,items.size):null;
+  R.r_sys=rows.some(r=>Object.prototype.hasOwnProperty.call(r,'tool_calls'))?rows.filter(r=>r.tool_calls).length/Math.max(1,items.size):null;
+  let baseline=R.r_round<=1&&R.r_sample<=1&&R.r_context<=0?'A':R.r_round<=1&&R.r_context<=0?'B':R.r_sample<=1?'C':'n/a';
+  const by={};
+  rows.forEach(r=>{
+    const k=String(r.item??r.item_id??'item_0')+'\u0000'+String(r.agent??r.agent_id??'agent_0');
+    (by[k]??={})[numOrNull(r.round)??0]=bool(r.correct);
+  });
+  const counts={};
+  Object.keys(by).forEach(k=>{
+    const rs=Object.keys(by[k]).map(Number).sort((a,b)=>a-b);
+    const itemPrefix=k.split('\u0000')[0]+'\u0000';
+    for(let i=0;i<rs.length-1;i++){
+      const own=by[k][rs[i]]?1:0;
+      const next=by[k][rs[i+1]]?1:0;
+      const peers=Object.keys(by).filter(x=>x.startsWith(itemPrefix)).map(x=>by[x][rs[i]]).filter(x=>x!==undefined).reduce((a,b)=>a+(b?1:0),0)-own;
+      const key='own='+own+',peers_right='+peers;
+      (counts[key]??={good:0,n:0});
+      counts[key].good+=next;
+      counts[key].n++;
+    }
+  });
+  const T=Object.fromEntries(Object.entries(counts).map(([k,v])=>[k,{p_next:v.good/v.n,n:v.n}]));
+  return {
+    schema:'pace-card/v1',
+    n_records:rows.length,
+    n_items:items.size,
+    resource_vector:R,
+    baseline,
+    feasibility:{
+      status:tokens.length?'measured_only':'insufficient_data',
+      active_axes:Object.keys(R).filter(k=>R[k]>0),
+      direction:tokens.length?'requires compute-matched baseline comparison':'missing token logs'
+    },
+    transition_matrix:T
+  };
+}
+/* PACE Card v1.0 export: the LaTeX table of the paper (one row per card field) and the JSON of the v2 schema (docs/pace_card_v2.schema.json). */
+const CARD_AXES=['r_reason','r_token','r_cost','r_sample','r_sys','r_call','r_round','r_context','r_scaff'];
+function cardV2(c,rows){
+  const R=c.resource_vector||{};
+  const axes={};
+  CARD_AXES.forEach(k=>{const v=R[k];axes[k]=(v===undefined||v===null||Number.isNaN(Number(v)))?null:Number(v)});
+  const lat=(R.r_lat===undefined||R.r_lat===null||Number.isNaN(Number(R.r_lat)))?null:Number(R.r_lat);
+  const unmeasured=Object.keys(axes).filter(k=>axes[k]===null).concat(lat===null?['r_lat']:[]).sort();
+  return {
+    schema:'pace-card/v2',
+    A_identity:{name:null,system:null,task:null,model:null,n_items:c.n_items||0,n_records:c.n_records||0},
+    B_resource_accounting:{axes:axes,latency:{summed_s_per_item:lat,critical_path_s_per_item:null},unmeasured:unmeasured},
+    C_baseline_specification:{rung:c.baseline,reason:'computed in the browser from the first-round and the later-round calls of the log',matched_axes:(c.feasibility&&c.feasibility.active_axes)||[]},
+    D_statistical_evidence:{single_trace:null,transition_matrix:c.transition_matrix||{}},
+    E_reproducibility:{pace_version:'browser',log_sha256:null,citation_instructions:'Cite the framework paper (PACE: Parity-Aware Compute Evaluation), the pace-eval package version and the dataset DOI of the contrast corpus; report this card with the execution log it was computed from.'}
+  };
+}
+function texEsc(s){return String(s).replace(/\\/g,'\\textbackslash{}').replace(/([_%&#$])/g,'\\$1')}
+function latexV1(c){
+  const R=c.resource_vector||{};
+  const f=(v,d)=>(v===null||v===undefined||Number.isNaN(Number(v)))?'n/a':Number(v).toFixed(d);
+  const cells=Object.keys(c.transition_matrix||{}).length;
+  const rows=[
+    ['1','Baseline rung','Category '+c.baseline,'Min','classify'],
+    ['2','Resource vector','tokens '+f(R.r_token,1)+', calls '+f(R.r_call,2)+', rounds '+f(R.r_round,0)+', samples '+f(R.r_sample,2)+', cost '+f(R.r_cost,4)+', latency '+f(R.r_lat,2)+' s, tool calls '+f(R.r_sys,2),'Min','audit'],
+    ['3','Token accounting','tokens per item '+f(R.r_token,1)+'; scaffold or tool rows '+f(R.r_scaff,0),'Min, Rec','card -{}-v2'],
+    ['4','Resource ratios and feasibility',(c.feasibility&&c.feasibility.direction)||'n/a','Rec','audit'],
+    ['5','Frontier gap','not computed in the browser; run pace report with a sample pool','Min, Rec','report'],
+    ['6','Evidence and routes',c.n_items+' items, '+c.n_records+' calls, '+cells+' transition cells','Rec','dynamics'],
+    ['7','Per-item budgets and search cost','not computed in the browser; run pace card -{}-v2','Ext','card -{}-v2']
+  ];
+  const noDash=s=>s.replace(/-\{\}-/g,'\u0001');
+  const body=rows.map(r=>r[0]+' & '+texEsc(noDash(r[1]+': '+r[2])).replace(/\u0001/g,'-{}-')+' & '+r[3]+' & \\texttt{'+texEsc(noDash(r[4])).replace(/\u0001/g,'-{}-')+'} \\\\').join('\n');
+  return '% PACE Card v1.0 (generated in the browser by PACE Studio; fields as in the paper, arXiv:2611.17610)\n\\begin{table}[t]\n\\centering\n\\footnotesize\n\\caption{PACE Card v1.0. Fields not computed from the log alone are marked; a dimension that was not measured is stated as n/a, never imputed.}\n\\begin{tabular}{@{}rp{0.62\\linewidth}ll@{}}\n\\toprule\n & Field: reported value & Level & Command \\\\\n\\midrule\n'+body+'\n\\bottomrule\n\\end{tabular}\n\\end{table}\n';
+}
+
+function parseRowsWb(text,name){
+  const t=String(text).trim();
+  if(/\.csv$/i.test(name)){const L=t.split(/\r?\n/),h=L[0].split(',').map(x=>x.trim());return L.slice(1).filter(Boolean).map(l=>{const v=l.split(',');const o={};h.forEach((k,i)=>o[k]=v[i]===undefined?'':v[i].trim());return o})}
+  if(t[0]==='['){const a=JSON.parse(t);return Array.isArray(a)?a:[]}
+  return t.split(/\r?\n/).filter(Boolean).map(l=>JSON.parse(l));
+}
+let wbCard=null,wbRows=[];
+function wbLoad(f){
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      wbRows=parseRowsWb(r.result,f.name);
+      wbCard=compute(wbRows);
+      document.getElementById('cardOut').textContent='Loaded '+f.name+'\nrecords: '+wbCard.n_records+', items: '+wbCard.n_items+'\nbaseline_rung: '+wbCard.baseline+'\n'+Object.entries(wbCard.resource_vector).map(([k,v])=>k+': '+(v===null||v===undefined?'n/a':Number(v).toFixed(3))).join('\n');
+    }catch(e){document.getElementById('cardOut').textContent='Could not read '+f.name+': '+e.message}
+  };
+  r.readAsText(f);
+}
+
+document.getElementById('file').onchange=e=>{let f=e.target.files[0];if(f)wbLoad(f)};document.getElementById('drop').ondragover=e=>e.preventDefault();document.getElementById('drop').ondrop=e=>{e.preventDefault();let f=e.dataTransfer.files[0];if(f)wbLoad(f)};
+document.getElementById('copyTexV1').onclick=()=>{if(!wbCard)return;navigator.clipboard.writeText(latexV1(wbCard))};
+document.getElementById('jsonV2').onclick=()=>{if(!wbCard)return;let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(cardV2(wbCard,wbRows),null,2)],{type:'application/json'}));a.download='pace-card.v2.json';a.click()};
+function plan(){let k=Number(document.getElementById('ktok').value),p=Number(document.getElementById('power').value);document.getElementById('planOut').textContent='k_tok='+k+'\npower='+p+'\nSetup: report baseline rung, resource vector, frontier gap, and stopping ceiling.'}
+</script></body></html>

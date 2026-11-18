@@ -189,6 +189,43 @@ def import_inspect(records: list[Any]) -> list[ItemLog]:
     return result
 
 
+LM_EVAL_METRICS = ("acc", "acc_norm", "exact_match", "pass@1", "em", "accuracy", "correct")
+
+
+def import_lm_eval(records: list[Any]) -> list[ItemLog]:
+    """Convert lm-evaluation-harness `samples_<task>_<time>.jsonl` lines (one scored sample each) into PACE records.
+
+    The sample is one single-agent call (agent `lm_eval`, round 0). Correctness is the first of the accuracy-type metrics named in the line's `metrics` list
+    (`acc`, `acc_norm`, `exact_match`, `pass@1`, `em`, ...; value above 0.5), so continuous metrics such as `f1` or `bleu` are not read as correctness and the
+    line is skipped. The harness does not store token usage, so token fields stay null (missing, not zero); the first filtered response is kept as `answer`.
+    """
+    result = []
+    for rec in records:
+        if not isinstance(rec, dict):
+            continue
+        doc_id = rec.get("doc_id", rec.get("id"))
+        if doc_id is None:
+            continue
+        names = [str(m).split(",")[0] for m in rec.get("metrics", [])] or list(LM_EVAL_METRICS)
+        key = next((k for k in rec if k.split(",")[0] in names and k.split(",")[0] in LM_EVAL_METRICS), None)
+        if key is None:
+            continue
+        value = rec[key]
+        if isinstance(value, bool):
+            ok = value
+        elif isinstance(value, (int, float)):
+            ok = float(value) > 0.5
+        else:
+            continue
+        resp = rec.get("filtered_resps", rec.get("resps"))
+        while isinstance(resp, list) and resp:
+            resp = resp[0]
+        task = rec.get("task") or rec.get("task_name")
+        result.append(item_log_from_mapping({"item": "%s:%s" % (task, doc_id) if task else doc_id, "agent": "lm_eval", "round": 0, "correct": ok,
+                                             "answer": str(resp).strip() if isinstance(resp, (str, int, float)) else None}))
+    return result
+
+
 def load_and_import(path: str, format_name: str) -> list[ItemLog]:
     if format_name == "csv":
         with open(path, newline="", encoding="utf-8") as handle:
@@ -199,6 +236,7 @@ def load_and_import(path: str, format_name: str) -> list[ItemLog]:
         "langgraph": import_langgraph,
         "crewai": import_crewai,
         "inspect": import_inspect,
+        "lm-eval": import_lm_eval,
     }.get(format_name)
     if importer is None:
         raise ValueError("unknown trace format: %s" % format_name)

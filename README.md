@@ -14,7 +14,7 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/Data-CC%20BY%204.0-lightgrey.svg)](zenodo_datasets.json)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-brightgreen.svg)](https://www.python.org/downloads/)
-[![Test Suite: 865 Passing](https://img.shields.io/badge/Tests-865%20Passing-success.svg)](tests/)
+[![Test Suite: 1143 Passing](https://img.shields.io/badge/Tests-1143%20Passing-success.svg)](tests/)
 [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24286397.svg)](https://doi.org/10.5281/zenodo.24286397)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mahmoudsajjadi/pace/blob/main/notebooks/audit_your_log.ipynb)
 
@@ -44,7 +44,7 @@ enforces directional resource feasibility, and measures the frontier gap relativ
 - **Sampling Gap ($\Delta_{\text{gap}}$):** Across `5` dual-baseline studies (`318` pairs spanning `72` unique baseline cells, `64 of 72` negative), switching from greedy to sampled baselines lowers accuracy differences by **`-0.038`** weighted equally by study (**`-0.028`** across pairs; **`-0.036`** across the `72` unique cells; cell-level REML $\hat\beta = \mathbf{-0.178}$, CR2 95% CI `[-0.347, -0.009]`).
 - **Controlled Open-Weight Experiment (`llama3.1:8b` via Ollama):**
   - **Shared-evidence MMLU-Pro (`n=250`):** Vanilla debate (`−0.015` frontier gap, `0.567` vs. `0.581` frontier) and Mixture-of-Agents (`−0.072` frontier gap) do not clear the equal-token self-consistency frontier under Holm correction.
-  - **Complementary Hidden Profile split-view control (`n=200`):** Split-view debate exceeds the split-view independent-voting frontier (`+0.073` frontier gap, `0.182` vs. `0.109`, Holm-adjusted `p = 0.007`), while trailing content-free placebo prompts (`0.248`) and four-choice chance (`0.250`).
+  - **Complementary Hidden Profile split-view control (`n=200`):** Split-view debate exceeds the split-view independent-voting frontier (`+0.073` frontier gap, `0.182` vs. `0.109`, Holm-adjusted `p = 0.007`), while trailing content-mismatched placebo debate (`0.248`) and four-choice chance (`0.250`).
 
 ---
 
@@ -136,15 +136,24 @@ Legacy imports (`from cme ...` and `from mae_eval ...`) remain supported alongsi
 Every completed comparison should report:
 1. **The seven-field PACE Evaluation Card:** Baseline rung (`A`–`D`), resource vector $\mathbf{R}$, token accounting (prompt, completion, cached vs. uncached tokens), MAS/SAS resource ratios, frontier gap with 95% paired bootstrap CI, evidence/route structure (`shared` vs. `split`, verifier availability, model heterogeneity), and per-item resource distribution and stopping rules.
 2. **Three progressive reporting levels:**
-   - **`PACE-Minimum`:** Category B/C baseline (e.g., nested initial-round self-consistency voting), full token/call counts, and paired bootstrap accuracy intervals.
-   - **`PACE-Recommended`:** Equal-token self-consistency frontier curve, directional feasibility across all six dimensions of $\mathbf{R}$, and placebo control or split-view checks.
-   - **`PACE-Extended`:** Per-item budget matching ($k_i$), cache-weighted billing accounting, adaptive stopping distributions, hybrid call-graph edge counts, and peer-influence transition dynamics ($\tau_{i\to c}$ vs. $\tau_{c\to i}$).
+<!-- README_SPEC:BEGIN -->
+
+**Placebo condition (S7).** Each peer message is replaced by a sample from a different item, truncated or repeated to match the character length of the message it replaces; it is not token-matched (realized token ratios of S7: 0.978 against S4 on MMLU-Pro, prompt 0.906 and completion 1.130; 1.475 against S4v on Hidden Profile, prompt 1.389 and completion 1.674). The placebo is content-mismatched, not content-free.
+
+**Reporting levels.**
+- **`PACE-Minimum`:** Category B/C baseline (for example nested initial-round self-consistency voting), full token and call counts, and paired bootstrap accuracy intervals.
+- **`PACE-Recommended`:** Equal-token self-consistency frontier curve, directional feasibility across all six dimensions of the resource vector, and placebo control or split-view checks.
+- **`PACE-Extended`:** Per-item budget matching, cache-weighted billing accounting, adaptive stopping distributions, hybrid call-graph edge counts, and peer-influence transition dynamics.
+
+**Release manifest.** 113 files listed in `RELEASE_MANIFEST.json` (mode: local-only-staging).
+
+<!-- README_SPEC:END -->
 
 ---
 
 ## Verification & Manuscript Compilation
 
-Run the full automated verification suite (`865 passed, 8 skipped`):
+Run the full automated verification suite (`1058 passed, 0 failed`):
 
 ```bash
 pytest -q tests/
