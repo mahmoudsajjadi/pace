@@ -24,7 +24,10 @@ Official replication repository, audited contrast ledger (`9` primary studies, `
 
 **Licences.** Code (`code/`, `analysis/`, `scripts/`, `tests/`): Apache-2.0 (`LICENSE`). Dataset files (extracted contrast tables and the hidden-profile task, staged in `zenodo_datasets.json`): CC-BY-4.0.
 
-![PACE 60-second explainer](docs/assets/pace_explainer.gif)
+<p align="center">
+  <img src="docs/assets/pace_workflow_loop.gif" width="880" alt="How to audit your own multi-agent logs with PACE in 3 steps">
+</p>
+<p align="center"><sub><b>PACE in 3 steps</b> · <a href="docs/assets/pace_workflow_loop.mp4">Workflow 1080p MP4</a> · <a href="docs/assets/pace_concept_loop.gif">20s Concept Loop</a> · <a href="docs/assets/pace_explainer.gif">60s Explainer</a> · <a href="https://huggingface.co/spaces/sajjadi/pace-studio">Try PACE Studio</a></sub></p>
 
 ---
 
