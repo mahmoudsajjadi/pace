@@ -14,7 +14,7 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/Data-CC%20BY%204.0-lightgrey.svg)](zenodo_datasets.json)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-brightgreen.svg)](https://www.python.org/downloads/)
-[![Test Suite: 1143 Passing](https://img.shields.io/badge/Tests-1143%20Passing-success.svg)](tests/)
+[![Test Suite: 1203 Passing](https://img.shields.io/badge/Tests-1203%20Passing-success.svg)](tests/)
 [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24286397.svg)](https://doi.org/10.5281/zenodo.24286397)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mahmoudsajjadi/pace/blob/main/notebooks/audit_your_log.ipynb)
 
@@ -145,7 +145,7 @@ Every completed comparison should report:
 - **`PACE-Recommended`:** Equal-token self-consistency frontier curve, directional feasibility across all six dimensions of the resource vector, and placebo control or split-view checks.
 - **`PACE-Extended`:** Per-item budget matching, cache-weighted billing accounting, adaptive stopping distributions, hybrid call-graph edge counts, and peer-influence transition dynamics.
 
-**Release manifest.** 113 files listed in `RELEASE_MANIFEST.json` (mode: local-only-staging).
+**Release manifest.** 116 files listed in `RELEASE_MANIFEST.json` (mode: local-only-staging).
 
 <!-- README_SPEC:END -->
 

@@ -213,8 +213,8 @@
     },
     {
       "path": "docs/workbench.html",
-      "bytes": 18664,
-      "sha256": "de74671bc33fe8296a4f7c9c84b08b452747ca84c9a5fb97fd5eecc12515c036"
+      "bytes": 34097,
+      "sha256": "3675ec9e8cea659057f1d3977626c74fd10dd53a4792f34b4f56f2068305e52b"
     },
     {
       "path": "LICENSE",
@@ -308,8 +308,8 @@
     },
     {
       "path": "pace/cli.py",
-      "bytes": 48558,
-      "sha256": "2a272b0d1ad5386ed104b9b84e9f31163dcc90794538a878ad9d1025f1e3aa98"
+      "bytes": 51034,
+      "sha256": "75eb1f4207844e4a699b9dc7c10a829c8a9662a9e6580b70c36d063ed5db0a59"
     },
     {
       "path": "pace/client.py",
@@ -317,9 +317,19 @@
       "sha256": "febe1f391b1f6dd1f7af1b4eb2a9b084d9c9f5ec3186123fbb0563c3c8830983"
     },
     {
+      "path": "pace/compare.py",
+      "bytes": 10877,
+      "sha256": "2d57e8bce31b12a089408a25d01f6a8055d8c438fa911adb307bbd37c412f0dc"
+    },
+    {
       "path": "pace/distributed_code.py",
       "bytes": 13056,
       "sha256": "0516c7e3bea39cb7e06ed55afd33a6e5069419b47edc39b26f40f6d5c60f9e6c"
+    },
+    {
+      "path": "pace/doctor.py",
+      "bytes": 8956,
+      "sha256": "b2c0cfbf74d7c547fb928e1e9444062b0f875f24fa7c67528c246bf076d175a5"
     },
     {
       "path": "pace/dynamics.py",
@@ -483,8 +493,8 @@
     },
     {
       "path": "pace/studio.html",
-      "bytes": 71072,
-      "sha256": "c10b07ed5af76da7055b274511977ea77e422df628d35633da553b2b1c19491a"
+      "bytes": 71398,
+      "sha256": "e3b3affacd84006ffd6f077c7ad47511041a13cc79c2f9fa758845c36a9881c6"
     },
     {
       "path": "pace/tasks.py",
@@ -513,8 +523,8 @@
     },
     {
       "path": "pace/workbench.html",
-      "bytes": 18664,
-      "sha256": "de74671bc33fe8296a4f7c9c84b08b452747ca84c9a5fb97fd5eecc12515c036"
+      "bytes": 34097,
+      "sha256": "3675ec9e8cea659057f1d3977626c74fd10dd53a4792f34b4f56f2068305e52b"
     },
     {
       "path": "pace/workbench.py",
@@ -559,7 +569,7 @@
     {
       "path": "README.md",
       "bytes": 14168,
-      "sha256": "86c1bd5f94e1e12613aa840e41a7cb553d7d8c86a79c56a008bc6931cbf29eff"
+      "sha256": "4a148abf37fde8819112159546aa5488e83abc844eba77ce254c13c9febefbbb"
     },
     {
       "path": "REPRODUCIBILITY_COOKBOOK.md",

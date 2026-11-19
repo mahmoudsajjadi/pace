@@ -263,6 +263,36 @@ def _validate_log(a) -> int:
     return code
 
 
+def _doctor(a) -> int:
+    from .doctor import collect, render_text
+
+    rep = collect()
+    print(json.dumps(rep, indent=2) if a.json else render_text(rep), end="\n" if a.json else "")
+    return 0 if rep["ok"] else 1
+
+
+def _compare(a) -> int:
+    """Exit codes: 0 verdict printed (also RULES OUT unless --fail-on-ruled-out), 1 RULES OUT with --fail-on-ruled-out, 2 a trace could not be read."""
+    from .card import load_log
+    from .compare import compare_traces, to_latex, to_markdown
+
+    try:
+        rep = compare_traces(load_log(a.baseline), load_log(a.candidate), tol=a.tol, margin=a.margin, min_items=a.min_items)
+    except (OSError, ValueError, json.JSONDecodeError) as e:
+        print("error: %s" % e, file=sys.stderr)
+        return 2
+    text = json.dumps(rep, indent=2) + "\n" if a.format == "json" else (to_latex(rep) if a.format == "latex" else to_markdown(rep))
+    if a.output:
+        with open(a.output, "w", encoding="utf-8", newline="\n") as fh:
+            fh.write(text)
+    else:
+        print(text, end="")
+    if a.fail_on_ruled_out and rep["verdict"]["label"] == "RULES OUT":
+        print("PACE gate: candidate RULES OUT (%s)" % rep["verdict"]["reason"], file=sys.stderr)
+        return 1
+    return 0
+
+
 def _studio(a) -> int:
     import webbrowser
     from pathlib import Path
@@ -989,6 +1019,19 @@ def build_parser() -> argparse.ArgumentParser:
     vl.add_argument("--json", action="store_true", help="print the JSON report instead of text")
     vl.add_argument("--strict", action="store_true", help="treat warnings as failures")
     vl.set_defaults(func=_validate_log)
+    dc = sub.add_parser("doctor", help="self-check: Python and pace version, dependencies, the card schema and the framework adapters (exit 1 only for a missing core requirement)")
+    dc.add_argument("--json", action="store_true", help="print the report as JSON")
+    dc.set_defaults(func=_doctor)
+    cp = sub.add_parser("compare", help="resource parity and directional verdict (CREDITS / RULES OUT / INCONCLUSIVE) of a candidate trace against a baseline trace")
+    cp.add_argument("baseline")
+    cp.add_argument("candidate")
+    cp.add_argument("--format", choices=["json", "markdown", "latex"], default="markdown")
+    cp.add_argument("--output", default=None)
+    cp.add_argument("--tol", type=float, default=0.10, help="parity tolerance on the token ratio (default 0.10)")
+    cp.add_argument("--margin", type=float, default=0.05, help="smallest accuracy advantage of interest that RULES OUT must exclude (default 0.05)")
+    cp.add_argument("--min-items", type=int, default=20, help="fewest shared items needed to credit or rule out a candidate (default 20)")
+    cp.add_argument("--fail-on-ruled-out", action="store_true", help="exit with code 1 when the verdict is RULES OUT (for CI gates)")
+    cp.set_defaults(func=_compare)
     s = sub.add_parser("studio", help="open the zero-dependency PACE Studio")
     s.set_defaults(func=_studio)
     wb = sub.add_parser(

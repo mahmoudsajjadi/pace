@@ -5,18 +5,25 @@
 <title>PACE Workbench</title>
 <style>
 :root{--ink:#17202a;--muted:#607080;--paper:#f4f1ea;--panel:#fffdf8;--line:#d8d0c3;--accent:#bb4b35;--teal:#176b68}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#f4f1ea,#e5eee9);color:var(--ink);font:15px Georgia,serif}header{padding:28px 5vw 20px;display:flex;justify-content:space-between;align-items:end}h1{margin:0;font-size:clamp(28px,5vw,54px);letter-spacing:0}header p{max-width:480px;color:var(--muted);margin:0}.tabs{display:flex;gap:8px;flex-wrap:wrap;padding:0 5vw 16px}.tabs button{border:1px solid var(--line);background:var(--panel);padding:10px 13px;border-radius:4px;color:var(--ink);cursor:pointer}.tabs button.active{background:var(--accent);color:white}.page{padding:0 5vw 48px;max-width:1300px;margin:auto}.panel{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:6px;box-shadow:0 8px 24px #17202a0b}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.metric{font-size:30px;color:var(--teal);margin:8px 0}.drop{border:2px dashed var(--line);padding:28px;text-align:center;border-radius:6px;margin:12px 0}.controls{display:flex;gap:16px;flex-wrap:wrap;align-items:center}.controls label{display:grid;gap:5px}.controls input{accent-color:var(--accent)}svg{width:100%;height:230px;background:#f7f5ef;border:1px solid var(--line)}pre{white-space:pre-wrap;background:#202b31;color:#f5eee1;padding:14px;min-height:100px}button.action{background:var(--teal);color:white;border:0;border-radius:4px;padding:10px 13px;cursor:pointer}.hidden{display:none}.small{color:var(--muted);font-size:13px}
-</style></head>
+.wbbanner{margin:0 5vw 14px;padding:12px 16px;border:1px solid #e0b4a8;background:#fbece8;color:#8a2a18;border-radius:4px;font-size:14px}.wbbanner.ok{border-color:#b8e1c8;background:#edf8f2;color:#176b68}.wbbanner code{background:#0000000d;padding:1px 4px;border-radius:3px}</style></head>
 <body>
 <header><div><div class="small">PACE / LOCAL ANALYSIS DESK</div><h1>Workbench</h1></div><p>Interactive parity-aware inspection for evaluation cards, empirical dynamics, and the nine-study corpus.</p><button id="copyRevBtn" type="button" title="Copies the short PACE OpenReview reviewer block">Copy Reviewer Block</button></header>
 <nav class="tabs" aria-label="Workbench tabs">
-<button data-tab="card7" class="active">7-Field Card &amp; Trace Auditor</button><button data-tab="itemwise">Itemwise (k_i) &amp; Cache Pricing Lab</button><button data-tab="constructive">Placebo Overhead &amp; Verifier Drift Lab</button><button data-tab="callgraph">Call-Graph DAG &amp; Stopping Inspector</button><button data-tab="corpus9">9-Study Corpus &amp; Subfield Explorer</button><button data-tab="rebuttal">Experiment Planner &amp; Rebuttal Builder</button>
-</nav><main class="page">
+<button data-tab="card7" class="active">7-Field Card &amp; Trace Auditor</button><button data-tab="itemwise">Itemwise (k_i) &amp; Cache Pricing Lab</button><button data-tab="constructive">Placebo Overhead &amp; Verifier Drift Lab</button><button data-tab="callgraph">Call-Graph DAG &amp; Stopping Inspector</button><button data-tab="corpus9">9-Study Corpus &amp; Subfield Explorer</button><button data-tab="rebuttal">Experiment Planner &amp; Rebuttal Builder</button><button data-tab="compare">Compare Two Traces</button>
+</nav><div id="wbBanner" class="wbbanner hidden" role="alert" aria-live="assertive"></div><main class="page">
 <section id="card7" class="tab"><div class="panel"><h2>7-field card and trace auditor</h2><div id="drop" class="drop">Drop a JSONL, CSV, or JSON run here <input id="file" type="file" accept=".jsonl,.csv,.json"></div><div class="grid"><div><div class="small">Preloaded confirmatory calls</div><div class="metric">27,500</div></div><div><div class="small">Seven-field status</div><div class="metric">PACE-Recommended</div></div></div><button class="action" onclick="exportCard('json')">Export JSON</button> <button class="action" onclick="exportCard('md')">Export Markdown</button> <button class="action" onclick="exportCard('tex')">Export LaTeX</button> <button class="action" onclick="exportCard('svg')">Export SVG</button> <button class="action" id="copyTexV1" type="button">Copy PACE Card v1.0 (LaTeX)</button> <button class="action" id="jsonV2" type="button">Download Card JSON (v2 schema)</button><pre id="cardOut">baseline_rung: unreported\nresource_vector: tokens / calls / cost\nfrontier_gap: unreported</pre></div></section>
 <section id="itemwise" class="tab hidden"><div class="panel"><h2>Itemwise frontier and cache pricing</h2><div class="controls"><label>alpha cache <input id="alphaCache" type="range" min="0" max="1" step=".05" value=".25"><output>0.25</output></label><label>alpha out <input id="alphaOut" type="range" min="0" max="2" step=".1" value="1"><output>1.0</output></label><label>pool k <input id="poolK" type="range" min="1" max="32" value="8"><output>8</output></label></div><svg id="frontierSvg" viewBox="0 0 700 230"><path d="M35 195H670M35 195V25" stroke="#607080"/><path id="frontierLine" d="M45 180 Q220 100 380 125 T650 55" fill="none" stroke="#bb4b35" stroke-width="4"/><text x="45" y="218">Expected</text><text x="520" y="218">Itemwise k_i</text></svg><p id="cacheReadout" class="small">Adjusted input pricing updates with the sliders.</p></div></section>
 <section id="constructive" class="tab hidden"><div class="panel"><h2>Constructive objectives</h2><div class="grid"><div><div class="small">Architecture contribution</div><div class="metric">reported</div></div><div><div class="small">Overhead contribution</div><div class="metric">reported</div></div><div><div class="small">Verifier drift</div><div class="metric">8 live traces</div></div></div><svg viewBox="0 0 700 230"><path d="M60 190H650M60 190V30" stroke="#607080"/><rect x="110" y="105" width="90" height="85" fill="#176b68"/><rect x="270" y="70" width="90" height="120" fill="#bb4b35"/><path d="M470 175L570 55" stroke="#176b68" stroke-width="5"/><text x="100" y="215">arch</text><text x="255" y="215">overhead</text><text x="470" y="215">threshold phase</text></svg></div></section>
 <section id="callgraph" class="tab hidden"><div class="panel"><h2>Call graph and stopping inspector</h2><div class="metric">Pi_agent / Pi_single</div><p class="small">Classifies cross-thread reads from imported traces and summarizes early stopping.</p><svg viewBox="0 0 700 230"><path d="M90 110L270 60M90 110L270 165M270 60L480 110M270 165L480 110M480 110L620 110" stroke="#176b68" stroke-width="4" fill="none"/><circle cx="90" cy="110" r="24" fill="#bb4b35"/><circle cx="270" cy="60" r="24" fill="#f0c36b"/><circle cx="270" cy="165" r="24" fill="#f0c36b"/><circle cx="480" cy="110" r="24" fill="#176b68"/><circle cx="620" cy="110" r="24" fill="#bb4b35"/></svg></div></section>
 <section id="corpus9" class="tab hidden"><div class="panel"><h2>Nine-study corpus explorer</h2><div class="controls"><label>Study <select id="study"><option>All</option><option>Jwalapuram</option><option>Zhang</option><option>Ke</option></select></label><label>Category <select><option>All</option><option>A</option><option>B</option><option>C</option></select></label><label>phi <input id="phi" type="range" min="0" max=".9" step=".05" value=".5"><output>0.50</output></label></div><div class="grid"><div><div class="small">Contrasts</div><div class="metric">832</div></div><div><div class="small">Noise band</div><div class="metric">phi=<span id="phiValue">0.50</span></div></div><div><div class="small">Subfield</div><div class="metric">5 routes</div></div></div></div></section>
 <section id="rebuttal" class="tab hidden"><div class="panel"><h2>Experiment planner and rebuttal builder</h2><div class="controls"><label>k_tok <input id="ktok" type="number" value="8"></label><label>Power <input id="power" type="number" value="0.8" step=".05"></label><button class="action" onclick="plan()">Calculate</button></div><pre id="planOut">Set k_tok and power, then calculate a compact setup.</pre></div></section>
+<section id="compare" class="tab hidden"><div class="panel"><h2>Compare two traces (baseline vs candidate)</h2>
+<p><button class="action" id="cmpQuick" type="button">Load Sample Pair &amp; Compare</button> <span class="small">one click, no files needed: loads the built-in pair that is selected below (matched compute by default) and shows the verdict</span></p><p class="small">Load a reference baseline and a candidate trace (JSONL, CSV or JSON), or a built-in sample pair. Items present in both are compared. The verdict applies the directional rule of the paper on the token axis: CREDITS (ahead, and the baseline had at least the candidate's budget), RULES OUT (an advantage above the margin is excluded although the candidate was not short of resources) or INCONCLUSIVE. Same definitions as <code>pace compare</code>.</p>
+<div class="grid"><div><div class="small">Baseline trace</div><div id="dropBase" class="drop">Drop the baseline here <input id="cmpBaseFile" type="file" accept=".jsonl,.csv,.json"></div><div id="cmpBaseName" class="small">none loaded</div></div><div><div class="small">Candidate trace</div><div id="dropCand" class="drop">Drop the candidate here <input id="cmpCandFile" type="file" accept=".jsonl,.csv,.json"></div><div id="cmpCandName" class="small">none loaded</div></div></div>
+<div class="controls"><label>Sample pair <select id="cmpSample"><option value="matched">Matched compute, candidate ahead</option><option value="costly_null">5x the tokens, no gain</option><option value="costly_win">4x the tokens, ahead</option></select></label><button class="action" id="cmpLoad" type="button">Load sample pair</button><label>Parity tolerance <input id="cmpTol" type="number" min="0" step="0.01" value="0.10"></label><label>Margin of interest <input id="cmpMargin" type="number" min="0" step="0.01" value="0.05"></label></div>
+<div id="cmpVerdict" class="metric">No traces loaded</div><div id="cmpReason" class="small"></div><div id="cmpTable"></div>
+<button class="action" id="cmpCopyMd" type="button">Copy Markdown report</button> <button class="action" id="cmpJson" type="button">Download comparison JSON</button> <button class="action" id="cmpMd" type="button">Download Markdown</button> <span id="cmpToast" class="small"></span>
+</div></section>
 </main>
 <script>
 const REVBLOCK=`PACE Baseline Parity Request (arXiv:2611.17610):
@@ -143,19 +150,39 @@ function latexV1(c){
 
 function parseRowsWb(text,name){
   const t=String(text).trim();
+  if(!t)throw new Error('the file is empty');
   if(/\.csv$/i.test(name)){const L=t.split(/\r?\n/),h=L[0].split(',').map(x=>x.trim());return L.slice(1).filter(Boolean).map(l=>{const v=l.split(',');const o={};h.forEach((k,i)=>o[k]=v[i]===undefined?'':v[i].trim());return o})}
-  if(t[0]==='['){const a=JSON.parse(t);return Array.isArray(a)?a:[]}
-  return t.split(/\r?\n/).filter(Boolean).map(l=>JSON.parse(l));
+  if(t[0]==='['){
+    let a;
+    try{a=JSON.parse(t)}catch(e){throw new Error('invalid JSON array: '+e.message)}
+    if(!Array.isArray(a))throw new Error('expected a JSON array of records');
+    a.forEach((r,i)=>{if(r===null||typeof r!=='object'||Array.isArray(r))throw new Error('record '+(i+1)+': a record must be a JSON object')});
+    return a;
+  }
+  const out=[];
+  String(text).split(/\r?\n/).forEach((line,i)=>{
+    if(!line.trim())return;
+    let o;
+    try{o=JSON.parse(line)}catch(e){throw new Error('line '+(i+1)+': '+e.message+' ['+line.trim().slice(0,60)+(line.trim().length>60?'...':'')+']')}
+    if(o===null||typeof o!=='object'||Array.isArray(o))throw new Error('line '+(i+1)+': a record must be a JSON object');
+    out.push(o);
+  });
+  return out;
+}
+function wbBanner(msg,ok){
+  const b=document.getElementById('wbBanner');
+  if(!msg){b.classList.add('hidden');b.textContent='';b.classList.remove('ok');return}
+  b.textContent=msg;b.classList.remove('hidden');b.classList.toggle('ok',!!ok);
 }
 let wbCard=null,wbRows=[];
 function wbLoad(f){
   const r=new FileReader();
   r.onload=()=>{
     try{
-      wbRows=parseRowsWb(r.result,f.name);
+      wbRows=parseRowsWb(r.result,f.name);wbBanner('');
       wbCard=compute(wbRows);
       document.getElementById('cardOut').textContent='Loaded '+f.name+'\nrecords: '+wbCard.n_records+', items: '+wbCard.n_items+'\nbaseline_rung: '+wbCard.baseline+'\n'+Object.entries(wbCard.resource_vector).map(([k,v])=>k+': '+(v===null||v===undefined?'n/a':Number(v).toFixed(3))).join('\n');
-    }catch(e){document.getElementById('cardOut').textContent='Could not read '+f.name+': '+e.message}
+    }catch(e){wbBanner('Could not read '+f.name+': '+e.message);document.getElementById('cardOut').textContent='Could not read '+f.name+': '+e.message}
   };
   r.readAsText(f);
 }
@@ -163,5 +190,159 @@ function wbLoad(f){
 document.getElementById('file').onchange=e=>{let f=e.target.files[0];if(f)wbLoad(f)};document.getElementById('drop').ondragover=e=>e.preventDefault();document.getElementById('drop').ondrop=e=>{e.preventDefault();let f=e.dataTransfer.files[0];if(f)wbLoad(f)};
 document.getElementById('copyTexV1').onclick=()=>{if(!wbCard)return;navigator.clipboard.writeText(latexV1(wbCard))};
 document.getElementById('jsonV2').onclick=()=>{if(!wbCard)return;let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(cardV2(wbCard,wbRows),null,2)],{type:'application/json'}));a.download='pace-card.v2.json';a.click()};
+/* Compare two traces: the same definitions as code/pace/compare.py (pace compare), so that a test can check the two against each other. */
+const CMP_AXES=['r_token','r_call','r_latency_critical','r_scaff'];
+function cmpItem(r){return String(r.item??r.item_id??'item_0')}
+function cmpRound(r){return Math.trunc(numOrNull(r.round)??0)}
+function cmpHas(v){return v!==undefined&&v!==null&&v!==''}
+function cmpCredit(v){
+  if(typeof v==='boolean')return v?1:0;
+  const x=Number(v);
+  if(v!==''&&Number.isFinite(x))return Math.min(1,Math.max(0,x));
+  return bool(v)?1:0;
+}
+function itemCredits(rows){
+  const by={};
+  rows.forEach(r=>{(by[cmpItem(r)]??=[]).push(r)});
+  const out={};
+  Object.keys(by).forEach(k=>{
+    const rs=by[k];
+    const marked=rs.filter(r=>cmpHas(r.item_correct));
+    if(marked.length){out[k]=cmpCredit(marked[marked.length-1].item_correct);return}
+    const last=Math.max(...rs.map(cmpRound));
+    const scored=rs.filter(r=>cmpRound(r)===last&&cmpHas(r.correct));
+    if(scored.length)out[k]=scored.filter(r=>bool(r.correct)).length/scored.length;
+  });
+  return out;
+}
+function criticalLatency(rows){
+  const per={};
+  let seen=false;
+  rows.forEach(r=>{
+    const l=numOrNull(r.latency_s);
+    if(l===null)return;
+    seen=true;
+    const it=(per[cmpItem(r)]??={}),rd=cmpRound(r);
+    it[rd]=Math.max(it[rd]??0,l);
+  });
+  if(!seen)return null;
+  const items=Object.keys(per);
+  return items.reduce((a,k)=>a+Object.values(per[k]).reduce((x,y)=>x+y,0),0)/items.length;
+}
+function traceResources(rows){
+  const c=compute(rows),R=c.resource_vector,n=Math.max(1,c.n_items);
+  return {r_token:R.r_token,r_call:R.r_call,r_latency_critical:criticalLatency(rows),r_scaff:rows.filter(r=>r.scaffold||r.tool_calls).length/n,r_round:R.r_round,r_sample:R.r_sample,rung:c.baseline};
+}
+function cmpRatio(c,b){
+  if(c===null||b===null)return null;
+  if(b===0)return c===0?1:null;
+  return c/b;
+}
+function cmpVerdict(delta,lo,hi,rho,nShared,tol,margin,minItems){
+  const f=(x,d)=>Number(x).toFixed(d);
+  if(nShared<2||delta===null||lo===null||hi===null)return {label:'INCONCLUSIVE',reason:'fewer than two items are present in both traces'};
+  if(nShared<minItems)return {label:'INCONCLUSIVE',reason:'only '+nShared+' items are present in both traces (at least '+minItems+' are required to credit or rule out a candidate)'};
+  if(rho===null)return {label:'INCONCLUSIVE',reason:'tokens are missing on one trace, so resource parity cannot be assessed'};
+  if(lo>0){
+    if(rho<=1+tol)return {label:'CREDITS',reason:'the candidate is ahead (interval above 0) and used '+f(rho,2)+'x the baseline\'s tokens, so the baseline had at least the candidate\'s budget'};
+    return {label:'INCONCLUSIVE',reason:'the candidate is ahead but used '+f(rho,2)+'x the baseline\'s tokens; compare at matched compute before crediting it'};
+  }
+  if(hi<=margin){
+    if(rho>=1/(1+tol))return {label:'RULES OUT',reason:'an advantage above '+f(margin,3)+' is excluded (upper bound '+f(hi,3)+') although the candidate used '+f(rho,2)+'x the baseline\'s tokens'};
+    return {label:'INCONCLUSIVE',reason:'no advantage was found, but the candidate used only '+f(rho,2)+'x the baseline\'s tokens, so it was short of resources'};
+  }
+  return {label:'INCONCLUSIVE',reason:'the interval ['+f(lo,3)+', '+f(hi,3)+'] is too wide to credit or to rule out the candidate (margin '+f(margin,3)+')'};
+}
+function compareTraces(baseRows,candRows,tol,margin,minItems){
+  tol=tol===undefined?0.10:tol;margin=margin===undefined?0.05:margin;minItems=minItems===undefined?20:minItems;
+  const cb=itemCredits(baseRows),cc=itemCredits(candRows);
+  const shared=Object.keys(cb).filter(k=>k in cc).sort();
+  const rb=traceResources(baseRows),rc=traceResources(candRows);
+  const ratios={};
+  CMP_AXES.forEach(a=>{ratios[a]=cmpRatio(rc[a],rb[a])});
+  let delta=null,lo=null,hi=null,accB=null,accC=null;
+  if(shared.length){
+    const d=shared.map(k=>cc[k]-cb[k]),n=d.length;
+    delta=d.reduce((a,b)=>a+b,0)/n;
+    if(n>=2){const v=d.reduce((a,x)=>a+(x-delta)*(x-delta),0)/(n-1),se=Math.sqrt(v/n);lo=delta-1.96*se;hi=delta+1.96*se}
+    accB=shared.reduce((a,k)=>a+cb[k],0)/n;accC=shared.reduce((a,k)=>a+cc[k],0)/n;
+  }
+  const nItems=rows=>new Set(rows.map(cmpItem)).size;
+  return {schema:'pace-compare/v1',parameters:{tol:tol,margin:margin,min_items:minItems},
+    baseline:{n_items:nItems(baseRows),n_records:baseRows.length,resources:rb},candidate:{n_items:nItems(candRows),n_records:candRows.length,resources:rc},
+    shared_items:shared.length,accuracy:{baseline:accB,candidate:accC,delta:delta,ci_low:lo,ci_high:hi,method:'paired normal approximation, 95%'},
+    ratios:ratios,verdict:cmpVerdict(delta,lo,hi,ratios.r_token,shared.length,tol,margin,minItems)};
+}
+function cmpFmt(x,d){return(x===null||x===undefined||Number.isNaN(Number(x)))?'n/a':Number(x).toFixed(d===undefined?3:d)}
+function cmpMarkdown(rep){
+  const b=rep.baseline,c=rep.candidate,a=rep.accuracy,r=rep.ratios;
+  const names={r_token:'tokens per item',r_call:'calls per item',r_latency_critical:'critical-path latency (s per item)',r_scaff:'scaffold or tool rows per item'};
+  const L=['# PACE comparison: baseline vs candidate','','**Verdict: '+rep.verdict.label+'.** '+rep.verdict.reason+'.','',
+    'Accuracy on the '+rep.shared_items+' shared items: baseline '+cmpFmt(a.baseline)+', candidate '+cmpFmt(a.candidate)+', gap '+cmpFmt(a.delta)+' (95% interval ['+cmpFmt(a.ci_low)+', '+cmpFmt(a.ci_high)+'], '+a.method+').','',
+    '| resource axis | baseline | candidate | candidate / baseline |','|---|---:|---:|---:|'];
+  CMP_AXES.forEach(k=>L.push('| '+names[k]+' | '+cmpFmt(b.resources[k],2)+' | '+cmpFmt(c.resources[k],2)+' | '+cmpFmt(r[k],2)+' |'));
+  L.push('','Baseline rung: '+b.resources.rung+' ('+b.n_items+' items, '+b.n_records+' records). Candidate rung: '+c.resources.rung+' ('+c.n_items+' items, '+c.n_records+' records).',
+    'Parity tolerance '+cmpFmt(rep.parameters.tol,2)+', smallest advantage of interest '+cmpFmt(rep.parameters.margin,3)+', at least '+rep.parameters.min_items+' shared items.','');
+  return L.join('\n');
+}
+/* built-in sample pairs: a deterministic generator (the item difficulty stream is shared by the two traces, so the comparison is paired) */
+function cmpRng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function cmpSynth(n,p,calls,rounds,tok,seed){
+  const diff=cmpRng(7),noise=cmpRng(seed),rows=[];
+  for(let i=0;i<n;i++){
+    const d=diff();
+    for(let rd=0;rd<rounds;rd++)for(let a=0;a<calls;a++){
+      const g=(noise()+noise()+noise()+noise()-2)*0.1732;
+      rows.push({item:'q'+i,agent:'a'+a,round:rd,correct:(d+g)<p,prompt_tokens:Math.floor(tok/2),completion_tokens:Math.floor(tok/2),latency_s:1+0.25*a});
+    }
+  }
+  return rows;
+}
+function cmpSamples(){
+  const base=cmpSynth(120,0.55,3,1,400,1);
+  return {matched:{base:base,cand:cmpSynth(120,0.75,3,2,200,2)},costly_null:{base:base,cand:cmpSynth(120,0.56,3,2,1000,3)},costly_win:{base:base,cand:cmpSynth(120,0.75,3,2,800,4)}};
+}
+let cmpBaseRows=null,cmpCandRows=null,cmpReport=null;
+function cmpRender(){
+  const out=document.getElementById('cmpTable');
+  if(!cmpBaseRows||!cmpCandRows){return}
+  const tol=Number(document.getElementById('cmpTol').value),margin=Number(document.getElementById('cmpMargin').value);
+  cmpReport=compareTraces(cmpBaseRows,cmpCandRows,Number.isFinite(tol)?tol:0.10,Number.isFinite(margin)?margin:0.05);
+  const rep=cmpReport,v=document.getElementById('cmpVerdict');
+  v.textContent=rep.verdict.label;v.dataset.verdict=rep.verdict.label;v.style.color=rep.verdict.label==='CREDITS'?'#176b68':(rep.verdict.label==='RULES OUT'?'#bb4b35':'#607080');
+  document.getElementById('cmpReason').textContent=rep.verdict.reason+'. Accuracy gap '+cmpFmt(rep.accuracy.delta)+' (95% interval ['+cmpFmt(rep.accuracy.ci_low)+', '+cmpFmt(rep.accuracy.ci_high)+']) on '+rep.shared_items+' shared items.';
+  const names={r_token:'tokens per item (r_token)',r_call:'calls per item (r_call)',r_latency_critical:'critical-path latency, s per item (r_latency_critical)',r_scaff:'scaffold or tool rows per item (r_scaff)'};
+  let h='<table style="border-collapse:collapse;width:100%;margin:10px 0"><tr><th align="left">axis</th><th align="right">baseline</th><th align="right">candidate</th><th align="right">candidate / baseline</th></tr>';
+  CMP_AXES.forEach(k=>{h+='<tr data-axis="'+k+'"><td>'+names[k]+'</td><td align="right">'+cmpFmt(rep.baseline.resources[k],2)+'</td><td align="right">'+cmpFmt(rep.candidate.resources[k],2)+'</td><td align="right">'+cmpFmt(rep.ratios[k],2)+'</td></tr>'});
+  h+='<tr><td>accuracy on shared items</td><td align="right">'+cmpFmt(rep.accuracy.baseline)+'</td><td align="right">'+cmpFmt(rep.accuracy.candidate)+'</td><td align="right">gap '+cmpFmt(rep.accuracy.delta)+'</td></tr><tr><td>baseline rung</td><td align="right">'+rep.baseline.resources.rung+'</td><td align="right">'+rep.candidate.resources.rung+'</td><td></td></tr></table>';
+  out.innerHTML=h;
+}
+function cmpFile(side,f){
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const rows=parseRowsWb(r.result,f.name);wbBanner('');
+      if(side==='base'){cmpBaseRows=rows;document.getElementById('cmpBaseName').textContent=f.name+' ('+rows.length+' records)'}
+      else{cmpCandRows=rows;document.getElementById('cmpCandName').textContent=f.name+' ('+rows.length+' records)'}
+      cmpRender();
+    }catch(e){wbBanner('Could not read '+f.name+' ('+(side==='base'?'baseline':'candidate')+'): '+e.message);document.getElementById(side==='base'?'cmpBaseName':'cmpCandName').textContent='Could not read '+f.name+': '+e.message}
+  };
+  r.readAsText(f);
+}
+function cmpDownload(text,name,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:type}));a.download=name;a.click();URL.revokeObjectURL(a.href)}
+document.getElementById('cmpBaseFile').onchange=e=>{const f=e.target.files[0];if(f)cmpFile('base',f)};
+document.getElementById('cmpCandFile').onchange=e=>{const f=e.target.files[0];if(f)cmpFile('cand',f)};
+[['dropBase','base'],['dropCand','cand']].forEach(([id,side])=>{const d=document.getElementById(id);d.ondragover=e=>e.preventDefault();d.ondrop=e=>{e.preventDefault();const f=e.dataTransfer.files[0];if(f)cmpFile(side,f)}});
+document.getElementById('cmpLoad').onclick=()=>{
+  const s=cmpSamples()[document.getElementById('cmpSample').value];
+  cmpBaseRows=s.base;cmpCandRows=s.cand;
+  document.getElementById('cmpBaseName').textContent='sample baseline ('+s.base.length+' records)';document.getElementById('cmpCandName').textContent='sample candidate ('+s.cand.length+' records)';
+  cmpRender();
+};
+document.getElementById('cmpQuick').onclick=()=>{wbBanner('');document.getElementById('cmpLoad').click();document.getElementById('cmpVerdict').scrollIntoView&&document.getElementById('cmpVerdict').scrollIntoView({block:'center'})};
+document.getElementById('cmpTol').oninput=cmpRender;document.getElementById('cmpMargin').oninput=cmpRender;
+document.getElementById('cmpCopyMd').onclick=()=>{if(!cmpReport)return;const t=cmpMarkdown(cmpReport);const done=()=>{document.getElementById('cmpToast').textContent='Markdown copied'};try{navigator.clipboard.writeText(t).then(done,done)}catch(e){done()}};
+document.getElementById('cmpJson').onclick=()=>{if(cmpReport)cmpDownload(JSON.stringify(cmpReport,null,2),'pace-compare.json','application/json')};
+document.getElementById('cmpMd').onclick=()=>{if(cmpReport)cmpDownload(cmpMarkdown(cmpReport),'pace-compare.md','text/markdown')};
 function plan(){let k=Number(document.getElementById('ktok').value),p=Number(document.getElementById('power').value);document.getElementById('planOut').textContent='k_tok='+k+'\npower='+p+'\nSetup: report baseline rung, resource vector, frontier gap, and stopping ceiling.'}
 </script></body></html>

@@ -693,10 +693,15 @@ function parseRows(text,name){
     }
     return normalizeJsonObj(parsed);
   }catch(_){
-    return trimmed.split(/\r?\n/).filter(Boolean).flatMap(line=>{
-      const obj=JSON.parse(line);
-      return (obj&&(obj.messages||obj.state||obj.tasks)&&obj.correct===undefined)?normalizeJsonObj(obj):[obj];
+    const out=[];
+    String(text).split(/\r?\n/).forEach((line,i)=>{
+      if(!line.trim())return;
+      let obj;
+      try{obj=JSON.parse(line)}catch(e){throw new Error('line '+(i+1)+': '+e.message+' ['+line.trim().slice(0,60)+(line.trim().length>60?'...':'')+']')}
+      if(obj===null||typeof obj!=='object'||Array.isArray(obj))throw new Error('line '+(i+1)+': a record must be a JSON object');
+      ((obj.messages||obj.state||obj.tasks)&&obj.correct===undefined?normalizeJsonObj(obj):[obj]).forEach(x=>out.push(x));
     });
+    return out;
   }
 }
 
