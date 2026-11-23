@@ -5,8 +5,11 @@
 ## Key Links
 - **GitHub Repository:** https://github.com/mahmoudsajjadi/pace
 - **Interactive Demo (Hugging Face Space):** https://huggingface.co/spaces/sajjadi/pace-studio
+- **Hugging Face Papers:** https://huggingface.co/papers/2611.17610
 - **arXiv Preprint:** https://arxiv.org/abs/2611.17610
 - **arXiv HTML:** https://arxiv.org/html/2611.17610v1
+- **Project Page:** https://mahmoudsajjadi.github.io/pace/
+- **Workflow Demo GIF:** https://sajjadi-pace-studio.static.hf.space/assets/pace_workflow_loop.gif
 - **Zenodo Dataset DOI:** https://doi.org/10.5281/zenodo.24286397
 
 ## Summary
