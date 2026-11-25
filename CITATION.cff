@@ -15,7 +15,7 @@ identifiers:
     value: "https://arxiv.org/abs/2611.17610"
     description: "arXiv preprint"
   - type: url
-    value: "https://arxiv.org/html/2611.17610v1"
+    value: "https://arxiv.org/html/2611.17610v2"
     description: "arXiv HTML version"
 keywords:
   - "multi-agent systems"
@@ -35,5 +35,5 @@ preferred-citation:
       affiliation: "Department of Computer Science and Engineering, University of Nevada, Reno"
   year: 2026
   status: in-preparation
-  url: "https://arxiv.org/html/2611.17610v1"
+  url: "https://arxiv.org/html/2611.17610v2"
   notes: "arXiv:2611.17610 (Parity-Aware Compute Evaluation, PACE)."
