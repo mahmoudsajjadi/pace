@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Are Your AI Agents Actually Better, or Just Using More Compute? — PACE</title>
+  <meta name="description" content="How to check whether a multi-agent LLM system beats a single model that is given the same token budget.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.65; color: #1f2937; max-width: 780px; margin: 2.5rem auto; padding: 0 1.25rem; }
+    h1 { font-size: 2rem; line-height: 1.2; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin-top: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.3rem; }
+    img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0 0.25rem; border: 1px solid #e5e7eb; }
+    .caption { font-size: 0.9rem; color: #4b5563; font-style: italic; margin-bottom: 1.25rem; display: block; }
+    pre { background: #111827; color: #f9fafb; padding: 1rem; border-radius: 6px; overflow-x: auto; font-size: 0.9rem; }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    hr { border: 0; border-top: 1px solid #e5e7eb; margin: 1.75rem 0; }
+  </style>
+</head>
+<body>
+  <h1>Are Your AI Agents Actually Better, or Just Using More Compute?</h1>
+  <p><em>How to check whether a multi-agent LLM system beats a single model that is given the same token budget.</em></p>
+  <hr>
+  <p>A debate between five agents over three rounds makes fifteen model calls, and in every round after the first each agent also reads what its peers wrote. Many evaluations compare that system against <strong>one greedy call</strong> from a single model. When the multi-agent system wins, three things are tangled together: communication between agents, the extra independent samples, and the extra test-time compute.</p>
+  <p>The fix is to compare against a single model that gets to spend the same tokens, for example by sampling several answers and taking a majority vote (self-consistency). I wrote PACE to make that comparison routine.</p>
+  <img src="pace_explainer.gif" alt="Animated explainer: one greedy call, independent sampling, a three-agent debate, and the token-matched comparison">
+  <span class="caption">From one greedy call to a token-matched comparison. Findings shown at the end are from the PACE audit and controlled experiment.</span>
+
+  <h2>What changes with a fair baseline</h2>
+  <p>In <a href="https://huggingface.co/papers/2611.17610"><strong>PACE: More Agents, More Samples, or More Thinking?</strong></a> (<a href="https://arxiv.org/abs/2611.17610">arXiv:2611.17610</a>), I audited <strong>516 unique multi-agent configurations from 9 published empirical studies</strong> and grouped each comparison by the single-agent baseline it used: one greedy pass (Category A), several sampled answers (Category B), or a budget-matched baseline (Category C).</p>
+  <ul>
+    <li><strong>Most apparent wins disappear.</strong> In <strong>318 paired contrasts</strong> where a study reported both a greedy baseline and a sampled one, most multi-agent wins over the greedy pass became zero or negative against the sampled baseline.</li>
+    <li><strong>The average difference is negative.</strong> Across <strong>474 Category B and C contrasts</strong>, the mean accuracy difference between the multi-agent system and the baseline was <strong>−4.2 percentage points</strong>. This is a descriptive mean over heterogeneous studies, not one controlled experiment.</li>
+    <li><strong>A controlled test agrees.</strong> In a controlled experiment on MMLU-Pro (llama3.1:8b, 250 items), neither multi-agent debate (−1.5 points) nor mixture-of-agents (−7.2 points) exceeded the self-consistency frontier at equal tokens.</li>
+  </ul>
+  <img src="fig1_bc_mean.png" alt="Bar chart: mean accuracy difference of -4.2 percentage points across 474 sampled or budget-matched contrasts">
+  <span class="caption">Mean difference between multi-agent systems and sampled or budget-matched single-agent baselines (474 contrasts, 8 studies). Descriptive mean; see Section 6.1 of the paper for the meta-analytic model.</span>
+
+  <h2>Five agents are not five samples</h2>
+  <p>Debate costs more than its call count suggests, because prompts grow with peer messages. Suppose each call has 400 prompt tokens and 100 completion tokens, and in each round after the first, every agent reads the previous round's messages from its peers. Then a 3-agent, 2-round debate makes 6 calls but uses <strong>3,600 tokens</strong>, the cost of <strong>7.2 independent samples</strong>. The paper gives the general formula:</p>
+  $$k_{\mathrm{tok}} = KT + (T-1)\,K(K-1)\,r, \qquad r = \frac{\ell}{c_p + \ell}$$
+  <p>where $K$ is the number of agents, $T$ the number of rounds, $c_p$ the prompt tokens and $\ell$ the completion tokens per call. If agents re-read the full history, the cost grows quadratically in $T$.</p>
+  <img src="fig2_ktok_scaling.png" alt="Line chart: model calls versus token-equated samples for four agents over one to five rounds">
+  <span class="caption">For 4 agents, the token-equated sample count pulls away from the call count as rounds increase (r = 0.20, illustrative inputs).</span>
+  <p><strong>Which way to round.</strong> Here $k_{\mathrm{tok}} = 7.2$, so no whole number of samples matches exactly. An 8-sample vote spends at least as many tokens as the debate: if the debate beats it, that is a real gain. A 7-sample vote spends fewer: if it matches or beats the debate, communication did not pay for its tokens. Neither pool is "the same budget"; each is fair in one direction.</p>
+
+  <h2>When communication can help</h2>
+  <p>PACE does <strong>not</strong> say multi-agent systems never work. With a single shared prompt, exchanging messages adds no information that independent samples lack. That leaves three candidate settings where communication can beat equal-compute sampling:</p>
+  <ol>
+    <li><strong>Split evidence.</strong> Agents hold different pieces of information that no single agent sees. In a hidden-profile positive control (200 items), split-view debate beat split-view voting by 7.3 points. It still scored below a placebo debate and below four-option chance, which is why placebo controls matter.</li>
+    <li><strong>An external verifier.</strong> A unit-test runner or formal checker filters proposed answers more cheaply than regenerating them, provided the single-agent baseline gets the same verifier.</li>
+    <li><strong>Models that make different errors.</strong> Combining different model families can lower the correlation between errors and raise the effective number of independent votes.</li>
+  </ol>
+  <p>These are candidates, not effects the audit established.</p>
+
+  <h2>Try it</h2>
+  <ul>
+    <li><strong>In the browser:</strong> <a href="https://huggingface.co/spaces/sajjadi/pace-studio">PACE Studio</a> sizes the baseline for your own setup and lets you explore the 9-study corpus.</li>
+    <li><strong>From the command line:</strong> the open-source toolkit is on <a href="https://github.com/mahmoudsajjadi/pace">GitHub</a>.</li>
+  </ul>
+  <pre><code>pip install git+https://github.com/mahmoudsajjadi/pace.git
+pace pool-size --agents 3 --rounds 2 --prompt-tokens 400 --msg-tokens 100
+# k_tok 7.200 (r=0.2000), recommended pool size 8</code></pre>
+
+  <h2>Checklist before you ship or review a multi-agent system</h2>
+  <ol>
+    <li><strong>Log the resources of both arms:</strong> thinking tokens, total tokens, dollar cost, latency, number of independent samples, and external tool or verifier calls.</li>
+    <li><strong>Compare against the sampling frontier first:</strong> self-consistency with $k \ge k_{\mathrm{tok}}$ samples, and report the gap with an interval.</li>
+    <li><strong>Give both arms the same tools:</strong> never give the multi-agent system a code executor or test runner that the baseline lacks.</li>
+    <li><strong>Run a placebo for communication claims:</strong> replace peer messages with length-matched text from another item. If accuracy stays the same, the gain came from extra context or compute, not from coordination.</li>
+  </ol>
+  <hr>
+  <p><em>PACE is a preprint and has not yet been peer reviewed. Read it on <a href="https://huggingface.co/papers/2611.17610">Hugging Face</a> or <a href="https://arxiv.org/abs/2611.17610">arXiv</a>. Questions and counterexamples are welcome on the paper page or as GitHub issues.</em></p>
+  <p><em>Seyed Mahmoud Sajjadi Mohammadabadi, University of Nevada, Reno</em></p>
+</body>
+</html>
